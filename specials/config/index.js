@@ -1,7 +1,14 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
 
-var appDir = 'abc'
+var appDir
+appDir = 'abc'
+
+// 这里项目名不能用 test1 不然，会引发 eslint 检查，哪里的问题
+appDir = 'test1'
+appDir = 'zt1'
+// appDir = 'zt2'
+
 var projectPath = '../' + appDir // 相对于 __filename 即，此文件路径
 
 console.log('__dirname ', __dirname)          // specials/config
