@@ -4,10 +4,10 @@ var path = require('path')
 var appDir
 appDir = 'abc'
 
-// 这里项目名不能用 test1 不然，会引发 eslint 检查，哪里的问题
+// 这里项目名不能用 test1 不然，会自动引发 eslint 检查，哪里的问题
 appDir = 'test1'
-appDir = 'zt1'
-// appDir = 'zt2'
+appDir = 'single'  // 单页专题
+// appDir = 'multi'   // 多页专题
 
 var projectPath = '../' + appDir // 相对于 __filename 即，此文件路径
 
@@ -20,14 +20,14 @@ var distPath = './' + appDir + '/dist'
 module.exports = {
   appDir: appDir,
   index: 'index.html', // 引用文件，相对于 assetsRoot
-  template: 'index.html',
+  template: appDir + '/index.html',
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, projectPath + '/dist/index.html'),
     // 无需编译的静态资源目录，会拷贝到 assets 中
     staticPath: path.resolve(__dirname, projectPath + '/src/assets'),
     // 所有输出文件的目标路径，必须绝对路径
-    assetsRoot: path.resolve(__dirname, projectPath),
+    assetsRoot: path.resolve(__dirname, projectPath + '/dist'),
     // 输出解析文件的目录，url 相对于 HTML 页面
     assetsSubDirectory: 'assets',
     assetsPublicPath: '',
