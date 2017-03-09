@@ -4,6 +4,19 @@
       "targets": {
         "browsers": ["last 5 versions", "safari >= 7"]
       }
-    }]
+    }],
+    // "flow-vue",
+    "es2015",
+    "stage-0"
+  ],
+  "plugins": [
+    // "syntax-dynamic-import",
+    // "transform-object-assign",
+    // "transform-object-rest-spread",
+    // "transform-vue-jsx"
+  ],
+  "ignore": [
+    // "packages/**/*.js",
+    "dist/*.js"
   ]
 }

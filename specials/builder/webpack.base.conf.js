@@ -26,7 +26,8 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve(appDir + '/src'),
+      // '@': resolve(appDir + '/src'),
+      '@static': resolve(appDir + '/src/assets'),
     }
   },
   module: {
@@ -46,10 +47,20 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: 'babel-loader',
+        exclude: /node_modules/,
         include: [resolve('src'), resolve('test')]
       },
+      // {
+      //   // 不建议用 sass，每次安装依赖 node-sass 都很耗时（需要编译）
+      //   test: /\.css$/,
+      //   use: [
+      //     'style-loader',
+      //     'css-loader',
+      //     'sass-loader',
+      //   ],
+      // },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
