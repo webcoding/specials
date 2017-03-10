@@ -12,6 +12,9 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { EVENT_DO_CLEAR, EVENT_DO_DEL } from './store/note'
+
 import nHeader from './components/vHeader'
 import nAdd from './components/EventAdd'
 import nList from './components/EventList'
@@ -43,6 +46,9 @@ export default {
     nList,
   },
   methods: {
+    ...mapActions([EVENT_DO_CLEAR]),
+    ...mapActions([EVENT_DO_DEL]),
+
     clearData() {
       this.dialog = true
       this.dialogType = 'clear'
@@ -61,10 +67,12 @@ export default {
       const self = this
       switch (self.dialogType) {
         case 'clear':
-          self.$store.dispatch('clearevent')
+          // self.$store.dispatch('clearevent')
+          this.EVENT_DO_CLEAR()
           break
         case 'del':
-          self.$store.dispatch('delevent', self.delInfo)
+          this.EVENT_DO_DEL(self.delInfo)
+          // self.$store.dispatch('delevent', self.delInfo)
           break
       }
       this.dialog = false

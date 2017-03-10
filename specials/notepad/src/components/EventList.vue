@@ -41,6 +41,9 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+import { EVENT_DONE, EVENT_TODO, EVENT_CANCEL } from '../store/note'
+
 export default {
   data() {
     return {
@@ -57,42 +60,51 @@ export default {
       ],
     }
   },
-  computed: {
+  computed: mapState({
+    note: state => state.note,
+
     getToDo() {
-      const self = this
-      return self.$store.state.note.event.filter(function (d) {
-        if (d.type === 1) {
+      // debugger
+      // console.log(this.state)
+      return this.note.event.filter(function (d) {
+        if (d && d.type === 1) {
           return d
         }
       })
     },
     getDone() {
-      const self = this
-      return self.$store.state.note.event.filter(function (d) {
-        if (d.type === 2) {
+      return this.note.event.filter(function (d) {
+        if (d && d.type === 2) {
           return d
         }
       })
     },
     getCancel() {
-      const self = this
-      return self.$store.state.note.event.filter(function (d) {
-        if (d.type === 3) {
+      return this.note.event.filter(function (d) {
+        if (d && d.type === 3) {
           return d
         }
       })
     },
-  },
+  }),
   methods: {
+    ...mapActions([EVENT_DONE]),
+    ...mapActions([EVENT_TODO]),
+    ...mapActions([EVENT_CANCEL]),
+
     moveToDone(id) { // 移至已完成
-      this.$store.dispatch('eventdone', id)
+      this.EVENT_DONE(id)
+      // this.$store.dispatch('eventdone', id)
     },
     moveToDo(id) { // 移至未完成
-      this.$store.dispatch('eventtodo', id)
+      this.EVENT_TODO(id)
+      // this.$store.dispatch('eventtodo', id)
     },
     moveCancel(id) { // 移至已取消
-      this.$store.dispatch('eventcancel', id)
+      this.EVENT_CANCEL(id)
+      // this.$store.dispatch('eventcancel', id)
     },
+
     changeCollapse(num, event) {
       const show = this.collapse[num].show
       if (show) {

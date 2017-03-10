@@ -6,6 +6,9 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { EVENT_DO_ADD } from '../store/note'
+
 export default {
   data() {
     return {
@@ -13,6 +16,8 @@ export default {
     }
   },
   methods: {
+    ...mapActions([EVENT_DO_ADD]),
+
     submit() {
       const self = this
       const params = {
@@ -24,8 +29,9 @@ export default {
       self.content = self.content.trim()
       if (self.content) {
         params.content = self.content
-        console.log(111)
-        self.$store.dispatch('addevent', params)
+
+        this.EVENT_DO_ADD(params)
+
         self.content = ''
       }
     },

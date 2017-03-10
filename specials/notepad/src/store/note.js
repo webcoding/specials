@@ -1,40 +1,30 @@
 
-import * as actions from './actions'
+// import * as actions from './actions'
 
-// const Storage = window.sessionStorage
-const Storage = window.localStorage
+import { getDate, LocalEvent } from './util'
 
-// 获取当天日期
-function getDate() {
-  const date = new Date()
-  const mouth = parseInt(date.getMonth()) + 1
-  return date.getFullYear() + '-' + mouth + '-' + date.getDate()
-}
-function LocalEvent(item) {
-  this.get = function () {
-    return JSON.parse(Storage.getItem(item))
-  }
-  this.set = function (obj) {
-    Storage.setItem(item, JSON.stringify(obj))
-  }
-  this.clear = function () {
-    Storage.removeItem(item)
-  }
-}
 const local = new LocalEvent('lx_notepad')
 const state = local.get() || {
   event: [],
   count: 0,
 }
 
+export const EVENT_DO_ADD = 'EVENT_DO_ADD'
+export const EVENT_DONE = 'EVENT_DONE'
+export const EVENT_TODO = 'EVENT_TODO'
+export const EVENT_CANCEL = 'EVENT_CANCEL'
+export const EVENT_DO_CLEAR = 'EVENT_DO_CLEAR'
+export const EVENT_DO_DEL = 'EVENT_DO_DEL'
+export const EVENT_DO_EDIT = 'EVENT_DO_EDIT'
+
 const mutations = {
-  ADDEVENT(states, obj) {
+  [EVENT_DO_ADD](states, obj) {
     states.count++
     obj.items.id = states.count
     states.event.unshift(obj.items)
     local.set(states)
   },
-  EVENTDONE(states, obj) {
+  [EVENT_DONE](states, obj) {
     for (let i = 0; i < states.event.length; i++) {
       if (states.event[i].id === obj.id) {
         states.event[i].type = 2
@@ -47,7 +37,7 @@ const mutations = {
     states.event.unshift(item)
     local.set(states)
   },
-  EVENTTODO(states, obj) {
+  [EVENT_TODO](states, obj) {
     for (let i = 0; i < states.event.length; i++) {
       if (states.event[i].id === obj.id) {
         states.event[i].type = 1
@@ -59,7 +49,7 @@ const mutations = {
     states.event.unshift(item)
     local.set(states)
   },
-  EVENTCANCEL(states, obj) {
+  [EVENT_CANCEL](states, obj) {
     for (let i = 0; i < states.event.length; i++) {
       if (states.event[i].id === obj.id) {
         states.event[i].type = 3
@@ -71,11 +61,11 @@ const mutations = {
     states.event.unshift(item)
     local.set(states)
   },
-  CLEAREVENT(states) {
+  [EVENT_DO_CLEAR](states) {
     states.event = []
     local.clear()
   },
-  DELEVENT(states, info) {
+  [EVENT_DO_DEL](states, info) {
     if (states.event[info.index].id === info.id) {
       states.event.splice(info.index, 1)
     } else {
@@ -87,7 +77,7 @@ const mutations = {
     }
     local.set(states)
   },
-  EDITEVENT(states, info) {
+  [EVENT_DO_EDIT](states, info) {
     if (states.event[info.index].id === info.id) {
       states.event[info.index].content = info.content
     } else {
@@ -98,6 +88,30 @@ const mutations = {
       })
     }
     local.set(states)
+  },
+}
+
+const actions = {
+  [EVENT_DO_ADD]({ commit }, param) {
+    commit(EVENT_DO_ADD, { items: param })
+  },
+  [EVENT_DONE]({ commit }, param) {
+    commit(EVENT_DONE, { id: param })
+  },
+  [EVENT_TODO] ({ commit }, param) {
+    commit(EVENT_TODO, { id: param })
+  },
+  [EVENT_CANCEL]({ commit }, param) {
+    commit(EVENT_CANCEL, { id: param })
+  },
+  [EVENT_DO_CLEAR]({ commit }) {
+    commit(EVENT_DO_CLEAR)
+  },
+  [EVENT_DO_DEL]({ commit }, param) {
+    commit(EVENT_DO_DEL, param)
+  },
+  [EVENT_DO_EDIT]({ commit }, param) {
+    commit(EVENT_DO_EDIT, param)
   },
 }
 

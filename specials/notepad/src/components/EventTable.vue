@@ -43,6 +43,9 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { EVENT_DO_EDIT } from '../store/note'
+
 export default {
   data() {
     return {
@@ -85,6 +88,8 @@ export default {
     },
   },
   methods: {
+    ...mapActions([EVENT_DO_EDIT]),
+
     doSelect(type) {
       this.screenType = type
       this.active = false
@@ -119,7 +124,7 @@ export default {
     editData() {
       this.info.content = this.info.content.trim()
       if (this.info.content) {
-        this.$store.dispatch('editevent', this.info)
+        this.EVENT_DO_EDIT(this.info)
         this.isEdit = false
       }
     },
