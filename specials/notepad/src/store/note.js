@@ -115,8 +115,29 @@ const actions = {
   },
 }
 
+function filterTodos(states, status) {
+  return states.event.filter(function (todo) {
+    if (todo && todo.type === status) {
+      return todo
+    }
+  })
+}
+
+const getters = {
+  getToDo(states) {
+    return filterTodos(states, 1)
+  },
+  getDone(states) {
+    return filterTodos(states, 2)
+  },
+  getCancel(states) {
+    return filterTodos(states, 3)
+  },
+}
+
 export default {
   state,
+  getters,
   actions,
   mutations,
 }

@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import { EVENT_DONE, EVENT_TODO, EVENT_CANCEL } from '../store/note'
 
 export default {
@@ -63,30 +63,19 @@ export default {
   computed: {
     // ...mapState({ note: state => state.note }),
     ...mapState(['note']),
+    ...mapGetters(['getToDo', 'getDone', 'getCancel']),
 
-    getToDo() {
-      // debugger
-      // console.log(this.state)
-      return this.note.event.filter(function (d) {
-        if (d && d.type === 1) {
-          return d
-        }
-      })
-    },
-    getDone() {
-      return this.note.event.filter(function (d) {
-        if (d && d.type === 2) {
-          return d
-        }
-      })
-    },
-    getCancel() {
-      return this.note.event.filter(function (d) {
-        if (d && d.type === 3) {
-          return d
-        }
-      })
-    },
+    // getToDo() {
+    //   // debugger
+    //   // console.log(this.state)
+    //   return this.todos(1)
+    // },
+    // getDone() {
+    //   return this.todos(2)
+    // },
+    // getCancel() {
+    //   return this.todos(3)
+    // },
   },
   methods: {
     ...mapActions([EVENT_DONE, EVENT_TODO, EVENT_CANCEL]),
