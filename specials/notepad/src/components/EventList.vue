@@ -89,9 +89,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions([EVENT_DONE]),
-    ...mapActions([EVENT_TODO]),
-    ...mapActions([EVENT_CANCEL]),
+    ...mapActions([EVENT_DONE, EVENT_TODO, EVENT_CANCEL]),
 
     moveToDone(id) { // 移至已完成
       this.EVENT_DONE(id)

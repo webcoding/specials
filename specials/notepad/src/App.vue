@@ -46,8 +46,7 @@ export default {
     nList,
   },
   methods: {
-    ...mapActions([EVENT_DO_CLEAR]),
-    ...mapActions([EVENT_DO_DEL]),
+    ...mapActions([EVENT_DO_CLEAR, EVENT_DO_DEL]),
 
     clearData() {
       this.dialog = true
