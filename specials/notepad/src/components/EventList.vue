@@ -60,8 +60,9 @@ export default {
       ],
     }
   },
-  computed: mapState({
-    note: state => state.note,
+  computed: {
+    // ...mapState({ note: state => state.note }),
+    ...mapState(['note']),
 
     getToDo() {
       // debugger
@@ -86,7 +87,7 @@ export default {
         }
       })
     },
-  }),
+  },
   methods: {
     ...mapActions([EVENT_DONE]),
     ...mapActions([EVENT_TODO]),
