@@ -4,6 +4,8 @@
   "extends": "vue",
   "plugins": ["flowtype"],
   "globals": {
+    "Blob": false,
+    "URL": false,
     "__WEEX__": true
   },
   "rules": {

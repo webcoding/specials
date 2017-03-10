@@ -6,10 +6,8 @@ var vueLoaderConfig = require('./vue-loader.conf')
 var appDir = config.appDir
 
 function resolve (dir) {
-  console.log(dir, ': ', path.join(__dirname, '../' + appDir + '/', dir))
   return path.join(__dirname, '../' + appDir + '/', dir)
 }
-
 
 module.exports = {
   entry: {
@@ -28,6 +26,10 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
+      // 'vue$': 'vue/dist/vue.common.js',
+      'src': resolve('src'),
+      'assets': resolve('assets'),
+      'components': resolve('components'),
       // '@': resolve(appDir + '/src'),
     },
   },

@@ -11,11 +11,18 @@
     "stage-0"
   ],
   "plugins": [
+    "transform-runtime"
     // "syntax-dynamic-import",
     // "transform-object-assign",
     // "transform-object-rest-spread",
     // "transform-vue-jsx"
   ],
+  "env": {
+    "test": {
+      "plugins": [ "istanbul" ]
+    }
+  },
+  "comments": false,
   "ignore": [
     // "packages/**/*.js",
     "dist/*.js"

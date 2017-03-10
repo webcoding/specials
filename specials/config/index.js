@@ -3,12 +3,10 @@ var path = require('path')
 
 var appDir
 appDir = 'abc'
-
-// 这里项目名不能用 test1 不然，会自动引发 eslint 检查，哪里的问题
-appDir = 'test1'
-// appDir = 'single'  // 单页专题
+appDir = 'single'  // 单页专题
 appDir = 'multi'   // 多页专题
 appDir = 'login'   // 登录授权
+appDir = 'notepad'   // 登录授权
 
 var projectPath = '../' + appDir // 相对于 __filename 即，此文件路径
 
@@ -19,7 +17,7 @@ console.log('process.cwd() ', process.cwd())  // specials
 // var distPath = './' + appDir + '/dist'
 
 module.exports = {
-  target: 'web',
+  // target: 'web',
   appDir: appDir,
   index: 'index.html', // 引用文件，相对于 assetsRoot
   template: appDir + '/index.html',
