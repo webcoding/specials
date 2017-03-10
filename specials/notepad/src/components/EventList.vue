@@ -60,7 +60,7 @@ export default {
   computed: {
     getToDo() {
       const self = this
-      return self.$store.state.event.filter(function (d) {
+      return self.$store.state.note.event.filter(function (d) {
         if (d.type === 1) {
           return d
         }
@@ -68,7 +68,7 @@ export default {
     },
     getDone() {
       const self = this
-      return self.$store.state.event.filter(function (d) {
+      return self.$store.state.note.event.filter(function (d) {
         if (d.type === 2) {
           return d
         }
@@ -76,7 +76,7 @@ export default {
     },
     getCancel() {
       const self = this
-      return self.$store.state.event.filter(function (d) {
+      return self.$store.state.note.event.filter(function (d) {
         if (d.type === 3) {
           return d
         }

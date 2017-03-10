@@ -1,5 +1,5 @@
 <template>
-  <section class="event-all" :class="{'event-all-show':isShow}">
+  <section class="event-all" :class="{'event-all-show': isShow}">
     <div class="table-box">
       <div class="edit-input" :class="{'edit-input-show': isEdit}">
         <input type="text" v-model="info.content" ref="content" @keyup.enter="editData">
@@ -27,13 +27,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(value, index) in notapad">
+          <tr v-for="(value, index) in notepad">
             <td align="center">{{index + 1}}</td>
             <td>{{value.content}}</td>
             <td align="center">{{getType(value.type)}}</td>
             <td align="center" style="font-size: 0;">
               <button @click="showInput(index)">编辑</button>
-              <button class="del-btn" @click="showDialog(index,value.id)">删除</button>
+              <button class="del-btn" @click="showDialog(index, value.id)">删除</button>
             </td>
           </tr>
         </tbody>
@@ -59,9 +59,9 @@ export default {
   },
   props: ['isShow'],
   computed: {
-    notapad() {
+    notepad: function () {
       var self = this
-      return self.$store.state.event.filter(function (d) {
+      return self.$store.state.note.event.filter(function (d) {
         if (self.screenType !== 0 && self.screenTitle === '') {
           if (d.type === self.screenType) {
             return d
@@ -111,8 +111,8 @@ export default {
       this.isEdit = true
       this.info = {
         index: index,
-        content: this.notapad[index].content,
-        id: this.notapad[index].id,
+        content: this.notepad[index].content,
+        id: this.notepad[index].id,
       }
       this.$refs.content.focus()
     },
