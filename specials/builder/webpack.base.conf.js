@@ -40,8 +40,8 @@ module.exports = {
         include: [resolve('src'), resolve('test')],
         exclude: /node_modules/,
         // options: {
-        //   // 检测 vue 语法，要使用 vue 规则，不能使用 airbnb
-        //   formatter: require('eslint-config-vue')
+        //   // 这里要使用 vue 的格式规范，不写就自动使用 .eslintrc 的配置
+        //   formatter: require('eslint-friendly-formatter')
         // }
       },
       {
