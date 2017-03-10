@@ -1,7 +1,7 @@
 <template>
   <div class="page page-user">
     <div class="page-header">
-      <h3>用户中心 <small>user</small></h3>
+      <h3>用户中心 <small>profile</small></h3>
     </div>
     <div>
       <p>{{user.name}} 你好，</p>
@@ -35,7 +35,7 @@ export default {
   // },
   computed: mapState({ user: state => state.user }),
   ready: function () {
-    console.log(111);
+    console.log(111)
   },
   attached: function () {},
   methods: {
@@ -47,9 +47,9 @@ export default {
     submitLogout() {
       this.USER_SIGNOUT()
       this.$router.replace({ path: '/login' })
-    }
+    },
   },
-  components: {}
+  components: {},
 }
 </script>
 

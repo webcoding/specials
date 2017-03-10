@@ -4,8 +4,8 @@ import Vue from 'vue'
 export const USER_SIGNIN = 'USER_SIGNIN' // 登录成功
 export const USER_SIGNOUT = 'USER_SIGNOUT' // 退出登录
 
-const Storage = window.sessionStorage
-// const Storage = window.localStorage
+// const Storage = window.sessionStorage
+const Storage = window.localStorage
 
 export default {
   state: JSON.parse(Storage.getItem('user')) || {},

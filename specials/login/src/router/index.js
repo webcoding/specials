@@ -3,9 +3,9 @@ import Router from 'vue-router'
 import store from '../store/'
 
 
+import index from '../pages/index.vue'
 import login from '../pages/login.vue'
 // import profile from '../pages/profile.vue'
-import about from '../pages/about.vue'
 
 Vue.use(Router)
 console.log(222)
@@ -18,6 +18,7 @@ const router = new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: [
     { path: '/login', name: 'login', component: login },
+    { path: '/index', name: 'index', component: index },
     {
       path: '/profile',
       name: 'profile',
@@ -34,7 +35,7 @@ const router = new Router({
       name: 'about',
       component: resolve => require(['../pages/about.vue'], resolve),
     },
-    { path: '/*', name: 'default', component: login },
+    { path: '/*', name: 'default', component: index },
   ],
 })
 

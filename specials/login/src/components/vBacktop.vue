@@ -1,6 +1,6 @@
 <template>
-  <transition name="fade">
-    <div class="back-to-top" v-show="show" @click="backToTop">
+  <transition name='fade'>
+    <div class='back-to-top'' v-show='show'' @click='backToTop'>
       backtop
     </div>
   </transition>
@@ -8,51 +8,51 @@
 
 <script>
 // 还可以优化动画，从下面滑动出来
-const isBrowser = typeof window !== 'undefined';
+const isBrowser = typeof window !== 'undefined'
 export default {
   name: 'v-backtop',
   data() {
     return {
-      type: "less",
+      type: 'less',
       show: false,
     }
   },
   created() {
-    var self = this;
-    if(isBrowser){
+    var self = this
+    if (isBrowser) {
       if (window.addEventListener) {
-        window.addEventListener("scroll", self.handleScroll, false);
+        window.addEventListener('scroll', self.handleScroll, false)
       } else if (window.attachEvent) {
-        window.attachEvent("onscroll", self.handleScroll);
+        window.attachEvent('onscroll', self.handleScroll)
       } else {
-        window["onscroll"] = self.handleScroll;
+        window['onscroll'] = self.handleScroll
       }
     }
   },
-  beforeDestory (){
-    var self = this;
-    if(isBrowser){
+  beforeDestory () {
+    var self = this
+    if (isBrowser) {
       if (window.removeEventListener) {
-        window.removeEventListener("scroll", self.handleScroll, false);
+        window.removeEventListener('scroll', self.handleScroll, false)
       } else if (window.detachEvent) {
-        window.detachEvent("onscroll", self.handleScroll);
+        window.detachEvent('onscroll', self.handleScroll)
       } else {
-        window["onscroll"] = null;
+        window['onscroll'] = null
       }
     }
   },
   methods: {
     backToTop() {
-      if(isBrowser){
-        window.scrollTo(0, 0);
+      if (isBrowser) {
+        window.scrollTo(0, 0)
       }
     },
-    handleScroll (){
-      if(isBrowser){
-        this.show = (window.scrollY > 200) && true || false;
+    handleScroll () {
+      if (isBrowser) {
+        this.show = (window.scrollY > 200) && true || false
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

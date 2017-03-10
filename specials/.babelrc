@@ -6,6 +6,7 @@
       }
     }],
     // "flow-vue",
+    "latest",
     "es2015",
     "stage-0"
   ],

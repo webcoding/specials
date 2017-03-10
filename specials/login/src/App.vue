@@ -9,9 +9,10 @@
 </template>
 
 <script>
-//不能用已有标签，比如 header
+// 不能用已有标签，比如 header
 import vHeader from './components/vHeader'
 import vBacktop from './components/vBacktop'
+
 export default {
   name: 'app',
   components: {
@@ -21,30 +22,31 @@ export default {
   data() {
     return {
       isDebug: true,
-      transition: "slide-left",
+      transition: 'slide-left',
     }
   },
 
   watch: {
-    "$route"(to, from){
+    '$route'(to, from) {
       // 默认使用 'slide-left' 如果使用的是 back（暂判断不出来），也使用 slide-left
       // const toDepth = to.path.split('/').length
       // const fromDepth = from.path.split('/').length
       // this.transition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
-      this.transition = this.checkDirecition(to.name, from.name) ? "slide-left" : "slide-right";
-    }
+      this.transition = this.checkDirecition(to.name, from.name) ? 'slide-left' : 'slide-right'
+    },
   },
+
   methods: {
     checkDirecition(to, from) {
-      let map = ["index", "demo", "about", "login", "component", "user"].reverse();
+      const map = ['index', 'demo', 'about', 'login', 'component', 'user'].reverse()
       // 不存在为 -1，设置默认匹配小于零，对应 slide-left
-      return (map.indexOf(to) - map.indexOf(from)) < 0;
-    }
+      return (map.indexOf(to) - map.indexOf(from)) < 0
+    },
   },
 }
 </script>
 
-<style>
+<style lang="scss">
 html,
 body,
 #app{
@@ -84,16 +86,14 @@ a{
   top: 0;
   left: 0;
   right: 0;
-}
+  .inner{
+    max-width: 800px;
+    box-sizing: border-box;
+    margin: 0px auto;
+    padding: 15px 5px;
+  }
 
-.inner{
-  max-width: 800px;
-  box-sizing: border-box;
-  margin: 0px auto;
-  padding: 15px 5px;
-}
-
-.header a{
+  a{
     color: rgba(255, 255, 255, .8);
     line-height: 24px;
     transition: color .15s ease;
@@ -102,33 +102,35 @@ a{
     font-weight: 300;
     letter-spacing: .075em;
     margin-right: 1.8em;
+
+    &:hover{
+      color: #fff;
     }
-.header a:hover{
-  color: #fff;
-}
-.header a.router-link-active{
-  color: #fff;
-  font-weight: 400;
-}
-.header a:nth-child(6){
-  margin-right: 0;
+    &.router-link-active{
+      color: #fff;
+      font-weight: 400;
+    }
+    &:nth-child(6){
+      margin-right: 0;
+    }
+  }
+
+  .github{
+    color: #fff;
+    font-size: .9em;
+    margin: 0;
+    float: right;
+  }
+
+  .logo{
+    width: 24px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
 
 
-.github{
-  color: #fff;
-  font-size: .9em;
-  margin: 0;
-  float: right;
-}
-
-
-.logo{
-  width: 24px;
-  margin-right: 10px;
-  display: inline-block;
-  vertical-align: middle;
-}
 
 .page{
   max-width: 800px;
