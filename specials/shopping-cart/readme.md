@@ -1,12 +1,7 @@
 # 专题项目示例
 
-本地存储的记事本 source: https://github.com/lin-xin/notepad
+购物车 source: https://github.com/vuejs/vuex/tree/dev/examples/shopping-cart
 
-从这个项目中能学到什么？
-
-- 部分组件的简单实现
-- store 的简单实现以及使用
-- store 的结构层次划分，此处 vuex 文档有详细说明
 
 对于大型应用，我们会希望把 Vuex 相关代码分割到模块中。下面是项目结构示例：
 
