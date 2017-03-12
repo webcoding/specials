@@ -7,8 +7,8 @@ appDir = 'single'  // 单页专题
 appDir = 'multi'   // 多页专题
 appDir = 'login'   // 登录授权
 appDir = 'notepad'
-appDir = 'todomvc'
-appDir = 'shopping-cart'
+// appDir = 'todomvc'
+// appDir = 'shopping-cart'
 
 var projectPath = '../' + appDir // 相对于 __filename 即，此文件路径
 

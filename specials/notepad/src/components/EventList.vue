@@ -5,7 +5,7 @@
     </div>
     <div class="event-box" :style="{'height':'auto','display':'block'}">
       <ul>
-        <li class="event-list" v-for="value in getToDo">
+        <li class="event-list" v-for="value in getToDo" :key="value.id">
           <input type="checkbox" :key="value.id" @click="moveToDone(value.id)">
           <div>{{value.content}}</div>
           <button class="cancel-btn" @click="moveCancel(value.id)">取消</button>
@@ -127,6 +127,14 @@ export default {
 </script>
 
 <style lang="scss">
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-active {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 .event-content {
   .event-tab {
     position: relative;
