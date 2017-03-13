@@ -1,4 +1,4 @@
-# specials
+# specials/zt 专题项目
 
 > A Vue.js project
 

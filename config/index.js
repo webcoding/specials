@@ -2,7 +2,6 @@ var path = require('path')
 var fs = require('fs')
 // see http://vuejs-templates.github.io/webpack for documentation.
 
-
 var appDir
 appDir = 'abc'
 appDir = 'single'  // 单页专题
@@ -13,19 +12,26 @@ appDir = 'notepad'
 // appDir = 'shopping-cart'
 
 // 读取 path 参数，比对 specials 下专题目录，检测参数是否正确
-appDir = process.env.npm_config_path || 'notepad'
+appDir = process.env.npm_config_path || 'zt/notepad'
 console.log(appDir)
+var ztDir = 'zt/'
+var ztPathPreReg = new RegExp('^' + ztDir)
+if (!ztPathPreReg.test(appDir)) {
+  appDir = ztDir + appDir
+}
 
-var projectList = fs.readdirSync(process.cwd()).reduce((entries, dir) => {
-  const fullDir = path.join(process.cwd(), dir)
+var ztPath = process.cwd() + '/' + ztDir
+var projectList = fs.readdirSync(ztPath).reduce((entries, dir) => {
+  const fullDir = path.join(ztPath, dir)
   const entry = path.join(fullDir, 'src/main.js')
   if (fs.statSync(fullDir).isDirectory() && fs.existsSync(entry)) {
-    entries[dir] = [entry]
+    entries[ztDir + dir] = [entry]
   }
 
   return entries
 }, {})
 
+console.log(projectList)
 if (!projectList[appDir]) {
   console.log('')
   console.log('错误提示: ', 'dir error! please check input path! ')
