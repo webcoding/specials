@@ -1,6 +1,7 @@
+var path = require('path')
+var fs = require('fs')
 // see http://vuejs-templates.github.io/webpack for documentation.
 
-console.log(process.env.npm_config_path)
 
 var appDir
 appDir = 'abc'
@@ -13,9 +14,8 @@ appDir = 'notepad'
 
 // 读取 path 参数，比对 specials 下专题目录，检测参数是否正确
 appDir = process.env.npm_config_path || 'notepad'
+console.log(appDir)
 
-var path = require('path')
-var fs = require('fs')
 var projectList = fs.readdirSync(process.cwd()).reduce((entries, dir) => {
   const fullDir = path.join(process.cwd(), dir)
   const entry = path.join(fullDir, 'src/main.js')
