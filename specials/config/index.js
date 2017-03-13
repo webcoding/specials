@@ -1,5 +1,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
-var path = require('path')
+
+console.log(process.env.npm_config_path)
 
 var appDir
 appDir = 'abc'
@@ -10,11 +11,33 @@ appDir = 'notepad'
 // appDir = 'todomvc'
 // appDir = 'shopping-cart'
 
+// 读取 path 参数，比对 specials 下专题目录，检测参数是否正确
+appDir = process.env.npm_config_path || 'notepad'
+
+var path = require('path')
+var fs = require('fs')
+var projectList = fs.readdirSync(process.cwd()).reduce((entries, dir) => {
+  const fullDir = path.join(process.cwd(), dir)
+  const entry = path.join(fullDir, 'src/main.js')
+  if (fs.statSync(fullDir).isDirectory() && fs.existsSync(entry)) {
+    entries[dir] = [entry]
+  }
+
+  return entries
+}, {})
+
+if (!projectList[appDir]) {
+  console.log('')
+  console.log('错误提示: ', 'dir error! please check input path! ')
+  console.log('')
+  console.log('')
+}
+
 var projectPath = '../' + appDir // 相对于 __filename 即，此文件路径
 
-console.log('__dirname ', __dirname)          // specials/config
-console.log('__filename ', __filename)        // specials/config/index.js
-console.log('process.cwd() ', process.cwd())  // specials
+// console.log('__dirname ', __dirname)          // specials/config
+// console.log('__filename ', __filename)        // specials/config/index.js
+// console.log('process.cwd() ', process.cwd())  // specials
 
 // var distPath = './' + appDir + '/dist'
 
