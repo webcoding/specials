@@ -5,8 +5,8 @@
   "author": "jack <1395093509@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "node builder/dev-server.js",
-    "build": "node builder/build.js",
+    "dev": "node build/dev-server.js",
+    "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
