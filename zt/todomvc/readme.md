@@ -2,7 +2,6 @@
 
 todomvc source: https://github.com/vuejs/vuex/tree/dev/examples/todomvc
 
-
 从这个项目中能学到什么？
 
 - 相比于 notepad，实现上是否更为精简

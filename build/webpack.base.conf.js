@@ -23,9 +23,12 @@ module.exports = {
       : config.dev.assetsPublicPath,
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.json', '.vue', '.css'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      // 运行时构建比独立构建要轻量30%(适用于单文件输出，无懒加载 template)
+      // 独立构建包含模板编译器并支持 template 选项
+      'vue$': 'vue/dist/vue.common.js',
+      // 'vue$': 'vue/dist/vue.esm.js',
       'src': resolve('src'),
       'assets': resolve('assets'),
       'components': resolve('components'),
@@ -33,6 +36,7 @@ module.exports = {
     },
   },
   module: {
+    // noParse: /es6-promise\.js$/, // avoid webpack shimming process
     rules: [
       {
         test: /\.(jsx?|vue)$/,

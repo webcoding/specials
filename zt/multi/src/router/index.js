@@ -11,12 +11,12 @@ export default new Router({
     {
       path: '/',
       name: 'Hello',
-      component: Marker
+      component: Marker,
     },
     {
       path: '*',
       name: '404',
-      component: Hello
-    }
-  ]
+      component: Hello,
+    },
+  ],
 })

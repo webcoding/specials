@@ -23,12 +23,16 @@ const router = new Router({
       path: '/profile',
       name: 'profile',
       meta: { requiresAuth: true },
+      // 懒加载 https://router.vuejs.org/zh-cn/advanced/lazy-loading.html
       // require.ensure 是 Webpack 的特殊语法，用来设置 code-split point（代码分块）
       //  require.ensure(['./Foo.vue'], () => {
       //    resolve(require('./Foo.vue'))
       //  })
       // 以下是 AMD 风格的 require
       component: resolve => require(['../pages/profile.vue'], resolve),
+      // 按组分块
+      // Webpack 将相同 chunk 下的所有异步模块打包到一个异步块里面
+      // component: r => require.ensure([], () => r(require('../pages/profile.vue')), 'group-user'),
     },
     {
       path: '/about',
