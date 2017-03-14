@@ -11,18 +11,23 @@ var fs = require('fs')
 // appDir = 'todomvc'
 // appDir = 'shopping-cart'
 
-// 读取 path 参数，比对 specials 下专题目录，检测参数是否正确
-var appDir = process.env.npm_config_path || 'zt/notepad'
-
 var ztDir = 'zt/'
 var ztPathPreReg = new RegExp('^' + ztDir)
-if (!ztPathPreReg.test(appDir)) {
-  appDir = ztDir + appDir
-}
-var ztPath = process.cwd() + '/' + ztDir
 
-console.log('    build: ', appDir)
+// 读取 path 参数，比对 specials 下专题目录，检测参数是否正确
+var appDir = process.env.npm_config_path || 'zt/notepad'
+appDir = appDir.replace(ztPathPreReg, '')
+var ztPath = process.cwd() + '/' + ztDir
+var ztAppDir = ztDir + appDir
+var ztDistDir = ztDir + 'dist/' + appDir
+
+// if (!ztPathPreReg.test(appDir)) {
+//   appDir = ztDir + appDir
+// }
+console.log('    build: ', ztAppDir)
+console.log('     dist: ', ztDistDir)
 console.log('')
+
 var projectList = fs.readdirSync(ztPath).reduce((entries, dir) => {
   const fullDir = path.join(ztPath, dir)
   const entry = path.join(fullDir, 'src/main.js')
@@ -35,34 +40,32 @@ var projectList = fs.readdirSync(ztPath).reduce((entries, dir) => {
 
 console.log(projectList)
 
-if (!projectList[appDir]) {
+if (!projectList[ztAppDir]) {
   console.log('')
   console.log('错误提示: ', 'dir error! please check input path! ')
   console.log('')
   console.log('')
 }
 
-var projectPath = '../' + appDir // 相对于 __filename 即，此文件路径
+var projectPath = ztAppDir
 
-// console.log('__dirname ', __dirname)          // specials/config
-// console.log('__filename ', __filename)        // specials/config/index.js
-// console.log('process.cwd() ', process.cwd())  // specials
-
-// var distPath = './' + appDir + '/dist'
+// console.log('__dirname ', __dirname)          // zt/config
+// console.log('__filename ', __filename)        // zt/config/index.js
+// console.log('process.cwd() ', process.cwd())  // zt
 
 module.exports = {
   // target: 'web',
-  appDir: appDir,
+  appDir: ztAppDir,
   index: 'index.html', // 引用文件，相对于 assetsRoot
-  template: appDir + '/index.html',
+  template: ztAppDir + '/index.html',
   build: {
     env: require('./prod.env'),
-    // 无需编译的静态资源目录，会拷贝到 assets 中
-    staticPath: path.resolve(__dirname, projectPath + '/src/assets'),
+    // 无需编译的静态资源目录，会拷贝到 dist/assets 中
+    staticPath: path.resolve(process.cwd(), projectPath + '/src/assets'),
     // 编译输出，引用资源的注入
-    index: path.resolve(__dirname, projectPath + '/dist/index.html'),
+    index: path.resolve(process.cwd(), ztDistDir + '/index.html'),
     // 所有输出文件的目标路径，必须绝对路径
-    assetsRoot: path.resolve(__dirname, projectPath + '/dist'),
+    assetsRoot: path.resolve(process.cwd(), ztDistDir),
     // 输出解析文件的目录，url 相对于 HTML 页面
     assetsSubDirectory: 'assets',
     assetsPublicPath: '',
