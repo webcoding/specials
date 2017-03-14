@@ -2,8 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store/'
 
-
-import App from '../pages/App'
 import home from '../pages/home'
 import score from '../pages/score'
 // import profile from '../pages/profile'
@@ -14,21 +12,21 @@ const router = new Router({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
+    { path: '', name: 'home', component: home },
+    { path: '/score', name: 'score', component: score },
     {
-      path: '/',
-      component: App,
-      children: [
-        { path: '', name: 'home', component: home },
-        { path: '/score', name: 'score', component: score },
-        {
-          path: '/item',
-          name: 'item',
-          component: resolve => require(['../pages/item'], resolve),
-          // component: r => require.ensure([], () => r(require('../page/home')), 'home')
-        },
-        { path: '*', redirect: '/' },
-      ],
+      path: '/item',
+      name: 'item',
+      component: resolve => require(['../pages/item'], resolve),
+      // component: r => require.ensure([], () => r(require('../page/home')), 'home')
     },
+    { path: '*', redirect: '/' },
+    // {
+    //   path: '/',
+    //   // component: App,
+    //   children: [
+    //   ],
+    // },
   ],
 })
 

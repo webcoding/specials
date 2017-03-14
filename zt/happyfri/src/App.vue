@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import hub from '../store/hub'
-import vDialog from '../components/Dialog'
+import hub from './store/hub'
+import vDialog from './components/Dialog'
 
 export default {
   data() {

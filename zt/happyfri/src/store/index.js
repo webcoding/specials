@@ -11,87 +11,20 @@ import mutations from './mutations'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  // 在非生产环境下，使用严格模式
+  // 在非生产环境下，才可以使用严格模式
   strict: process.env.NODE_ENV !== 'production',
 
   state: {
-    level: '第一周',
-    // itemNum: 1,
+    // level: '第一周',
+    itemNum: 1,
+    // 严格模式下，为什么这里 allTime 不能直接初始化为 0
+    // 因为这里列出来的属性都是要 watcher 的，如果不列出来，就不 watch，页面就不会响应此数据
+    // 可以把时间显示（作为一个 watch 数据）在页面上来验证此结论
     // allTime: 0,
-    timer: '',
+    // timer: '',
     itemDetail: [],
     answerid: {},
   },
-  // state: {
-  //   level: '第一周',
-  //   itemNum: 1,
-  //   allTime: 0,
-  //   timer: '',
-  //   itemDetail: [{
-  //     'topic_id': 20,
-  //     'active_topic_id': 4,
-  //     'type': 'ONE',
-  //     'topic_name': '题目一',
-  //     'active_id': 1,
-  //     'active_title': '欢乐星期五标题',
-  //     'active_topic_phase': '第一周',
-  //     'active_start_time': '1479139200',
-  //     'active_end_time': '1482163200',
-  //     'topic_answer': [{
-  //       'topic_answer_id': 66,
-  //       'topic_id': 20,
-  //       'answer_name': '答案aaaa',
-  //       'is_standard_answer': 0,
-  //     }, {
-  //       'topic_answer_id': 67,
-  //       'topic_id': 20,
-  //       'answer_name': '答案bbbb',
-  //       'is_standard_answer': 0,
-  //     }, {
-  //       'topic_answer_id': 68,
-  //       'topic_id': 20,
-  //       'answer_name': '答案cccc',
-  //       'is_standard_answer': 0,
-  //     }, {
-  //       'topic_answer_id': 69,
-  //       'topic_id': 20,
-  //       'answer_name': '答案dddd',
-  //       'is_standard_answer': 1,
-  //     }],
-  //   }, {
-  //     'topic_id': 21,
-  //     'active_topic_id': 4,
-  //     'type': 'MORE',
-  //     'topic_name': '题目二',
-  //     'active_id': 1,
-  //     'active_title': '欢乐星期五标题',
-  //     'active_topic_phase': '第一周',
-  //     'active_start_time': '1479139200',
-  //     'active_end_time': '1482163200',
-  //     'topic_answer': [{
-  //       'topic_answer_id': 70,
-  //       'topic_id': 21,
-  //       'answer_name': '答案A',
-  //       'is_standard_answer': 1,
-  //     }, {
-  //       'topic_answer_id': 71,
-  //       'topic_id': 21,
-  //       'answer_name': '答案B',
-  //       'is_standard_answer': 0,
-  //     }, {
-  //       'topic_answer_id': 72,
-  //       'topic_id': 21,
-  //       'answer_name': '答案C',
-  //       'is_standard_answer': 0,
-  //     }, {
-  //       'topic_answer_id': 73,
-  //       'topic_id': 21,
-  //       'answer_name': '答案D',
-  //       'is_standard_answer': 0,
-  //     }],
-  //   }],
-  //   answerid: {},
-  // },
   actions,
   mutations,
   modules: {

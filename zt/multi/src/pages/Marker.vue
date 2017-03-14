@@ -15,7 +15,7 @@ export default {
   name: 'marker',
   components: {
     SearchBar,
-    SearchResult
-  }
+    SearchResult,
+  },
 }
 </script>

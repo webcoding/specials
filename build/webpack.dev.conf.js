@@ -17,8 +17,8 @@ module.exports = merge(baseWebpackConfig, {
   },
   // cheap-module-eval-source-map 建速度更快，但是不利于调试，大型项目考虑时间成本时使用
   // source-map 功能最完备
-  devtool: '#cheap-module-eval-source-map',
-  // devtool: '#source-map',
+  // devtool: '#cheap-module-eval-source-map',
+  devtool: '#source-map',
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.dev.env,

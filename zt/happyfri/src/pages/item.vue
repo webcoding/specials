@@ -13,6 +13,7 @@ export default {
     itemcontainer,
   },
   created() {
+    console.log('答题开始计时')
     this.$store.commit('REMBER_TIME')
   },
 }

@@ -13,9 +13,12 @@ export default {
   getData({ commit, state }) {
     ajax('GET', 'http://operating-activities.putao.com/happyfriday?active_topic_id=4')
     .then(res => {
-      commit('GET_DATA', {
-        res,
-      })
+      setTimeout(function () {
+        console.log('api 延迟 2s')
+        commit('GET_DATA', {
+          res,
+        })
+      }, 2000)
     })
   },
 

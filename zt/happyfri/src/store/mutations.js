@@ -14,9 +14,9 @@ export default {
       state.itemDetail = payload.res.topiclist
     } else {
       console.log('ajax result is empty, set test data')
-      console.log(stateData.itemDetail)
-      state.itemDetail.splice(0, 0, stateData.itemDetail)
-      // state.itemDetail = stateData.itemDetail
+      state.itemDetail = stateData.itemDetail
+      // state.itemDetail.splice(0, 0, stateData.itemDetail)
+      // console.log(state.itemDetail)
     }
   },
 
@@ -26,6 +26,7 @@ export default {
 
   [ADD_ITEMNUM](state, payload) {
     state.itemNum += payload.num
+    // console.log(state.itemNum)
   },
 
   [REMBER_ANSWER](state, payload) {
@@ -35,6 +36,7 @@ export default {
   [REMBER_TIME](state) {
     state.timer = setInterval(() => {
       state.allTime++
+      console.log(state.allTime)
     }, 1000)
   },
 
