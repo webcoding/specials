@@ -3,6 +3,9 @@ import { baseUrl } from '../config/env'
 const fetch = typeof window !== 'undefined' && window.fetch
 const httpReg = /^https?:\/\//
 
+// fetch 不完全兼容，可以引用 import 'whatwg-fetch' 或使用 axios
+// 讨论中途取消请求 https://github.com/whatwg/fetch/issues/27
+// https://fetch.spec.whatwg.org/#concept-fetch-terminate
 export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
   type = type.toUpperCase()
 
@@ -45,7 +48,9 @@ export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
     try {
       var response = await fetch(url, requestConfig)
       var responseJson = await response.json()
+      console.log(responseJson)
     } catch (error) {
+      console.log('fetch Booo')
       throw new Error(error)
     }
     return responseJson

@@ -43,7 +43,6 @@ export default {
     const res = await getItemDetail()
     setTimeout(function () {
       console.log('api 再延迟 1s')
-      console.log(res)
       commit('GET_DATA', {
         res,
       })
