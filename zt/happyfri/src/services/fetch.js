@@ -24,12 +24,14 @@ export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
 
   if (fetch && method === 'fetch') {
     const requestConfig = {
-      credentials: 'include',
       method: type,
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        // Request header field content-type is not allowed by Access-Control-Allow-Headers in preflight response.
+        // 'Content-Type': 'application/json',
       },
+      // The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'. Origin 'http://127.0.0.1:8090' is therefore not allowed access.
+      // credentials: 'include',
       mode: 'cors',
       cache: 'force-cache',
     }

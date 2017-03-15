@@ -29,9 +29,9 @@ module.exports = {
       // 独立构建包含模板编译器并支持 template 选项
       // 'vue$': 'vue/dist/vue.common.js',
       'vue$': 'vue/dist/vue.esm.js',
-      'src': resolve('src'),
-      'assets': resolve('assets'),
-      'components': resolve('components'),
+      // 'src': resolve('src'),
+      // 'assets': resolve('assets'),
+      // 'components': resolve('components'),
       // '@': resolve(appDir + '/src'),
     },
   },
@@ -65,11 +65,18 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
+          // 图片引用，输出规则不同于 js、css()
+          // 开发路径相对于 index.html，设置为 assets/img/xxx
+          // 编译路径一般相对于 assets/css/xxx.css，设置为 ../img/xxx
+          //    但如果为html、js中的引用，使用assets/img/xxx
+          //    或者设置为 cdn 路径，https://cdn.xxx.cn/assets/img/xxx
+          // NOTE: 专题项目统一配置专题目录路径前缀，如 ...[zt/xxx/]assets...
           name: utils.assetsPath('img/[name].[hash:7].[ext]'),
         },
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        // 不要包含绝对路径的资源
         loader: 'url-loader',
         query: {
           limit: 10000,

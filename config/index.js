@@ -11,25 +11,32 @@ var fs = require('fs')
 // appDir = 'todomvc'
 // appDir = 'shopping-cart'
 
-var ztDir = 'zt/'
-var ztPathPreReg = new RegExp('^' + ztDir)
-
 // 读取 path 参数，比对 specials 下专题目录，检测参数是否正确
-var appDir = process.env.npm_config_path || 'zt/notepad'
-appDir = appDir.replace(ztPathPreReg, '')
-var ztPath = process.cwd() + '/' + ztDir
-var ztAppDir = ztDir + appDir
-var ztDistDir = ztDir + 'dist/' + appDir
+var ztAppName = process.env.npm_config_path || 'zt/notepad'
+var ztDir = 'zt/'
+var ztDirReg = new RegExp('^' + ztDir)
+var buildDist = 'dist/'
+ztAppName = ztAppName.replace(ztDirReg, '')
+
+// 全相对于项目根目录，即执行命令的目录，也是package.json对应的目录
+// 即process.cwd()，此文件所在目录的上级(../${__dirname})
+var ztApp = {
+  name: ztAppName,
+  app: ztDir + ztAppName,
+  dist: buildDist + ztDir + ztAppName,
+  ztFolder: process.cwd() + '/' + ztDir, // 专题文件夹绝对路径
+}
 
 // if (!ztPathPreReg.test(appDir)) {
 //   appDir = ztDir + appDir
 // }
-console.log('    build: ', ztAppDir)
-console.log('     dist: ', ztDistDir)
+console.log('    build: ', ztApp.app)
+console.log('     dist: ', ztApp.dist)
+console.log('      ENV: ', process.env.NODE_ENV)
 console.log('')
 
-var projectList = fs.readdirSync(ztPath).reduce((entries, dir) => {
-  const fullDir = path.join(ztPath, dir)
+var projectList = fs.readdirSync(ztApp.ztFolder).reduce((entries, dir) => {
+  const fullDir = path.join(ztApp.ztFolder, dir)
   const entry = path.join(fullDir, 'src/main.js')
   if (fs.statSync(fullDir).isDirectory() && fs.existsSync(entry)) {
     entries[ztDir + dir] = [entry]
@@ -40,14 +47,12 @@ var projectList = fs.readdirSync(ztPath).reduce((entries, dir) => {
 
 console.log(projectList)
 
-if (!projectList[ztAppDir]) {
+if (!projectList[ztApp.app]) {
   console.log('')
   console.log('错误提示: ', 'dir error! please check input path! ')
   console.log('')
   console.log('')
 }
-
-var projectPath = ztAppDir
 
 // console.log('__dirname ', __dirname)          // zt/config
 // console.log('__filename ', __filename)        // zt/config/index.js
@@ -55,21 +60,22 @@ var projectPath = ztAppDir
 
 module.exports = {
   // target: 'web',
-  appDir: ztAppDir,
+  appDir: ztApp.app,
   index: 'index.html', // 引用文件，相对于 assetsRoot
-  template: ztAppDir + '/index.html',
+  template: ztApp.app + '/index.html',
   build: {
     env: require('./prod.env'),
     // 无需编译的静态资源目录，会拷贝到 dist/assets 中
-    staticPath: path.resolve(process.cwd(), projectPath + '/src/assets'),
+    staticPath: path.resolve(process.cwd(), ztApp.app + '/src/assets'),
     // 编译输出，引用资源的注入
-    index: path.resolve(process.cwd(), ztDistDir + '/index.html'),
+    index: path.resolve(process.cwd(), ztApp.dist + '/index.html'),
     // 所有输出文件的目标路径，必须绝对路径
-    assetsRoot: path.resolve(process.cwd(), ztDistDir),
+    assetsRoot: path.resolve(process.cwd(), ztApp.dist),
     // 输出解析文件的目录，url 相对于 HTML 页面
-    assetsSubDirectory: 'assets',
-    assetsPublicPath: '',
-    productionSourceMap: false,
+    assetsSubDirectory: 'assets/',
+    assetsPublicPath: '', // 不使用 cdn，设为空
+    // assetsPublicPath: 'https://cdn.xxx.cn/' + ztApp.app, // 这里可以设置 cdn
+    productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
     // Before setting to `true`, make sure to:

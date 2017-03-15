@@ -1,5 +1,4 @@
 import fetch from './fetch'
-// import * as home from './tempdata/home'
 import * as item from './tempdata/itemDetail'
 
 /**
@@ -15,11 +14,10 @@ var getItemDetail
 // 编译环境使用真实数据
 if (process.env.NODE_ENV === 'development') {
   console.log('开发环境使用 fake 数据')
-  // getItemDetail = () => setPromise(item.itemDetail)
   getItemDetail = () => setPromise(item.itemDetail)
 } else {
   console.log('编译环境使用真实数据')
-  getItemDetail = fetch('GET', '/happyfriday', {
+  getItemDetail = () => fetch('GET', '/happyfriday', {
     'active_topic_id': '4',
   })
 }

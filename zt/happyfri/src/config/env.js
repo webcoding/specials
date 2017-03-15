@@ -12,7 +12,8 @@ const imgBaseUrl = 'https://fuss10.elemecdn.com'
 
 // debugger
 if (process.env.NODE_ENV === 'development') {
-  baseUrl = ''
+  // baseUrl = ''
+  baseUrl = 'http://operating-activities.putao.com'
   routerMode = 'hash'
 } else {
   baseUrl = 'http://operating-activities.putao.com'

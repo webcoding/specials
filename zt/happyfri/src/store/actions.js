@@ -41,7 +41,6 @@ export default {
   async getData ({ commit, state }) {
     // 因为 babel 打包的原因，这里要写 default
     const res = await getItemDetail()
-    // const res = await getItemDetail()
     setTimeout(function () {
       console.log('api 再延迟 1s')
       console.log(res)
