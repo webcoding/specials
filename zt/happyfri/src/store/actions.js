@@ -1,4 +1,5 @@
 import ajax from '../services/ajax'
+import fetch from '../services/fetch'
 
 export default {
   addNum({ commit, state }, id) {
@@ -20,6 +21,10 @@ export default {
         })
       }, 2000)
     })
+
+    // fetch('GET', 'http://operating-activities.putao.com/happyfriday?active_topic_id=4', {
+    //   type: 'group',
+    // })
   },
 
   initializeData({ commit }) {

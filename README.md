@@ -10,16 +10,16 @@
 
 为了便于开发维护，特约定如下：
 
-- 专题统一房子项目的子目录——zt/ 目录下
+- 专题统一放在项目的子目录——`zt/` 目录下
 - 专题和项目共用 build、config以及 package.json 依赖等
-- 每个专题一个目录，包含 src、test、index.html 等
-- 目前规定一个专题只有一个根路径（即路由），不使用子路由，详细参见下文的专题路径规划
+- 每个专题独立一个目录，包含专题所需所有资源 src、src/assets、test、index.html 等
+- 目前规定一个专题只有一个根路径（即根路由），不使用子路径路由，详细参见下文的专题路径规划
 - 制定基础的实现方案，如：路由管理、状态管理、api 接入、测试用例等，参考示例实现[specials_demo](https://github.com/webcoding/specials_demo)
   - 状态管理 vuex，简单专题可使用 [global event bus](https://vuejs.org/v2/guide/components.html#Non-Parent-Child-Communication) 方案实现（但我建议直接使用 vuex 即可，简单方案可做了解）
   - 路由管理 vue-router，简单专题无需引用，单页面实现即可，复杂专题可以使用 hash 模式区别该专题多页面
   - api 接入，使用 vue-resource
-  - 测试用例，暂时可以不写
-- 提交到 Git？
+  - 测试用例，单元测试可以写起来（项目打包输出会到一个目录，还准备有一个全量打包的流程，所以单元测试还是比较重要的）
+- 提交到 Git？（此机制待确定，）
 - 发布到七牛？
 - 发布到生产？
 

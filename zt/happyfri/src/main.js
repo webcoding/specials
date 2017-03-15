@@ -5,7 +5,7 @@ import store from './store/'
 import router from './router/'
 import App from './App'
 import './style/common.less'
-import './helper/rem'
+import './config/rem'
 
 /**
  * 错误统计 https://docs.sentry.io/clients/javascript/integrations/vue/
