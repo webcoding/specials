@@ -24,18 +24,20 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.json', '.vue', '.css'],
+    // 别名，便于引用并提高查找速度
     alias: {
       // 运行时构建比独立构建要轻量30%(适用于单文件输出，无懒加载 template)
       // 独立构建包含模板编译器并支持 template 选项
       // 'vue$': 'vue/dist/vue.common.js',
       'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src'),
       // 'src': resolve('src'),
       // 'assets': resolve('assets'),
       // 'components': resolve('components'),
-      // '@': resolve(appDir + '/src'),
     },
   },
   module: {
+    // 忽略对已知文件的解析 确定一个模块中没有其它新的依赖 就可以配置这项
     // noParse: /es6-promise\.js$/, // avoid webpack shimming process
     rules: [
       {
@@ -65,12 +67,6 @@ module.exports = {
         loader: 'url-loader',
         query: {
           limit: 10000,
-          // 图片引用，输出规则不同于 js、css()
-          // 开发路径相对于 index.html，设置为 assets/img/xxx
-          // 编译路径一般相对于 assets/css/xxx.css，设置为 ../img/xxx
-          //    但如果为html、js中的引用，使用assets/img/xxx
-          //    或者设置为 cdn 路径，https://cdn.xxx.cn/assets/img/xxx
-          // NOTE: 专题项目统一配置专题目录路径前缀，如 ...[zt/xxx/]assets...
           name: utils.assetsPath('img/[name].[hash:7].[ext]'),
         },
       },
@@ -88,4 +84,11 @@ module.exports = {
 }
 
 // @see https://webpack.vuefe.cn/configuration/
-//
+
+
+// 图片引用，输出规则不同于 js、css()
+// 开发路径相对于 index.html，设置为 assets/img/xxx
+// 编译路径一般相对于 assets/css/xxx.css，设置为 ../img/xxx
+//    但如果为html、js中的引用，使用assets/img/xxx
+//    或者设置为 cdn 路径，https://cdn.xxx.cn/assets/img/xxx
+// NOTE: 专题项目统一配置专题目录路径前缀，如 ...[zt/xxx/]assets...
