@@ -10,11 +10,12 @@ let baseUrl
 let routerMode
 const imgBaseUrl = 'https://fuss10.elemecdn.com'
 
+// debugger
 if (process.env.NODE_ENV === 'development') {
   baseUrl = ''
   routerMode = 'hash'
 } else {
-  baseUrl = 'https://mainsite-restapi.ele.me'
+  baseUrl = 'http://operating-activities.putao.com'
   routerMode = 'hash'
 }
 

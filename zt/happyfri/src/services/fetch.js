@@ -1,10 +1,14 @@
 import { baseUrl } from '../config/env'
 
-const fetch = window.fetch
+const fetch = typeof window !== 'undefined' && window.fetch
+const httpReg = /^https?:\/\//
 
 export default async(type = 'GET', url = '', data = {}, method = 'fetch') => {
   type = type.toUpperCase()
-  url = baseUrl + url
+
+  if (!httpReg.test(url)) {
+    url = baseUrl + url
+  }
 
   if (type === 'GET') {
     let dataStr = '' // 数据拼接字符串
