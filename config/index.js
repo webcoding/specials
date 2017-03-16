@@ -23,15 +23,14 @@ var ztApp = {
   ztFolder: resolve(ztDir), // 专题文件夹绝对路径
 }
 
-console.log(ztApp)
-console.log('')
+// console.log(ztApp)
 
 // if (!ztPathPreReg.test(appDir)) {
 //   appDir = ztDir + appDir
 // }
+console.log('')
 console.log('    build: ', ztApp.app)
 console.log('     dist: ', ztApp.dist)
-console.log('      ENV: ', process.env.NODE_ENV)
 console.log('')
 
 var projectList = fs.readdirSync(ztApp.ztFolder).reduce((entries, dir) => {
@@ -44,8 +43,9 @@ var projectList = fs.readdirSync(ztApp.ztFolder).reduce((entries, dir) => {
   return entries
 }, {})
 
-console.log(projectList)
-console.log('')
+// 输出所有 zt 项目
+// console.log(projectList)
+// console.log('')
 
 if (!projectList[ztApp.app]) {
   console.log('错误提示: ', 'dir error! please check input path! ')

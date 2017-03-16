@@ -21,6 +21,7 @@ module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath // 这里可以换七牛 cdn
       : config.dev.assetsPublicPath,
+    // chunkFilename: '[name].chunk.js' // 给require.ensure用
   },
   resolve: {
     extensions: ['.js', '.json', '.vue', '.css'],
