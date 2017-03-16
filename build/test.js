@@ -10,8 +10,7 @@
 
 // import shell from 'shelljs'
 
-var config = require('../config')
-var appDir = config.appDir
+var project = require('../config/project')
 var commandKey = process.argv[2] || 'ready'
 
 /* eslint quotes: 0 */
@@ -32,7 +31,7 @@ function runNode(key) {
   const task = getTestTask(key)
   // 执行时，改变当前执行目录
   exec(task, {
-    cwd: appDir,
+    cwd: project.app,
   }, (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`)
