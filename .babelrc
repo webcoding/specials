@@ -11,15 +11,15 @@
     "stage-0"
   ],
   "plugins": [
-    "transform-runtime"
     // "syntax-dynamic-import",
     // "transform-object-assign",
     // "transform-object-rest-spread",
-    // "transform-vue-jsx"
+    // "transform-vue-jsx",
+    "transform-runtime"
   ],
   "env": {
     "test": {
-      "plugins": [ "istanbul" ]
+      // "plugins": [ "istanbul" ]
     }
   },
   "comments": false,

@@ -3,7 +3,7 @@ var fs = require('fs')
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 // 读取 path 参数，比对 specials 下专题目录，检测参数是否正确
-var ztAppName = process.env.npm_config_path || 'zt/notepad'
+var ztAppName = process.env.npm_config_path || 'webpack'
 var ztDir = 'zt/'
 var ztDirReg = new RegExp('^' + ztDir)
 var buildDist = 'dist/'
@@ -23,7 +23,8 @@ var ztApp = {
   ztFolder: resolve(ztDir), // 专题文件夹绝对路径
 }
 
-console.log(__dirname)
+console.log(ztApp)
+console.log('')
 
 // if (!ztPathPreReg.test(appDir)) {
 //   appDir = ztDir + appDir

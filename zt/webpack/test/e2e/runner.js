@@ -1,6 +1,7 @@
 // 1. start the dev server using production config
 process.env.NODE_ENV = 'testing'
-var server = require('../../build/dev-server.js')
+var buildPath = '../../'
+var server = require(buildPath + '../../build/dev-server.js')
 
 // 2. run the nightwatch test suite against it
 // to run in additional browsers:
@@ -17,8 +18,10 @@ if (opts.indexOf('--env') === -1) {
   opts = opts.concat(['--env', 'chrome'])
 }
 
+// opts.cmd = 'zt/webpack'
+
 var spawn = require('cross-spawn')
-var runner = spawn('./node_modules/.bin/nightwatch', opts, { stdio: 'inherit' })
+var runner = spawn('../../node_modules/.bin/nightwatch', opts, { stdio: 'inherit' })
 
 runner.on('exit', function (code) {
   server.close()
