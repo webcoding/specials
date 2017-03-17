@@ -61,7 +61,9 @@ export default {
 
   methods: {
     async fetchData() {
-      const res = await api.getTopicList({ 'topic_code': '6330f4fa6c1d0b5b7c4158765dedbc6f' })
+      const res = await api.getTopicList({
+        'topic_code': '6330f4fa6c1d0b5b7c4158765dedbc6f',
+      })
       console.log(res)
       if (res.errno === 0) {
         this.topicList = res.data.skuList
