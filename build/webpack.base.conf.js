@@ -1,4 +1,5 @@
 var path = require('path')
+var webpack = require('webpack')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
@@ -32,6 +33,7 @@ module.exports = {
       // 'vue$': 'vue/dist/vue.common.js',
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      '@api': path.join(__dirname, '../src/services'),
       // 'src': resolve('src'),
       // 'assets': resolve('assets'),
       // 'components': resolve('components'),
@@ -82,6 +84,12 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    // [fetch polyfill](https://github.com/github/fetch)
+    new webpack.ProvidePlugin({
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+    }),
+  ],
 }
 
 // @see https://webpack.vuefe.cn/configuration/

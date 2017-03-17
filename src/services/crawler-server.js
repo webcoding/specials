@@ -1,23 +1,23 @@
 'use strict'
 const http = require('http')
-const url = require('url')
-const util = require('util')
+// const url = require('url')
+// const util = require('util')
 const superagent = require('superagent')
 const cheerio = require('cheerio')
 
 const onRequest = (req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*'})
-  let keyWord = encodeURI(url.parse(req.url, true).query.query)
+  res.writeHead(200, { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' })
+  const keyWord = encodeURI(url.parse(req.url, true).query.query)
   console.log(keyWord)
   if (keyWord) {
-    let resultArr = []
+    const resultArr = []
     var url = 'http://weixin.sogou.com/weixin?type=1&query=' + keyWord + '&ie=utf8&_sug_=n&_sug_type_='
     superagent.get(url).end((err, response) => {
       if (err) console.log(err)
-      let $ = cheerio.load(response.text)
+      const $ = cheerio.load(response.text)
 
       $('.mt7 .wx-rb').each((index, item) => {
-        let resultObj = {
+        const resultObj = {
           title: '',
           wxNum: '',
           link: '',
