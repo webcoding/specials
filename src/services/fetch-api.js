@@ -3,7 +3,7 @@
  * 处理专题 api 请求
  */
 
-// import 'whatwg-fetch'
+import 'whatwg-fetch'
 
 import config from './config'
 

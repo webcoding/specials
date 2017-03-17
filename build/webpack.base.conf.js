@@ -86,9 +86,9 @@ module.exports = {
   },
   plugins: [
     // [fetch polyfill](https://github.com/github/fetch)
-    new webpack.ProvidePlugin({
-      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
-    }),
+    // new webpack.ProvidePlugin({
+    //   'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+    // }),
   ],
 }
 

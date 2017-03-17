@@ -29,11 +29,11 @@ export default {
     // })
   },
   methods: {
-    alertData(msg = '您还没有选择答案哦！') {
-      this.dialog = true
-      this.dialogType = 'alert'
-      this.tips = msg
-    },
+    // alertData(msg = '您还没有选择答案哦！') {
+    //   this.dialog = true
+    //   this.dialogType = 'alert'
+    //   this.tips = msg
+    // },
     // clearData() {
     //   this.dialog = true
     //   this.dialogType = 'clear'

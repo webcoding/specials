@@ -1,32 +1,42 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 // import { state } from './state'
-import actions from './actions'
-import mutations from './mutations'
+// import actions from './actions'
+// import mutations from './mutations'
 
 // import cart from './modules/cart'
 
-// import { fetchItems, fetchIdsByType, fetchUser } from './api'
+// import * as api from './api'
 
 Vue.use(Vuex)
+
+
 
 export default new Vuex.Store({
   // 在非生产环境下，才可以使用严格模式
   strict: process.env.NODE_ENV !== 'production',
 
   state: {
-    // level: '第一周',
-    itemNum: 1,
-    // 严格模式下，为什么这里 allTime 不能直接初始化为 0
-    // 因为这里列出来的属性都是要 watcher 的，如果不列出来，就不 watch，页面就不会响应此数据
-    // 可以把时间显示（作为一个 watch 数据）在页面上来验证此结论
-    // allTime: 0,
-    // timer: '',
-    itemDetail: [],
+    topicList: [],
     answerid: {},
   },
-  actions,
-  mutations,
+  actions: {
+    // getTopicList({ commit, state }) {
+    //   api.getTopicList({
+    //     'topic_code': '6330f4fa6c1d0b5b7c4158765dedbc6f',
+    //   })
+    //   // ajax('GET', 'http://operating-activities.putao.com/happyfriday?active_topic_id=4')
+    //   .then(res => {
+    //     setTimeout(function () {
+    //       console.log('api 延迟 2s')
+    //       // commit('GET_DATA', {
+    //       //   res,
+    //       // })
+    //     }, 2000)
+    //   })
+    // },
+  },
+  mutations: {},
   modules: {
     // cart,
   },
