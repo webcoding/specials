@@ -14,6 +14,8 @@
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
+        "@common": "./src",
+        "@components": "./src/components",
         "@api": "./src/services"
       },
       "extensions": [".js", ".jsx", ".es", ".es6"]

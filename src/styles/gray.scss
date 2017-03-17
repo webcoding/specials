@@ -1,0 +1,40 @@
+
+
+/**
+ * gray 灰度色阶(美语 gray;英语 grey;)
+ *
+ * 字体颜色：
+      默认正文 #333; #252525
+      次重点文字 #888;  #B4B4B4 #959595 #d8d8d8
+      禁用效果或淡化的文字   #E4E4E4;
+ * 边框及背景色：
+      边框间隔线深色 #C4C4C4
+      边框间隔线浅色 #f7f7f7 #f1f1f1 #E4E4E4
+      背景色  #f9f9f9 #F8F8F8 #f7f7f7 #f1f1f1
+ * 价格
+      #FF5555
+ * header
+      rgba(255, 238, 17, 0.9) #914E07
+
+      #3b99fc
+
+ * 半透明色
+      rgba(0, 0, 0, .4) rgba(0, 0, 0, .6)
+ */
+
+$gray-1: #fbfbfb;
+$gray-2: #f7f7f7;
+$gray-3: #f5f5f5;
+$gray-4: #e9e9e9;
+$gray-5: #d9d9d9;
+$gray-6: #bfbfbf;
+$gray-7: #919191;
+$gray-8: #5a5a5a;
+$gray-9: #404040;
+$gray-10: #222222;
+
+$gray: $gray-6;
+// $gray: grey;
+
+$white: white;
+$black: black;

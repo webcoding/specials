@@ -1,0 +1,65 @@
+
+html {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+// 纤细字体
+body, input, textarea, select, button {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+[role="button"] {
+  cursor: pointer;
+}
+
+a,
+area,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+  touch-action: manipulation;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="search"] {
+  box-sizing: inherit;
+  // https://github.com/twbs/bootstrap/issues/11586.
+  -webkit-appearance: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: #fff;
+  color: #333;
+  font-size: 12px;
+
+  // 背侧不透视
+  backface-visibility: hidden;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+.is-fixed {
+  transform: translateZ(0);
+}

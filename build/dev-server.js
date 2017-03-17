@@ -25,8 +25,8 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
-console.log('webpackConfig:')
-console.log(JSON.stringify(webpackConfig, null, 2))
+// console.log('webpackConfig:')
+// console.log(JSON.stringify(webpackConfig, null, 2))
 // console.log(JSON.stringify({ a: 1, b: 2 }, null, 2))
 var compiler = webpack(webpackConfig)
 

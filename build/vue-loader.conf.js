@@ -11,9 +11,8 @@ module.exports = {
     extract: isProduction,
   }),
   // 直接将 px 值编译出处为 rem
-  // 以 iphone6 414px 为基准宽度
   postcss: [px2rem({
-    rootValue: 16,
+    rootValue: 100,
     // unitPrecision: 5,
     // propWhiteList: [],
     // propBlackList: [],
