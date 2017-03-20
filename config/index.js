@@ -43,7 +43,20 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'assets',
     assetsPublicPath: '',
-    proxyTable: {},
+    // https://vuejs-templates.github.io/webpack/proxy.htmls
+    proxyTable: {
+      // proxy all requests starting with /api to jsonplaceholder
+      '/proxy': {
+        target: 'http://m.api.haoshiqi.net',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/proxy': '',
+        },
+        // filter: function (pathname, req) {
+        //   return pathname.match('^/proxy')
+        // },
+      },
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

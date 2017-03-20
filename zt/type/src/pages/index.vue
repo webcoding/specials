@@ -6,10 +6,10 @@
     </div>
     <div class="zt-type-list clearfix">
       <router-link class="zt-type-item" v-for="item in topicList" :key="item.sku_id" :to="`/#detail?sid=${item.sku_id}`">
-        <div class="img"><img class="full" :src="item.productInfo.skuInfo.thumbnail" alt=""></div>
+        <div class="img"><img class="full" :src="item.sku_pic" alt=""></div>
         <div class="text">
-          <h4>{{item.productInfo.skuInfo.name}}</h4>
-          <p><dfn class="price">{{item.productInfo.skuInfo | dealPrice(timestamp) | rmb}}</dfn><del class="price">{{item.productInfo.skuInfo.market_price | rmb}}</del></p>
+          <h4>{{item.sku_name}}</h4>
+          <p><dfn class="price">{{item | dealPrice(timestamp) | rmb}}</dfn><del class="price">{{item.market_price | rmb}}</del></p>
         </div>
       </router-link>
     </div>
@@ -65,7 +65,7 @@ export default {
   methods: {
     async fetchData() {
       const res = await api.getTopicList({
-        topicCode: '6330f4fa6c1d0b5b7c4158765dedbc6f',
+        topicCode: '5728f6513b61fccef8e5742c2ec3b65f',
         channelId: 'h5',
       })
       console.log(res)
@@ -124,6 +124,11 @@ img.full {
   padding: 4px;
   width: 50%;
   background: #fff;
+  .img {
+    width: 174px;
+    height: 174px;
+    overflow: hidden;
+  }
   .text {
     padding: 8px 8px 4px;
   }

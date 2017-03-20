@@ -14,11 +14,11 @@ function buildUrl(url) {
 const apiHost = process.env.api
 
 /* global Headers: false, fetch */
-function parseResponse (response) {
+function parseResponse(response) {
   return Promise.all([response.status, response.statusText, response.json()])
 }
 
-function checkStatus ([status, statusText, data]) {
+function checkStatus([status, statusText, data]) {
   if (status >= 200 && status < 300) {
     return data
   } else {
@@ -30,7 +30,7 @@ function checkStatus ([status, statusText, data]) {
 }
 
 export default{
-  get (url, param = {}, headers = {}, host = apiHost) {
+  get(url, param = {}, headers = {}, host = apiHost) {
     const reqHeaders = new Headers()
     reqHeaders.append('Accept', 'application/json')
     var query = []
@@ -52,7 +52,7 @@ export default{
       .then(parseResponse)
       .then(checkStatus)
   },
-  patch (url, param = {}, headers = {}, host = apiHost) {
+  patch(url, param = {}, headers = {}, host = apiHost) {
     const reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
@@ -71,7 +71,7 @@ export default{
       .then(parseResponse)
       .then(checkStatus)
   },
-  post (url, param = {}, headers = {}, host = apiHost) {
+  post(url, param = {}, headers = {}, host = apiHost) {
     const reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
@@ -89,7 +89,7 @@ export default{
       .then(parseResponse)
       .then(checkStatus)
   },
-  put (url, param = {}, headers = {}, host = apiHost) {
+  put(url, param = {}, headers = {}, host = apiHost) {
     const reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')
@@ -108,7 +108,7 @@ export default{
       .then(parseResponse)
       .then(checkStatus)
   },
-  delete (url, param = {}, headers = {}, host = apiHost) {
+  delete(url, param = {}, headers = {}, host = apiHost) {
     const reqHeaders = new Headers()
     reqHeaders.append('Content-Type', 'application/json')
     reqHeaders.append('Accept', 'application/json')

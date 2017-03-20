@@ -19,7 +19,7 @@ const setPromise = data => {
 
 // 编译环境使用真实数据
 var getTopicList
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'development') {
   console.log('开发环境使用 fake 数据')
 
   getTopicList = () => setPromise(topicList)

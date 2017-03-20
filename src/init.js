@@ -4,7 +4,10 @@ import './utils'
 import 'normalize.css'
 import './styles/base.scss'
 
-import { dealPrice, rmb } from './filters'
+// import { dealPrice, rmb } from './filters'
+import * as filters from './filters'
 
-Vue.filter('rmb', rmb)
-Vue.filter('dealPrice', dealPrice)
+// register global utility filters.
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})

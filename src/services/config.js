@@ -2,7 +2,7 @@
 // API_BASE
 
 const HOSTS = {
-  local: 'localhost:8000',
+  local: 'localhost:8080',
   test: 'm.devapi.haoshiqi.net',
   dev: 'm.devapi.haoshiqi.net',
   beta: 'm.betaapi.haoshiqi.net',
@@ -10,6 +10,7 @@ const HOSTS = {
   prodEnv: '',
 }
 
+let useProxy = false
 let supportSwitchEnv = false
 let envHost
 
@@ -21,10 +22,11 @@ const API = {
   },
   runTimeEnvironment() {
     let server = HOSTS.prod
-    const host = window.loction.host
+    const host = window.location.host
 
     // 匹配线上直接返回
     if (host === HOSTS.prodEnv) {
+      useProxy = false
       supportSwitchEnv = false
       return server
     }
@@ -38,6 +40,7 @@ const API = {
       // server = HOSTS.dev
       // server = HOSTS.beta
       // server = HOSTS.prod
+      useProxy = true
     } else if (host.match(/^(jingxuan\.dev\.haoshiqi\.net)/i)) {
       server = HOSTS.dev
     } else if (host.match(/^(jingxuan\.beta\.haoshiqi\.net)/i)) {
@@ -51,7 +54,7 @@ const API = {
     const protocol = window.location.protocol
     const host = this.runTimeEnvironment()
     let proxyMiddlewarePath = ''
-    if (host === HOSTS.local) {
+    if (useProxy) {
       proxyMiddlewarePath = '/proxy'
     }
     return `${protocol}//${host}${proxyMiddlewarePath}${url}`
