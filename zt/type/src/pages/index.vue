@@ -101,7 +101,7 @@ export default {
 @import '../styles/var.scss';
 
 img.full {
-  max-width: 100%;
+  width: 100%;
 }
 
 .page-zt-type {
@@ -129,9 +129,6 @@ img.full {
   }
   h4 {
     margin-bottom: 10px;
-    // height: 54px;
-    // overflow: hidden;
-    text-align: justify;
     font-weight: 400;
     font-size: 14px;
 

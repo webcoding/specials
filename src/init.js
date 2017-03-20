@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import './utils/rem'
+import './utils'
 import 'normalize.css'
 import './styles/base.scss'
 

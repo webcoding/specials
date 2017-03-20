@@ -22,10 +22,37 @@ html {
 html,
 body,
 .page,
-#app,
-#root {
+#app {
   height: 100%;
 }
+
+body {
+  // ppi 同样尺寸机型，一直是提升的，比如6和6s 就不一样
+  // ip6:       667*375(4.7" dpi) 1280×960 6s 1704×960
+  // ip6plus:   736*414(5.5" dpi) 1920*1080
+  // ipad:      1024*768(1K)
+  // ipad pro:  1366*1024
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//屏幕像素密度 针对 ratio 屏幕
+@media all and (min-resolution: 150dpi) {
+  body {
+    max-width: 1024px;
+  }
+}
+
+// [data-dpr="1"] body {
+//   max-width: 1024px;
+// }
+// [data-dpr="2"] body {
+//   max-width: 1024px;
+// }
+// [data-dpr="3"] body {
+//   max-width: 1024px;
+// }
 
 body {
   font-size: 14px;
@@ -55,6 +82,7 @@ h5,
 h6,
 p {
   margin: 0;
+  font-weight: 400;
 }
 
 img {

@@ -51,6 +51,9 @@
   line-height: $line-height;
   // max-height: $line-height * $lines;
   height: $line-height * $lines;
+
+  // 不要使用 text-align: justify; 会导致文字和...重叠
+  text-align: left;
 }
 
 // Form
