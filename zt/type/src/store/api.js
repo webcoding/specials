@@ -1,5 +1,5 @@
 
-import api from '@api'
+import fetchApi from '@common/services/fetch-api'
 import topicList from './mock/topicList'
 
 /**
@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'development') {
   console.log('编译环境使用真实数据')
 
   getTopicList = function (params) {
-    return api.get('/product/topicskusinfo', params)
+    return fetchApi.get('/product/topicskusinfo', params)
   }
 }
 

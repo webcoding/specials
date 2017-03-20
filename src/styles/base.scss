@@ -1,4 +1,6 @@
 
+@import './var.scss';
+
 html {
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -50,6 +52,7 @@ body {
   background: #fff;
   color: #333;
   font-size: 12px;
+  line-height: 1.5;
 
   // 背侧不透视
   backface-visibility: hidden;
@@ -60,6 +63,37 @@ a:hover {
   text-decoration: none;
 }
 
+img {
+  vertical-align: middle;
+}
+
 .is-fixed {
   transform: translateZ(0);
+}
+
+dfn.price,
+del.price {
+  font-style: normal;
+
+  &::before {
+    content: '￥';
+  }
+}
+
+dfn.price {
+  font-weight: 500;
+  color: $color-price;
+}
+del.price {
+  color: $gray-6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
 }

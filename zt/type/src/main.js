@@ -13,7 +13,9 @@ import '@common/init'
 import Raven from 'raven-js'
 import RavenVue from 'raven-js/plugins/vue'
 
-if (process.env.NODE_ENV === 'production') {
+const debug = true
+
+if (process.env.NODE_ENV === 'production' || debug) {
   Raven
     .config('https://37695669ab8e4d0688819f320de4a73a@sentry.io/144523')
     .addPlugin(RavenVue, Vue)
