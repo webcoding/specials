@@ -4,26 +4,20 @@
     <div class="zt-type-banner">
       <img class="full" src="http://img.haoshiqi.net/merchantadmin/image20170215/mad9f9b506e4ef0411a893c64a4f45d098_388X620" width="100%" alt="">
     </div>
-    <div class="zt-type-list">
-      <div class="zt-type-item">
-        <div class="img"><img class="full" src="http://img.haoshiqi.net/merchantadmin/image20170105/ma81d817fbf6538c96df4d5c5143445bb9" alt=""></div>
+    <div class="zt-type-list clearfix">
+      <router-link class="zt-type-item" v-for="item in topicList" :key="item.sku_id" :to="`/#detail?sid=${item.sku_id}`">
+        <div class="img"><img class="full" :src="item.productInfo.skuInfo.thumbnail" alt=""></div>
         <div class="text">
-          <h4>【包邮】台客鱼家 鱼豆腐干小包装零食休闲食品特色小吃散装1000g 好吃大满足</h4>
-          <p><dfn class="price">24.5</dfn><del class="price">45.5</del></p>
+          <h4>{{item.productInfo.skuInfo.name}}</h4>
+          <p><dfn class="price">{{item.productInfo.skuInfo | dealPrice(timestamp) | rmb}}</dfn><del class="price">{{item.productInfo.skuInfo.market_price | rmb}}</del></p>
         </div>
-      </div>
-      <div class="zt-type-item">
-        <div class="img"><img class="full" src="http://img.haoshiqi.net/merchantadmin/image20170105/ma81d817fbf6538c96df4d5c5143445bb9" alt=""></div>
-        <div class="text">
-          <h4>【包邮】台客鱼家 鱼豆腐干小包装零食休闲食品特色小吃散装1000g 好吃大满足</h4>
-          <p><dfn class="price">24.5</dfn><del class="price">45.5</del></p>
-        </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
+import is from 'is'
 import XHeader from '@common/components/x-header'
 import list from '../components/list'
 import * as api from '../store/api'
@@ -35,6 +29,7 @@ export default {
   },
   data() {
     return {
+      timestamp: 0,
       topicCode: '',
       topicList: [],
       headerData: {
@@ -58,6 +53,45 @@ export default {
   },
 
   filters: {
+    dealPrice(skuInfo, timestamp) {
+      // 处理初始价格
+      // const obj = JSON.parse(value)
+      if (!is.object(skuInfo)) return 0
+      // const timestamp = this.timestamp
+
+      // 起售价 price
+      // 最底价 lowest_price
+      // 开售时间 seller_time
+
+      let curPrice = 0
+
+      // 下架时间 = 保质期截止时间 - 提前下架的时间
+      // 剩余时间 = 下架时间 - 当前时间
+      const offlineTime = skuInfo.expired_date - skuInfo.offline_before_expired // 下架时间
+      const leftTimes = offlineTime - timestamp
+
+      if (leftTimes > 1) {
+        // 单位时间变动的价格 =（起售价-最底价）*1s /（保质期截止时间-提前下架的时间-上架售卖时间）
+        // 当前价格 = 起售价 - 单位时间变动的价格 * 已上架时间
+        const diffPriceTotal = skuInfo.price - skuInfo.lowest_price
+        const salledTimes = timestamp - skuInfo.seller_time
+        const diffPrice = diffPriceTotal / (offlineTime - skuInfo.seller_time)
+        curPrice = skuInfo.price - diffPrice * salledTimes
+      } else {
+        curPrice = skuInfo.lowest_price
+      }
+
+      return curPrice
+    },
+    rmb(value, decimals, currency) {
+      value = parseInt(value, 10)
+      if (!isFinite(value) || (!value && value !== 0)) return ''
+      currency = currency != null ? currency : '￥'
+      decimals = decimals != null ? decimals : 2
+      var stringified = (value * 0.01).toFixed(decimals)
+      var sign = value < 0 ? '-' : ''
+      return sign + currency + stringified
+    },
     truncate: function (v) {
       var newline = v.indexOf('\n')
       return newline > 0 ? v.slice(0, newline) : v
@@ -71,10 +105,13 @@ export default {
     async fetchData() {
       const res = await api.getTopicList({
         topicCode: '6330f4fa6c1d0b5b7c4158765dedbc6f',
+        channelId: 'h5',
       })
       console.log(res)
       if (res.errno === 0) {
         const data = res.data
+
+        this.timestamp = res.timestamp
         this.topicList = data.skuList
         this.headerData.title = data.title
       } else {
@@ -108,20 +145,21 @@ img.full {
 
 .page-zt-type {
   font-size: 12px;
-  background: $gray-4;
+  background: $bg-body;
 }
 
 // .zt-type-banner {}
 
 .zt-type-list {
-  padding-top: 4px;
-  border-right: 4px solid transparent;
+  padding: 4px 4px 0 0;
+  background: $bg-body;
+  // border-right: 4px solid $bg-body;
 }
 .zt-type-item {
   float: left;
   // display: inline-block;
-  margin-bottom: 4px;
-  border-left: 4px solid transparent;
+  border-bottom: 4px solid $bg-body;
+  border-left: 4px solid $bg-body;
   padding: 4px;
   width: 50%;
   background: #fff;
@@ -130,11 +168,13 @@ img.full {
   }
   h4 {
     margin-bottom: 10px;
-    height: 54px;
-    overflow: hidden;
+    // height: 54px;
+    // overflow: hidden;
     text-align: justify;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 14px;
+
+    @include text-max-line(2);
   }
   dfn {
     font-size: 14px;

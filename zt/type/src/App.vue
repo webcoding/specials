@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition>
-      <router-view></router-view>
+      <router-view class="page"></router-view>
     </transition>
   </div>
 </template>
@@ -68,6 +68,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+// 改动的项目基础样式
+@import './styles/base.scss';
+
 
 </style>

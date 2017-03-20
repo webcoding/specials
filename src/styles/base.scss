@@ -1,15 +1,104 @@
 
 @import './var.scss';
 
+.clearfix {
+  @include clearfix;
+}
+
 html {
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+  font-size: 100px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+// 单页面应用设置
+html,
+body,
+.page,
+#app,
+#root {
+  height: 100%;
+}
+
+body {
+  font-size: 14px;
+  line-height: 1.5;
+
+  color: $body-color;
+  background: $body-bg;
+
+  // 背侧不透视
+  backface-visibility: hidden;
+
+  // 处理内容修饰 break 问题（如文本添加修饰圆角边框，换行会打断此修饰的连续性）
+  // box-decoration-break: clone
 }
 
 // 纤细字体
 body, input, textarea, select, button {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+img {
+  vertical-align: middle;
+}
+
+abbr[title],
+// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted $gray-6;
+}
+
+address {
+  margin-bottom: 16px;
+  font-style: normal;
+  line-height: inherit;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: 8px;
+  margin-left: 0; // Undo browser default
+}
+
+blockquote {
+  margin: 0 0 16px;
 }
 
 [role="button"] {
@@ -28,6 +117,10 @@ textarea {
   touch-action: manipulation;
 }
 
+th {
+  text-align: left;
+}
+
 textarea {
   resize: vertical;
 }
@@ -42,29 +135,9 @@ input[type="search"] {
   display: none !important;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-body {
-  background: #fff;
-  color: #333;
-  font-size: 12px;
-  line-height: 1.5;
-
-  // 背侧不透视
-  backface-visibility: hidden;
-}
-
 a,
 a:hover {
   text-decoration: none;
-}
-
-img {
-  vertical-align: middle;
 }
 
 .is-fixed {
@@ -84,16 +157,8 @@ dfn.price {
   font-weight: 500;
   color: $color-price;
 }
+
 del.price {
   color: $gray-6;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-}

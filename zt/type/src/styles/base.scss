@@ -1,0 +1,15 @@
+
+@import './var.scss';
+
+a {
+  color: $link-color;
+}
+
+dfn.price,
+del.price {
+
+  &::before{
+    display: none;
+    content: '';
+  }
+}

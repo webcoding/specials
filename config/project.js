@@ -38,11 +38,6 @@ var project = {
   dist: buildDist + appName,
 }
 
-console.log('')
-console.log('    build: ', project.app)
-console.log('     dist: ', project.dist)
-console.log('')
-
 if (isSpecial) {
   project = {
     name: appName,
@@ -75,6 +70,11 @@ if (isSpecial) {
   }
 }
 
+
+console.log('')
+console.log('    build: ', project.app)
+console.log('   output: ', project.dist)
+console.log('')
 
 // 都是绝对路径
 // console.log('__dirname ', __dirname)          // .../zt/config
