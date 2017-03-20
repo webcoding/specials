@@ -6,10 +6,6 @@ import router from './router/'
 import App from './App'
 import '@common/init'
 
-import { rmb } from './filters'
-
-Vue.filter('rmb', rmb)
-
 /**
  * 错误统计 https://docs.sentry.io/clients/javascript/integrations/vue/
  * Vue.config.errorHandler https://cn.vuejs.org/v2/api/#errorHandler
