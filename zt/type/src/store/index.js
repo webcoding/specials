@@ -10,8 +10,6 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-
-
 export default new Vuex.Store({
   // 在非生产环境下，才可以使用严格模式
   strict: process.env.NODE_ENV !== 'production',

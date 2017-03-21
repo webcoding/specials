@@ -11,7 +11,7 @@ function buildUrl(url) {
   return config.restApi(url)
 }
 
-const apiHost = process.env.api
+const apiHost = '' // process.env.api || ''
 
 /* global Headers: false, fetch */
 function parseResponse(response) {
@@ -20,6 +20,7 @@ function parseResponse(response) {
 
 function checkStatus([status, statusText, data]) {
   if (status >= 200 && status < 300) {
+    // 请求成功
     return data
   } else {
     const error = new Error(statusText)
@@ -40,7 +41,7 @@ export default{
     // fixme
     var params = query.length ? '?' + query.join('&') : ''
     url = buildUrl(url) + params
-    console.log(host, params)
+    console.log(params)
     var init = {
       method: 'GET',
       headers: reqHeaders,

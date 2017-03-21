@@ -1,9 +1,7 @@
 <template>
   <div class="page-zt-type">
     <x-header :header="headerData"></x-header>
-    <div class="zt-type-banner">
-      <img class="full" src="http://img.haoshiqi.net/merchantadmin/image20170215/mad9f9b506e4ef0411a893c64a4f45d098_388X620" width="100%" alt="">
-    </div>
+    <div class="zt-type-intro" v-html="ztIntro"></div>
     <div class="zt-type-list clearfix">
       <router-link class="zt-type-item" v-for="item in topicList" :key="item.sku_id" :to="`/#detail?sid=${item.sku_id}`">
         <div class="img"><img class="full" :src="item.sku_pic" alt=""></div>
@@ -30,7 +28,7 @@ export default {
   data() {
     return {
       timestamp: 0,
-      topicCode: '',
+      ztIntro: '',
       topicList: [],
       headerData: {
         title: '数据生成标题',
@@ -44,7 +42,8 @@ export default {
     }
   },
   created() {
-    this.fetchData()
+    this.fetchTopicInfo()
+    this.fetchTopicList()
   },
   computed: { },
 
@@ -53,6 +52,10 @@ export default {
   },
 
   filters: {
+    decodeURIComponent(v) {
+      debugger
+      return decodeURIComponent(v)
+    },
     truncate: function (v) {
       var newline = v.indexOf('\n')
       return newline > 0 ? v.slice(0, newline) : v
@@ -63,35 +66,40 @@ export default {
   },
 
   methods: {
-    async fetchData() {
+    async fetchTopicInfo() {
+      const res = await api.getTopicInfo({
+        topicCode: '5728f6513b61fccef8e5742c2ec3b65f',
+        channel: 'h5',
+      })
+      console.log(res)
+      if (res.errno === 0) {
+        const data = res.data
+
+        // this.timestamp = res.timestamp
+        // this.topicList = data.skuList
+        this.ztIntro = decodeURIComponent(data.detail) || ''
+        this.headerData.title = data.title
+      } else {
+        console.log(res.message)
+      }
+    },
+    async fetchTopicList() {
       const res = await api.getTopicList({
         topicCode: '5728f6513b61fccef8e5742c2ec3b65f',
-        channelId: 'h5',
+        channel: 'h5',
+        needPagination: 1,
+        pageNum: 1,
+        pageLimit: 20,
       })
       console.log(res)
       if (res.errno === 0) {
         const data = res.data
 
         this.timestamp = res.timestamp
-        this.topicList = data.skuList
-        this.headerData.title = data.title
+        this.topicList = data.list
       } else {
         console.log(res.message)
       }
-      // api.getTopicList({
-      //   'topic_code': '6330f4fa6c1d0b5b7c4158765dedbc6f',
-      // }).then(res => {
-      //   debugger
-      //   console.log(res)
-      //   if (res.success === true) {
-      //     // this.topicList = res.data.articles;
-      //     // this.totalPage = Math.ceil(res.data.total/limit);
-      //   }
-      // }).catch(err => {
-      //   console.log(err)
-      //   /* global alert */
-      //   alert('网络错误,请刷新重试')
-      // })
     },
   },
 }
@@ -109,7 +117,11 @@ img.full {
   background: $bg-body;
 }
 
-// .zt-type-banner {}
+.zt-type-intro {
+  img {
+    width: 100%;
+  }
+}
 
 .zt-type-list {
   padding: 4px 4px 0 0;

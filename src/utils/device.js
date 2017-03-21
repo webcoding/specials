@@ -11,9 +11,9 @@ const iphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/)
 
 device.ios = device.android = device.iphone = device.ipad = device.androidChrome = false
 
-const getEls = function (el) {
-  return document.querySelectorAll(el)
-}
+// const getEls = function (el) {
+//   return document.querySelectorAll(el)
+// }
 const getEl = function (el) {
   return document.querySelector(el)
 }
@@ -53,13 +53,13 @@ if (device.ios && device.osVersion && ua.indexOf('Version/') >= 0) {
 device.webView = (iphone || ipad || ipod) && ua.match(/.*AppleWebKit(?!.*Safari)/i)
 
 // Minimal UI
-var domMetas = getEls('meta[name="viewport"]')
+var domMeta = getEl('meta[name="viewport"]')
 if (device.os && device.os === 'ios') {
   var osVersionArr = device.osVersion.split('.')
   device.minimalUi = !device.webView &&
       (ipod || iphone) &&
       (osVersionArr[0] * 1 === 7 ? osVersionArr[1] * 1 >= 1 : osVersionArr[0] * 1 > 7) &&
-      domMetas.length > 0 && domMetas.attr('content').indexOf('minimal-ui') >= 0
+      domMeta && domMeta.content.indexOf('minimal-ui') >= 0
 }
 
 // Check for status bar and fullscreen app mode

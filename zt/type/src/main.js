@@ -13,7 +13,7 @@ import '@common/init'
 import Raven from 'raven-js'
 import RavenVue from 'raven-js/plugins/vue'
 
-const debug = true
+const debug = false
 
 if (process.env.NODE_ENV === 'production' || debug) {
   Raven

@@ -1,5 +1,6 @@
 var path = require('path')
 // see http://vuejs-templates.github.io/webpack for documentation.
+var devEnv = require('./dev.env')
 
 var project = require('./project')
 
@@ -38,23 +39,23 @@ module.exports = {
     bundleAnalyzerReport: process.env.npm_config_report,
   },
   dev: {
-    env: require('./dev.env'),
+    env: devEnv,
     port: 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'assets',
     assetsPublicPath: '',
-    // https://vuejs-templates.github.io/webpack/proxy.htmls
+    // https://vuejs-templates.github.io/webpack/proxy.html
+    // https://github.com/chimurai/http-proxy-middleware
     proxyTable: {
       // proxy all requests starting with /api to jsonplaceholder
       '/proxy': {
-        target: 'http://m.api.haoshiqi.net',
+        target: devEnv.api['beta'],
         changeOrigin: true,
+        // true/false, if you want to verify the SSL Certs
+        // secure: false,
         pathRewrite: {
           '^/proxy': '',
         },
-        // filter: function (pathname, req) {
-        //   return pathname.match('^/proxy')
-        // },
       },
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
