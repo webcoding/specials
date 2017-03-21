@@ -6,6 +6,7 @@
     if (!clientWidth) return
     // 以 iphone6 375为基准
     if (clientWidth > 750) clientWidth = 750
+    if (clientWidth < 280) clientWidth = 280
     docEl.style.fontSize = 100 * (clientWidth / 375) + 'px'
   }
   if (!doc.addEventListener) return
