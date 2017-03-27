@@ -1,7 +1,7 @@
 import device from './device'
-import rem from './rem'
+// import rem from './rem'
 
 export {
   device,
-  rem,
+  // rem,
 }

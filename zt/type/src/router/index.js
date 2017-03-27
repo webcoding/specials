@@ -10,9 +10,10 @@ Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
+  base: '',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
-    { path: '', name: 'index', component: index },
+    { path: '/', name: 'index', component: index },
     // { path: '/score', name: 'score', component: score },
     // {
     //   path: '/item',
@@ -35,6 +36,7 @@ const auth = {
     // return Boolean(store.state.user.id)
   },
 }
+
 
 const loginPath = '/login'
 // let indexScrollTop = 0

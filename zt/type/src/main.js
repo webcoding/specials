@@ -4,6 +4,7 @@ import Vue from 'vue'
 // import store from './store/'
 import router from './router/'
 import App from './App'
+import '@common/rem'
 import '@common/init'
 
 /**

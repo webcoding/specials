@@ -1,10 +1,10 @@
 <template>
   <div class="page-zt-type">
     <x-header :header="headerData"></x-header>
-    <div class="zt-type-intro" v-html="ztIntro"></div>
+    <div class="zt-type-intro" v-html="ztIntro" @click.stop.prevent="handleClick($event)"></div>
     <div class="zt-type-list clearfix">
-      <router-link class="zt-type-item" v-for="item in topicList" :key="item.sku_id" :to="`/#detail?sid=${item.sku_id}`">
-        <div class="img"><img class="full" :src="item.sku_pic" alt=""></div>
+      <router-link class="zt-type-item" v-for="item in topicList" :key="item.sku_id" :to="`/index.html#detail?sid=${item.sku_id}`" @click.native="handleClick($event)">
+        <div class="img fullbg" :style="`background-image: url(${item.sku_pic})`"></div>
         <div class="text">
           <h4>{{item.sku_name}}</h4>
           <p><dfn class="price">{{item | dealPrice(timestamp) | rmb}}</dfn><del class="price">{{item.market_price | rmb}}</del></p>
@@ -17,6 +17,7 @@
 <script>
 
 import XHeader from '@common/components/x-header'
+import device from '@common/utils/device'
 import list from '../components/list'
 import * as api from '../store/api'
 
@@ -42,20 +43,23 @@ export default {
     }
   },
   created() {
-    this.fetchTopicInfo()
-    this.fetchTopicList()
+    this.fetchData()
   },
   computed: { },
 
-  watch: {
-    // topicCode: 'fetchData',
+  beforeRouteLeave (to, from, next) {
+    // if (device.isHsq) {
+    //   console.log('拦截跳转，only jump app')
+    //   return next(false)
+    // }
+    next()
   },
 
   filters: {
-    decodeURIComponent(v) {
-      debugger
-      return decodeURIComponent(v)
-    },
+    // getLink(url) {
+    //   // 这里设置 to，以/开头了，这是有问题的
+    //   return !device.isInHsq ? 'hsq://detail?params' : url
+    // },
     truncate: function (v) {
       var newline = v.indexOf('\n')
       return newline > 0 ? v.slice(0, newline) : v
@@ -66,6 +70,20 @@ export default {
   },
 
   methods: {
+    handleClick(e) {
+      console.log(e)
+      e.preventDefault()
+      debugger
+      // 这里设置 to，以/开头了，这是有问题的
+      return device.isHsq ? this.jumpApp('hsq://detail?sid=xxx') : this.$router.push(e.currentTarget.getAttribute('href'))
+    },
+    jumpApp(url) {
+      console.log('jump app: ', url)
+    },
+    fetchData() {
+      this.fetchTopicInfo()
+      this.fetchTopicList()
+    },
     async fetchTopicInfo() {
       const res = await api.getTopicInfo({
         topicCode: '5728f6513b61fccef8e5742c2ec3b65f',
@@ -137,8 +155,8 @@ img.full {
   width: 50%;
   background: #fff;
   .img {
-    width: 174px;
-    height: 174px;
+    width: 100%;
+    padding-top: 100%;
     overflow: hidden;
   }
   .text {

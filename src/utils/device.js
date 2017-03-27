@@ -112,5 +112,25 @@ if (classNames.length > 0) {
 
 // keng..
 device.isWeixin = /MicroMessenger/i.test(ua)
+device.isQQ = ua.indexOf('qq\/') > -1
+
+// 自定义
+const iqgUA = ua.match(/\sdwd_iqg\/([\d\.]+)/)
+if (iqgUA) {
+  device.isIqg = true
+  device.iqg = {
+    version: iqgUA[1],
+  }
+}
+const hsqUA = ua.match(/\sdwd_hsq\/([\d\.]+)/)
+if (hsqUA) {
+  device.isHsq = true
+  device.hsq = {
+    version: hsqUA[1],
+  }
+}
+
+device.isAndroid = device.android
+device.isiPhone = device.iphone
 
 export default device

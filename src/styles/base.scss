@@ -26,7 +26,7 @@ body,
   height: 100%;
 }
 
-body {
+body.h5_mobile {
   // ppi 同样尺寸机型，一直是提升的，比如6和6s 就不一样
   // ip6:       667*375(4.7" dpi) 1280×960 6s 1704×960
   // ip6plus:   736*414(5.5" dpi) 1920*1080
@@ -39,7 +39,7 @@ body {
 
 //屏幕像素密度 针对 ratio 屏幕
 @media all and (min-resolution: 150dpi) {
-  body {
+  body.h5_mobile {
     max-width: 1024px;
   }
 }
