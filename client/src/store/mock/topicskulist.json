@@ -1,0 +1,193 @@
+{
+  "errno": 0,
+  "errmsg": "success",
+  "data": {
+    "list": [{
+      "id": 41485,
+      "topic_id": 152,
+      "sku_id": 11533,
+      "sku_name": "【新货大促】包邮蒙牛特仑苏纯牛奶250ml*12/箱 醇香新贵族 贵在优蛋白",
+      "sku_pic": "http://img.haoshiqi.net/merchantadmin/image20170217/ma153a2569819a44a7d4a8f1829601bd54",
+      "sku_desc": "",
+      "type": 1,
+      "priority": 23,
+      "offline_before_expired": 2592000,
+      "expired_date": 1498838400,
+      "lowest_price": 6200,
+      "price": 6200,
+      "market_price": 8600,
+      "seller_time": 1487318772,
+      "tags": [{
+        "text": "7.3折",
+        "background": "#FF5555"
+      }]
+    }, {
+      "id": 41486,
+      "topic_id": 152,
+      "sku_id": 11532,
+      "sku_name": "【新货大促】包邮光明莫斯利安 钻石装礼盒 原味酸奶200g*12盒/箱",
+      "sku_pic": "http://img.haoshiqi.net/merchantadmin/image20170216/ma5aa87c6414dcd1d762b269d10bb2d795",
+      "sku_desc": "",
+      "type": 1,
+      "priority": 21,
+      "offline_before_expired": 2592000,
+      "expired_date": 1501430400,
+      "lowest_price": 5490,
+      "price": 5490,
+      "market_price": 16900,
+      "seller_time": 1487318590,
+      "tags": [{
+        "text": "3.3折",
+        "background": "#FF5555"
+      }]
+    }, {
+      "id": 41489,
+      "topic_id": 152,
+      "sku_id": 11318,
+      "sku_name": "【包邮】蒙牛无菌砖纯牛奶250ml*24 整箱装",
+      "sku_pic": "http://img.haoshiqi.net/merchantadmin/image20170210/ma68fa5a11eeb28c96604b916ab89b3f40",
+      "sku_desc": "",
+      "type": 1,
+      "priority": 10,
+      "offline_before_expired": 2592000,
+      "expired_date": 1496505600,
+      "lowest_price": 5890,
+      "price": 5890,
+      "market_price": 7500,
+      "seller_time": 1486714032,
+      "tags": [{
+        "text": "7.9折",
+        "background": "#FF5555"
+      }]
+    }, {
+      "id": 41487,
+      "topic_id": 152,
+      "sku_id": 11525,
+      "sku_name": "【新货大促】包邮蒙牛纯甄纯真风味常温酸牛奶 200g*12/箱",
+      "sku_pic": "http://img.haoshiqi.net/merchantadmin/image20170216/ma07dce54771854c08c91dfd22c7136602",
+      "sku_desc": "",
+      "type": 1,
+      "priority": 9,
+      "offline_before_expired": 2592000,
+      "expired_date": 1498838400,
+      "lowest_price": 5390,
+      "price": 5390,
+      "market_price": 6600,
+      "seller_time": 1487318208
+    }, {
+      "id": 41499,
+      "topic_id": 152,
+      "sku_id": 5213,
+      "sku_name": "缘天然谷享调制乳黑牛奶250ml*12盒黑米黑豆黑芝麻谷物早餐奶",
+      "sku_pic": "http://img.haoshiqi.net/merchantadmin/image20160902/ma77ed1b59d01cf47b835a6cb0f19ff3b8",
+      "sku_desc": "",
+      "type": 1,
+      "priority": 6,
+      "offline_before_expired": 2592000,
+      "expired_date": 1492963200,
+      "lowest_price": 1360,
+      "price": 3900,
+      "market_price": 6800,
+      "seller_time": 1480928400,
+      "tags": [{
+        "text": "2.2折",
+        "background": "#FF5555"
+      }]
+    }, {
+      "id": 41490,
+      "topic_id": 152,
+      "sku_id": 11248,
+      "sku_name": "【包邮】优信牛乳钙儿童钙片奶片 青少年成人中老年人补钙36g* 2盒装",
+      "sku_pic": "http://img.haoshiqi.net/merchantadmin/image20170209/maeaf6b60933d438e2775dafb29264fe27",
+      "sku_desc": "",
+      "type": 1,
+      "priority": 5,
+      "offline_before_expired": 2592000,
+      "expired_date": 1546358400,
+      "lowest_price": 3600,
+      "price": 3600,
+      "market_price": 7800,
+      "seller_time": 1486705499,
+      "tags": [{
+        "text": "4.7折",
+        "background": "#FF5555"
+      }]
+    }, {
+      "id": 41493,
+      "topic_id": 152,
+      "sku_id": 10960,
+      "sku_name": "奥莉维亚  新西兰小熊调制乳粉 长高奶粉 480g/盒",
+      "sku_pic": "http://img.haoshiqi.net/merchantadmin/image20170113/ma24b4758fbadbc1a5343f4b32c7c8c3ff",
+      "sku_desc": "",
+      "type": 1,
+      "priority": 4,
+      "offline_before_expired": 2592000,
+      "expired_date": 1524067200,
+      "lowest_price": 3560,
+      "price": 10600,
+      "market_price": 17800,
+      "seller_time": 1484721271,
+      "tags": [{
+        "text": "5.4折",
+        "background": "#FF5555"
+      }]
+    }, {
+      "id": 41497,
+      "topic_id": 152,
+      "sku_id": 7036,
+      "sku_name": "【包邮】佐佐12杯礼盒装奶优果冻休闲零食【芒果草莓椰奶香蕉各三杯总1380g】",
+      "sku_pic": "http://img.haoshiqi.net/merchantadmin/image20161013/ma1e3dc37afd638af6f842bbfbf24929bb",
+      "sku_desc": "",
+      "type": 1,
+      "priority": 3,
+      "offline_before_expired": 2592000,
+      "expired_date": 1504886400,
+      "lowest_price": 2180,
+      "price": 5590,
+      "market_price": 10900,
+      "seller_time": 1476683687,
+      "tags": [{
+        "text": "3.5折",
+        "background": "#FF5555"
+      }]
+    }, {
+      "id": 41494,
+      "topic_id": 152,
+      "sku_id": 10853,
+      "sku_name": "【包邮】布朗夫人Ms.Brown全营养成人奶粉200g8条 5盒送杯",
+      "sku_pic": "http://img.haoshiqi.net/merchantadmin/image20170110/maf087213aacce570c60d39f8075fa904f",
+      "sku_desc": "",
+      "type": 1,
+      "priority": 2,
+      "offline_before_expired": 2592000,
+      "expired_date": 1498924800,
+      "lowest_price": 990,
+      "price": 990,
+      "market_price": 3500,
+      "seller_time": 1484036728
+    }, {
+      "id": 41498,
+      "topic_id": 152,
+      "sku_id": 6357,
+      "sku_name": "布朗夫人 乐活香蕉果味奶粉 成人奶粉下午茶早餐40g*6杯 乐活香蕉",
+      "sku_pic": "http://img.haoshiqi.net/merchantadmin/image20160928/ma8756167fc6bd36cfd413015e5d937ae1",
+      "sku_desc": "",
+      "type": 1,
+      "priority": 1,
+      "offline_before_expired": 6480000,
+      "expired_date": 1513008000,
+      "lowest_price": 2900,
+      "price": 2990,
+      "market_price": 5000,
+      "seller_time": 1475199276,
+      "tags": [{
+        "text": "5.9折",
+        "background": "#FF5555"
+      }]
+    }],
+    "totalCnt": 10,
+    "totalPage": 1
+  },
+  "timestamp": 1490064440,
+  "serverlogid": "edb448345617eb335e5325459279a4e0"
+}
