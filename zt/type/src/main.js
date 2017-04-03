@@ -7,6 +7,13 @@ import App from './App'
 import '@common/rem'
 import '@common/init'
 
+import * as filters from '@common/filters'
+
+// // register global utility filters.
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
 /**
  * 错误统计 https://docs.sentry.io/clients/javascript/integrations/vue/
  * Vue.config.errorHandler https://cn.vuejs.org/v2/api/#errorHandler

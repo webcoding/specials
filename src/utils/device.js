@@ -105,8 +105,8 @@ if (device.statusBar) {
 
 // Add html classes
 if (classNames.length > 0) {
-  for (let i = classNames.length - 1; i > -1; i--) {
-    domHtml.classList.add(classNames[i])
+  for (var j = classNames.length - 1; j > -1; j--) {
+    domHtml.classList.add(classNames[j])
   }
 }
 
