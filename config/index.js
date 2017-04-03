@@ -49,7 +49,7 @@ module.exports = {
     proxyTable: {
       // proxy all requests starting with /api to jsonplaceholder
       '/proxy': {
-        target: devEnv.api['beta'],
+        target: devEnv.api['prod'],
         changeOrigin: true,
         // true/false, if you want to verify the SSL Certs
         // secure: false,

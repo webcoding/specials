@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === 'production' || debug) {
 // 创建并挂载到 #app (会替换 #app)
 // 提供的元素只能作为挂载点。所有的挂载元素会被 Vue 生成的 DOM 替换。
 // 因此不推荐挂载root实例到 <html> 或者 <body> 上。
-// FIXME: 为什么没有替换的效果，这里使用 transition 时有 bug
+// FIXME: 为什么没有替换的效果，这里使用 transition 时有 bug，已处理
 new Vue({
   router,
   // store,
