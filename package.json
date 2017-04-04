@@ -88,6 +88,7 @@
     "ora": "^1.2.0",
     "phantomjs-prebuilt": "^2.1.14",
     "postcss-plugin-px2rem": "^0.7.0",
+    "qiniu-webpack-plugin": "^0.4.2",
     "rimraf": "^2.6.0",
     "selenium-server": "^3.3.1",
     "semver": "^5.3.0",

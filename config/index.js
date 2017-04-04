@@ -9,7 +9,9 @@ function resolve (dir) {
 }
 
 module.exports = {
+  qnConfig: project.qn,
   // target: 'web',
+  appName: project.name,
   appDir: project.app,
   index: 'index.html', // 引用文件，相对于 assetsRoot
   template: project.app + '/index.html',
@@ -23,7 +25,7 @@ module.exports = {
     assetsRoot: resolve(project.dist),
     // 输出解析文件的目录，url 相对于 HTML 页面
     assetsSubDirectory: 'assets/',
-    assetsPublicPath: '', // 不使用 cdn，设为空
+    assetsPublicPath: project.qn.domain, // 不使用 cdn，设为空
     // assetsPublicPath: 'https://cdn.xxx.cn/' + project.app, // 这里可以设置 cdn
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as

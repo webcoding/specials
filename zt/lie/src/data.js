@@ -483,7 +483,7 @@ export const user = {
     return name.indexOf('hello') > -1 || name.indexOf('小宝宝') > -1
   },
   isYou: (name) => {
-    return name.indexOf('world') > -1
+    return name.indexOf('good') > -1
   },
 }
 

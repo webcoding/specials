@@ -1,6 +1,7 @@
 var path = require('path')
 var fs = require('fs')
 // see http://vuejs-templates.github.io/webpack for documentation.
+var qnConfig = require('./qn.config')
 
 // 全相对于项目根目录，即执行命令的目录，也是package.json对应的目录
 // 此文件所在目录的上级(../${__dirname})，使用
@@ -36,6 +37,7 @@ var project = {
   name: appName,
   app: appName,
   dist: buildDist + appName,
+  qn: qnConfig.cdn,
 }
 
 if (isSpecial) {
@@ -43,6 +45,7 @@ if (isSpecial) {
     name: appName,
     app: ztDir + appName,
     dist: buildDist + ztDir + appName,
+    qn: qnConfig.zt,
   }
 
   // 专题文件夹绝对路径

@@ -7,8 +7,8 @@
           <!--对方文字消息-->
           <div v-if="message.type === 'other'" :class="message.text === conversation[conversation.length - 1].text && (nextStep === 'answer' || nextStep === 'additionA') ? 'now' : ''" class="row other">
             <div class="avatar">
-              <img v-if="user.isMe(questionId)" class="full-width-img" src="../assets/other.jpg">
-              <img v-else-if="user.isYou(questionId)" src="../assets/me.jpg">
+              <img v-if="user.isYou(questionId)" class="full-width-img" src="../assets/other.jpg">
+              <img v-else-if="user.isMe(questionId)" src="../assets/me.jpg">
               <img v-else class="full-width-img" src="../assets/logo.png">
             </div>
             <div class="box"><em></em><span></span>{{ message.text }}</div>
@@ -56,7 +56,7 @@
           <div v-if="message.type === 'my-text'" class="row me my-text">
             <div class="avatar">
               <img v-if="user.isMe(answerer)" class="full-width-img" src="../assets/me.jpg">
-              <img v-else-if="user.isMe(answerer)" class="full-width-img" src="../assets/other.jpg">
+              <img v-else-if="user.isYou(answerer)" class="full-width-img" src="../assets/other.jpg">
               <img v-else class="full-width-img" src="../assets/logo.png">
             </div>
             <div class="box"><em></em><span></span>{{ message.text }}</div>
