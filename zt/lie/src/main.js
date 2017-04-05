@@ -26,6 +26,10 @@ Vue.use(WildVue)
 
 Vue.config.productionTip = false
 
+// 野狗接口，本地 OK，远程不 OK 的问题
+// https://ns.wilddog.com/v1/lookup?appId=xxx
+// 接口报 10403 Request forbidden. 错误，是由于“安全域名”开启导致的
+// 这里需要赠设 *.wilddogio.com 到安全域名白名单
 var wilddogApp = Wilddog.initializeApp({
   syncURL: 'https://testlie.wilddogio.com/',
 })

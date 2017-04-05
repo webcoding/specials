@@ -104,7 +104,9 @@
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.16.1",
     "webpack-merge": "^4.1.0",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "wilddog": "^2.5.4",
+    "wildvue": "^1.1.1"
   },
   "engines": {
     "node": ">= 4.0.0",
