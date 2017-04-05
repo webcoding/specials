@@ -23,12 +23,12 @@ var curASKey = ASKey['cloudai']
 
 var qnConfig = {
   zt: {
-    prefix: 'zt/',
+    prefix: '',
     ak: curASKey.ak,
     sk: curASKey.sk,
     bucket: 'static-cloudai-net', // your bucket name
     domain: 'https://static.cloudai.net/',  // //xxxx.xxx.xx.glb.clouddn.com
-    path: '', // [hash]
+    path: '', // 路径: [hash] 或 zt/lie
   },
   // cdn资源合一
   cdn: {
@@ -37,7 +37,7 @@ var qnConfig = {
     sk: curASKey.sk,
     bucket: 'xxx', // your bucket name
     domain: 'https://img.xxx.com/',  // //xxxx.xxx.xx.glb.clouddn.com
-    path: '', // [hash]
+    path: '', // 路径: [hash] 或 zt/lie
   },
 }
 

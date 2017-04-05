@@ -35,7 +35,7 @@ appName = appName.replace(ztDirReg, '')
 
 var project = {
   name: appName,
-  app: appName,
+  dir: appName,
   dist: buildDist + appName,
   qn: qnConfig.cdn,
 }
@@ -43,7 +43,7 @@ var project = {
 if (isSpecial) {
   project = {
     name: appName,
-    app: ztDir + appName,
+    dir: ztDir + appName,
     dist: buildDist + ztDir + appName,
     qn: qnConfig.zt,
   }
@@ -66,17 +66,21 @@ if (isSpecial) {
   // console.log(projectList)
   // console.log('')
 
-  if (!projectList[project.app]) {
+  if (!projectList[project.dir]) {
     console.log('错误提示: ', 'dir error! please check input path! ')
     console.log('')
     console.log('')
   }
 }
 
+if (!project.qn.path) {
+  project.qn.path = project.dir
+}
 
 console.log('')
-console.log('    build: ', project.app)
+console.log('    build: ', project.dir)
 console.log('   output: ', project.dist)
+console.log('    qndir: ', project.qn.domain + project.qn.path)
 console.log('')
 
 // 都是绝对路径

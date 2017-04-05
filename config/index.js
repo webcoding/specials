@@ -12,21 +12,21 @@ module.exports = {
   qnConfig: project.qn,
   // target: 'web',
   appName: project.name,
-  appDir: project.app,
+  appDir: project.dir,
   index: 'index.html', // 引用文件，相对于 assetsRoot
-  template: project.app + '/index.html',
+  template: project.dir + '/index.html',
   build: {
     env: require('./prod.env'),
     // 无需编译的静态资源目录，会拷贝到 dist/assets 中
-    staticPath: resolve(project.app + '/src/assets'),
+    staticPath: resolve(project.dir + '/src/assets'),
     // 编译输出，引用资源的注入
     index: resolve(project.dist + '/index.html'),
     // 所有输出文件的目标路径，必须绝对路径
     assetsRoot: resolve(project.dist),
     // 输出解析文件的目录，url 相对于 HTML 页面
     assetsSubDirectory: 'assets/',
-    assetsPublicPath: project.qn.domain, // 不使用 cdn，设为空
-    // assetsPublicPath: 'https://cdn.xxx.cn/' + project.app, // 这里可以设置 cdn
+    assetsPublicPath: project.qn.domain + project.dir + '/', // 不使用 cdn，设为空
+    // assetsPublicPath: 'https://cdn.xxx.cn/' + project.dir, // 这里可以设置 cdn
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.

@@ -31,7 +31,7 @@ function runNode(key) {
   const task = getTestTask(key)
   // 执行时，改变当前执行目录
   exec(task, {
-    cwd: project.app,
+    cwd: project.dir,
   }, (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`)
