@@ -4,8 +4,8 @@
 var ASKey = {
   // 2015-01-12
   'cloudai': {
-    ak: '',
-    sk: '',
+    ak: 'iEjLq_SN2PZqV8SI32e8BH2ZrsfnYbi2QlLn5SDF',
+    sk: 'PzunIV1w8U9cD0QGDQQRoII_gcl-CbPMQpicQSK7',
   },
   // 2014-09-11
   'new': {
