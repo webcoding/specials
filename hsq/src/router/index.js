@@ -1,26 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '../store/'
+// import store from '../store/'
 
-import home from '../pages/home'
-import score from '../pages/score'
+import index from '../pages/index'
+// import score from '../pages/score'
 // import profile from '../pages/profile'
 
 Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
+  base: '',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
-    { path: '', name: 'home', component: home },
-    { path: '/score', name: 'score', component: score },
-    {
-      path: '/item',
-      name: 'item',
-      component: resolve => require(['../pages/item'], resolve),
-      // component: r => require.ensure([], () => r(require('../page/home')), 'home')
-    },
-    { path: '*', redirect: '/' },
+    { path: '/', name: 'index', component: index },
+    // { path: '/score', name: 'score', component: score },
+    // {
+    //   path: '/item',
+    //   name: 'item',
+    //   component: resolve => require(['../pages/item'], resolve),
+    //   // component: r => require.ensure([], () => r(require('../page/home')), 'home')
+    // },
+    // { path: '*', redirect: '/' },
     // {
     //   path: '/',
     //   // component: App,
@@ -32,9 +33,10 @@ const router = new Router({
 
 const auth = {
   loggedIn() {
-    return Boolean(store.state.user.id)
+    // return Boolean(store.state.user.id)
   },
 }
+
 
 const loginPath = '/login'
 // let indexScrollTop = 0

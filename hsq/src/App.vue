@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <transition>
-      <router-view></router-view>
+      <router-view class="page"></router-view>
     </transition>
-    <v-dialog :is-show="dialog" :msg="tips" @cancel="dialog = false" @sure="sureDialog"></v-dialog>
   </div>
 </template>
 
 <script>
-import hub from './store/hub'
-import vDialog from './components/Dialog'
+// <v-dialog :is-show="dialog" :msg="tips" @cancel="dialog = false" @sure="sureDialog"></v-dialog>
+// import hub from './store/hub'
+// import vDialog from './components/Dialog'
 
 export default {
   data() {
@@ -20,20 +20,20 @@ export default {
     }
   },
   components: {
-    vDialog,
+    // vDialog,
   },
   created() {
-    var self = this
-    hub.$on('alertinfo', function (msg) {
-      self.alertData(msg)
-    })
+    // var self = this
+    // hub.$on('alertinfo', function (msg) {
+    //   self.alertData(msg)
+    // })
   },
   methods: {
-    alertData(msg = '您还没有选择答案哦！') {
-      this.dialog = true
-      this.dialogType = 'alert'
-      this.tips = msg
-    },
+    // alertData(msg = '您还没有选择答案哦！') {
+    //   this.dialog = true
+    //   this.dialogType = 'alert'
+    //   this.tips = msg
+    // },
     // clearData() {
     //   this.dialog = true
     //   this.dialogType = 'clear'
@@ -48,26 +48,29 @@ export default {
     //     id: id,
     //   }
     // },
-    sureDialog() {
-      const self = this
-      switch (this.dialogType) {
-        case 'alert':
-          break
-        case 'clear':
-          // self.$store.dispatch('clearevent')
-          this.EVENT_DO_CLEAR()
-          break
-        case 'del':
-          this.EVENT_DO_DEL(self.delInfo)
-          // self.$store.dispatch('delevent', self.delInfo)
-          break
-      }
-      this.dialog = false
-    },
+    // sureDialog() {
+    //   const self = this
+    //   switch (this.dialogType) {
+    //     case 'alert':
+    //       break
+    //     case 'clear':
+    //       // self.$store.dispatch('clearevent')
+    //       this.EVENT_DO_CLEAR()
+    //       break
+    //     case 'del':
+    //       this.EVENT_DO_DEL(self.delInfo)
+    //       // self.$store.dispatch('delevent', self.delInfo)
+    //       break
+    //   }
+    //   this.dialog = false
+    // },
   },
 }
 </script>
 
-<style lang="less">
+<style lang="scss">
+// 改动的项目基础样式
+@import './styles/base.scss';
+
 
 </style>
