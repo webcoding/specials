@@ -3,8 +3,10 @@
 import Vue from 'vue'
 // import store from './store/'
 import router from './router/'
-import App from './App'
-import '@common/init'
+import App from './pages/App'
+// import '@common/init'
+// import '@common/rem'
+
 
 /**
  * 错误统计 https://docs.sentry.io/clients/javascript/integrations/vue/
@@ -44,6 +46,17 @@ new Vue({
   template: '<App/>',
   components: { App },
 })
+
+// var topScrolled = false
+// window.addEventListener('scroll', function () {
+//   if (window.pageYOffset > 165 && !topScrolled) {
+//     topScrolled = true
+//     document.getElementById('mobile-bar').classList.remove('top')
+//   } else if (window.pageYOffset <= 165 && topScrolled) {
+//     topScrolled = false
+//     document.getElementById('mobile-bar').classList.add('top')
+//   }
+// })
 
 // new Vue({
 //   router,

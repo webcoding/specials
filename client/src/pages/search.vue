@@ -127,122 +127,122 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import '../styles/var.scss';
+// <style lang="scss">
+// @import '../styles/var.scss';
 
-.page-search {
-  .search {
-    padding: 8px;
-  }
+// .page-search {
+//   .search {
+//     padding: 8px;
+//   }
 
-}
+// }
 
-.s-wrap {
-  box-sizing: content-box;
-  position: relative;
-  text-align: left;
-  z-index: 100;
-  .s-brand {
-    display: none;
-    position: absolute;
-    bottom: 40px;
-    width: 100%;
-    height: 180px;
-    text-align: center;
-    z-index: 0;
+// .s-wrap {
+//   box-sizing: content-box;
+//   position: relative;
+//   text-align: left;
+//   z-index: 100;
+//   .s-brand {
+//     display: none;
+//     position: absolute;
+//     bottom: 40px;
+//     width: 100%;
+//     height: 180px;
+//     text-align: center;
+//     z-index: 0;
 
-    img {
-      position: static;
-      margin: 50px auto 0 auto;
-    }
-  }
-  .result-logo {
-    float: left;
-    width: 80px;
-    height: 40px;
-    text-align: center;
-    img {
-      max-height: 100%;
-    }
-  }
-}
+//     img {
+//       position: static;
+//       margin: 50px auto 0 auto;
+//     }
+//   }
+//   .result-logo {
+//     float: left;
+//     width: 80px;
+//     height: 40px;
+//     text-align: center;
+//     img {
+//       max-height: 100%;
+//     }
+//   }
+// }
 
-.s-kw-wrap {
-  position: relative;
-  display: inline-block;
+// .s-kw-wrap {
+//   position: relative;
+//   display: inline-block;
 
-  .s-kw {
-    box-sizing: content-box;
-    width: 180px;
-    height: 20px;
-    padding: 9px 7px;
-    font: 16px arial;
-    border: 1px solid #b8b8b8;
-    border-bottom: 1px solid #ccc;
-    border-right: 0;
-    vertical-align: top;
-    outline: none;
-    box-shadow: none;
-  }
-}
+//   .s-kw {
+//     box-sizing: content-box;
+//     width: 180px;
+//     height: 20px;
+//     padding: 9px 7px;
+//     font: 16px arial;
+//     border: 1px solid #b8b8b8;
+//     border-bottom: 1px solid #ccc;
+//     border-right: 0;
+//     vertical-align: top;
+//     outline: none;
+//     box-shadow: none;
+//   }
+// }
 
-.s-btn-wrap {
-  display: inline-block;
-  zoom: 1;
-  vertical-align: top;
-  width: 58px;
-  height: 38px;
-  border: 1px solid #38f;
-  border-bottom: 1px solid #2e7ae5;
-  background-color: #38f;
+// .s-btn-wrap {
+//   display: inline-block;
+//   zoom: 1;
+//   vertical-align: top;
+//   width: 58px;
+//   height: 38px;
+//   border: 1px solid #38f;
+//   border-bottom: 1px solid #2e7ae5;
+//   background-color: #38f;
 
-  &:hover {
-    border-bottom: 1px solid #2771d9;
-  }
-  .s-btn {
-    cursor: pointer;
-    width: 58px;
-    height: 38px;
-    line-height: 38px;
-    padding: 0;
-    border: 0;
-    background: none;
-    background-color: #38f;
-    font-size: 16px;
-    color: white;
-    box-shadow: none;
-    font-weight: normal;
+//   &:hover {
+//     border-bottom: 1px solid #2771d9;
+//   }
+//   .s-btn {
+//     cursor: pointer;
+//     width: 58px;
+//     height: 38px;
+//     line-height: 38px;
+//     padding: 0;
+//     border: 0;
+//     background: none;
+//     background-color: #38f;
+//     font-size: 16px;
+//     color: white;
+//     box-shadow: none;
+//     font-weight: normal;
 
-    &:hover {
-      height: 38px;
-      background-color: #317ef3;
-      border-bottom: 1px solid #2868c8;
-      box-shadow: 1px 1px 1px #ccc;
-    }
-  }
-}
+//     &:hover {
+//       height: 38px;
+//       background-color: #317ef3;
+//       border-bottom: 1px solid #2868c8;
+//       box-shadow: 1px 1px 1px #ccc;
+//     }
+//   }
+// }
 
-.search-full {
-  .s-wrap {
-    width: 300px;
-    // height: 100%;
-    min-height: 293px;
-    // padding-bottom: 370px;
-    margin: 0 auto;
-  }
-  .s-kw {
-    width: 220px;
-  }
-  .s-brand {
-    display: block;
-  }
-  .result-logo {
-    display: none;
-  }
-  .s-form {
-    position: absolute;
-    bottom: 0;
-  }
-}
+// .search-full {
+//   .s-wrap {
+//     width: 300px;
+//     // height: 100%;
+//     min-height: 293px;
+//     // padding-bottom: 370px;
+//     margin: 0 auto;
+//   }
+//   .s-kw {
+//     width: 220px;
+//   }
+//   .s-brand {
+//     display: block;
+//   }
+//   .result-logo {
+//     display: none;
+//   }
+//   .s-form {
+//     position: absolute;
+//     bottom: 0;
+//   }
+// }
 
-</style>
+// </style>

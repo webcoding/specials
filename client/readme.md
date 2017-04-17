@@ -1,7 +1,13 @@
-# blog
+# devnode
 
-source: https://github.com/Ma63d/kov-blog
+云智能网络乐园——为开发者服务
 
-从这个项目中能学到什么？
+- 实现收藏夹 bookmarks
+  - 列表展示
+  - 编辑功能
+- 实现搜索 search
+
+
+
 
 

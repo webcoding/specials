@@ -1,15 +1,61 @@
 <template>
-  <div class="page-zt-type">
-    <x-header :header="headerData"></x-header>
-    <div class="zt-type-intro" v-html="ztIntro" @click.stop.prevent="handleClick($event)"></div>
-    <div class="zt-type-list clearfix">
-      <router-link class="zt-type-item" v-for="item in topicList" :key="item.sku_id" :to="`/index.html#detail?sid=${item.sku_id}`" @click.native="handleClick($event)">
-        <div class="img fullbg" :style="`background-image: url(${item.sku_pic})`"></div>
-        <div class="text">
-          <h4>{{item.sku_name}}</h4>
-          <p><dfn class="price">{{item | dealPrice(timestamp) | rmb}}</dfn><del class="price">{{item.market_price | rmb}}</del></p>
+  <div class="page-index">
+    <div class="sidebar">
+      <ul class="main-menu">
+        <li>partials main_menu  sidebar</li>
+      </ul>
+    </div>
+
+    <div id="hero">
+      <div class="inner">
+        <div class="left">
+          <img class="hero-logo" src="../assets/img/logo.png">
+        </div><div class="right">
+          <h2 class="vue">Vue.js</h2>
+          <h1>渐进式<br>JavaScript 框架</h1>
+          <p>
+            <a class="button" href="/guide">起步</a>
+            <a class="button white" href="https://github.com/vuejs/vue" target="_blank">GITHUB</a>
+          </p>
         </div>
-      </router-link>
+      </div>
+    </div>
+
+    <div id="highlights">
+      <div class="inner">
+        <div class="point">
+          <h2>易用</h2>
+          <p>已经会了HTML,CSS,JavaScript？即刻阅读指南开始构建应用！</p>
+        </div>
+
+        <div class="point">
+          <h2>灵活</h2>
+          <p>简单小巧的核心，渐进式技术栈，足以应付任何规模的应用。</p>
+        </div>
+
+        <div class="point">
+          <h2>性能</h2>
+          <p>
+            17kb min+gzip 运行大小<br>
+            超快虚拟 DOM <br>
+            最省心的优化
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="sponsors">
+      <div class="inner">
+        <h3>赞助者</h3>
+        <p>partials/sponsors</p>
+        <br>
+        <a class="become-sponsor button white" href="/support-vuejs">成为赞助者</a>
+      </div>
+    </div>
+
+    <div id="footer">
+      遵循 <a href="https://opensource.org/licenses/MIT" target="_blank">MIT 开源协议</a><br>
+      Copyright &copy; 2014- Evan You
     </div>
   </div>
 </template>
@@ -28,6 +74,7 @@ export default {
   },
   data() {
     return {
+      year: new Date().getFullYear(),
       timestamp: 0,
       ztIntro: '',
       topicList: [],
@@ -123,54 +170,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import '../styles/var.scss';
+<style lang="stylus">
+// @import "../styles/index.styl";
 
-img.full {
-  width: 100%;
-}
-
-.page-zt-type {
-  font-size: 12px;
-  background: $bg-body;
-}
-
-.zt-type-intro {
-  img {
-    width: 100%;
-  }
-}
-
-.zt-type-list {
-  padding: 4px 4px 0 0;
-  background: $bg-body;
-  // border-right: 4px solid $bg-body;
-}
-.zt-type-item {
-  float: left;
-  // display: inline-block;
-  border-bottom: 4px solid $bg-body;
-  border-left: 4px solid $bg-body;
-  padding: 4px;
-  width: 50%;
-  background: #fff;
-  .img {
-    width: 100%;
-    padding-top: 100%;
-    overflow: hidden;
-  }
-  .text {
-    padding: 8px 8px 4px;
-  }
-  h4 {
-    margin-bottom: 10px;
-    font-weight: 400;
-    font-size: 14px;
-
-    @include text-max-line(2);
-  }
-  dfn {
-    font-size: 14px;
-  }
-}
 </style>

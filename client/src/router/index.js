@@ -2,8 +2,19 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import store from '../store/'
 
-import index from '../pages/index'
+import layout from '../pages/layout'
+import bookmark from '../pages/bookmark'
+import explore from '../pages/explore'
+import user from '../pages/user'
+import tag from '../pages/tag'
+import docs from '../pages/docs'
+import help from '../pages/help'
+import changelog from '../pages/changelog'
+import about from '../pages/about'
+import support from '../pages/support'
+// import index from '../pages/index'
 import search from '../pages/search'
+import page from '../pages/page'
 // import score from '../pages/score'
 // import profile from '../pages/profile'
 
@@ -13,6 +24,55 @@ const coming = {
       <div class="coming">coming soon...</div>
     </div>`,
 }
+const page404 = {
+  template: `
+    <div class="page-coming">
+      <div class="coming">404...</div>
+    </div>`,
+}
+
+// 别名与跳转
+// 暂时用别名 后期如为归纳统一路径 则使用跳转比别名好
+const contentRoutes = [
+  {
+    path: '/explore',
+    name: 'explore',
+    component: explore,
+  },
+  {
+    path: '/bookmark',
+    name: 'bookmark',
+    component: bookmark,
+    alias: ['/bookmarks', 'b'],
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: user,
+    alias: ['/users', 'u'],
+  },
+  {
+    path: '/docs',
+    name: 'docs',
+    component: docs,
+    alias: '/doc',
+  },
+  {
+    path: '/changelog',
+    name: 'changelog',
+    component: changelog,
+  },
+  {
+    path: '/help',
+    name: 'help',
+    component: help,
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: about,
+  },
+]
 
 Vue.use(Router)
 
@@ -21,9 +81,34 @@ const router = new Router({
   base: '',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
+    // { path: '/', name: 'index', component: index },
+    {
+      path: '/',
+      // 使用默认子路由，则父路由的 name 就得去掉
+      // 否则使用 `:to="{name: 'demo'"` 会导致默认子路由不会render
+      name: '',
+      component: layout,
+      children: [{
+        path: '/',
+        name: 'bookmarks',
+        component: bookmark,
+      }].concat(contentRoutes),
+    },
+    {
+      path: '/tag',
+      name: 'tag',
+      component: tag,
+      alias: ['/tags', '/t'],
+    },
+    {
+      path: '/support',
+      name: 'support',
+      component: support,
+    },
+    { path: '/guide', name: 'guide', component: page },
     { path: '/search', name: 'search', component: search },
-    { path: '/home', name: 'index', component: index },
-    { path: '/*', name: 'coming', component: coming },
+    { path: '/coming', name: 'coming', component: coming },
+    { path: '/*', name: '404', component: page404 },
     // { path: '/score', name: 'score', component: score },
     // {
     //   path: '/item',
