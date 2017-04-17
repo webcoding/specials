@@ -196,6 +196,7 @@ a.tag
     overflow-x hidden
 
   .title
+    position relative
     display inline
     margin 0 8px 0 0
     font-size 16px
@@ -205,6 +206,9 @@ a.tag
     &:hover
       // text-decoration underline
       color $green
+
+    &:active
+      top 1px
 
   .desc
     margin 0

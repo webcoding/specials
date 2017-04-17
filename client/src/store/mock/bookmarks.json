@@ -4,13 +4,6 @@
   "timestamp": 1490064440,
   "serverlogid": "edb448345617eb335e5325459279a4e0",
   "data": {
-    "favicons": {
-      "stackoverflow": "http://cdn.sstatic.net/stackoverflow/img/favicon.ico",
-      "segmentfault": "http://static.segmentfault.com/global/img/favicon.30f7204d.ico",
-      "amazeui": "http://a.static.amazeui.org/favicon.png",
-      "vue": "http://cn.vuejs.org/images/logo.png",
-      "devnode": "经考虑，favicon 数据暂时不要了"
-    },
     "list": [
       {
         "id": 1,

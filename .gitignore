@@ -9,3 +9,5 @@ reports/
 hacknews/
 
 *.private.js
+temp/
+temp/*
