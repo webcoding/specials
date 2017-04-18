@@ -53,10 +53,10 @@
           <td><a href="https://github.com/vuejs" target="_blank" rel="external">vuejs</a></td>
         </tr>
         <tr>
-          <td rowspan="4">2</td>
+          <td rowspan="6">2</td>
           <td>explore</td>
-          <td>发现新大陆功能</td>
-          <td rowspan="4"><a href="https://github.com/cloudyan" target="_blank" rel="external">cloudyan</a></td>
+          <td>探索发现功能</td>
+          <td rowspan="6"><a href="https://github.com/cloudyan" target="_blank" rel="external">cloudyan</a></td>
         </tr>
         <tr>
           <td>bookmarks</td>
@@ -64,11 +64,19 @@
         </tr>
         <tr>
           <td>tags</td>
-          <td>分类聚合</td>
+          <td>分类聚合是比传统的目录更灵活、更方便的组织方式，能让内容管理更为有序，方便浏览与使用。</td>
+        </tr>
+        <tr>
+          <td>snapshot</td>
+          <td>添加任意网页，将为您记录指向该网页的链接和您填写的描述信息，并对可抓取的网页内容自动生成网页快照</td>
+        </tr>
+        <tr>
+          <td>docs</td>
+          <td>文档镜像</td>
         </tr>
         <tr>
           <td>search</td>
-          <td>搜索功能</td>
+          <td>搜索功能：搜索收藏、文档、用户、问题、评论等</td>
         </tr>
         <tr>
           <td>3</td>
