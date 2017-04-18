@@ -2,7 +2,7 @@
   <section class="stream-item">
     <div class="summary">
       <div class="text">
-        <a class="title" :href="item.link" target="_blank">{{item.title}}</a>
+        <a class="title" :href="item.link" target="_blank" title="查看快照">{{item.title}}</a>
         <p class="taglist-inline ib">
           <router-link class="tag" v-for="tag in item.tags" :to="`/t/${tag}`" :key="tag">{{tag}}</router-link>
         </p>
@@ -10,13 +10,19 @@
       </div>
       <div v-if="item.logo" class="bm-logo"><img :src="item.logo" alt=""></div>
     </div>
+    <action></action>
   </section>
 </template>
 
 <script>
-  export default {
-    props: ['item'],
-  }
+import action from './action'
+export default {
+  props: ['item'],
+
+  components: {
+    action,
+  },
+}
 </script>
 
 <style lang="stylus">

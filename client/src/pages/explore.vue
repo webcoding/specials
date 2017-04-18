@@ -1,7 +1,7 @@
 <template>
   <div class="guide index-guide">
     <h1>发现 <small>Explore</small></h1>
-    <p>云智能网络乐园——为开发者服务</p>
+    <p>这里有无尽宝藏，等待你去挖掘。</p>
     <pager></pager>
   </div>
 </template>
