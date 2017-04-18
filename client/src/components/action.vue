@@ -4,6 +4,7 @@
       <button type="button" class="like action-btn" aria-label="喜欢推荐">推荐一下<span class="count"></span></button>
       <button type="button" class="hate action-btn" aria-label="讨厌无聊">没有价值<span class="count"></span></button>
     </span>
+    <button class="action-item action-btn">快照</button>
     <button class="action-item action-btn">分享</button>
     <button class="action-item action-btn">收藏</button>
     <!--<button class="action-item">打赏</button>-->
