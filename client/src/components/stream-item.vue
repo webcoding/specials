@@ -10,17 +10,17 @@
       </div>
       <div v-if="item.logo" class="bm-logo"><img :src="item.logo" alt=""></div>
     </div>
-    <action></action>
+    <!--<action></action>-->
   </section>
 </template>
 
 <script>
-import action from './action'
+// import action from './action'
 export default {
   props: ['item'],
 
   components: {
-    action,
+    // action,
   },
 }
 </script>
