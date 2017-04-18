@@ -3,11 +3,12 @@ import Router from 'vue-router'
 // import store from '../store/'
 
 import layout from '../pages/layout'
-import bookmark from '../pages/bookmark'
 import explore from '../pages/explore'
-import user from '../pages/user'
+import bookmark from '../pages/bookmark'
 import tag from '../pages/tag'
 import docs from '../pages/docs'
+import read from '../pages/read'
+import user from '../pages/user'
 import help from '../pages/help'
 import changelog from '../pages/changelog'
 import about from '../pages/about'
@@ -38,6 +39,11 @@ const contentRoutes = [
     path: '/explore',
     name: 'explore',
     component: explore,
+  },
+  {
+    path: '/read',
+    name: 'read',
+    component: read,
   },
   {
     path: '/bookmark',

@@ -1,8 +1,8 @@
 <template>
   <div class="content guide index-guide">
-    <h1>分类聚合 <small>Tags</small></h1>
-    <p>这里使用的分类聚合意义包含 category、classify、tag、tpoic、group、keyword，缩写暂用 t，合理的使用分类聚合能有效归档杂乱的信息，使结构更清晰合理，检索时也更加便捷。</p>
-    <h2>聚合类
+    <h1>分类 <small>Tags</small></h1>
+    <p>本质是分类聚合，其意义包含 category、classify、tag、tpoic、group、keyword，缩写暂用 t。合理的使用分类聚合能有效归档杂乱的信息，使结构更清晰合理，检索时也更加便捷。</p>
+    <h2>分类
       <!--<small><router-link to="tags/all">全部</router-link></small>-->
     </h2>
     <div class="tags-list">
