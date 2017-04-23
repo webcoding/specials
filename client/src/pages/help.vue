@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content help-content">
     <h1>帮助中心 <small></small></h1>
     <p>云智能网络乐园——为开发者服务</p>
     <h3>常见问题</h3>
@@ -53,5 +53,8 @@ export default {
 </script>
 
 <style lang="stylus">
-
+.help-content
+  li:hover
+    background-color rgba(66, 185, 131, 0.2)
+    box-shadow -10px 0 20px 20px rgba(66, 185, 131, 0.2)
 </style>

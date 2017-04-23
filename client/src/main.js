@@ -4,9 +4,18 @@ import Vue from 'vue'
 // import store from './store/'
 import router from './router/'
 import App from './pages/App'
+// import currency from './filters/currency'
 // import '@common/init'
 // import '@common/rem'
 
+// import * as filters from '@common/filters'
+
+// // // register global utility filters.
+// Object.keys(filters).forEach(key => {
+//   Vue.filter(key, filters[key])
+// })
+
+// Vue.filter('currency', currency)
 
 /**
  * 错误统计 https://docs.sentry.io/clients/javascript/integrations/vue/

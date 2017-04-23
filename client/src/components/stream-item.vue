@@ -1,6 +1,7 @@
 <template>
   <section class="stream-item">
     <div class="summary">
+      <!--<viewCount :count="item.views"></viewCount>-->
       <div class="text">
         <a class="title" :href="item.link" target="_blank" title="查看快照">{{item.title}}</a>
         <p class="taglist-inline ib">
@@ -16,11 +17,13 @@
 
 <script>
 // import action from './action'
+import viewCount from './view-count'
 export default {
   props: ['item'],
 
   components: {
     // action,
+    viewCount,
   },
 }
 </script>
@@ -59,6 +62,9 @@ export default {
     justify-content space-between
     overflow auto
     overflow-x hidden
+
+    .text
+      width 100%
 
   .title
     position relative

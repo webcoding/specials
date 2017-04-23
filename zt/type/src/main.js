@@ -6,6 +6,7 @@ import router from './router/'
 import App from './App'
 import '@common/rem'
 import '@common/init'
+import { dealPrice } from './filters'
 
 import * as filters from '@common/filters'
 
@@ -13,6 +14,8 @@ import * as filters from '@common/filters'
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
+
+Vue.fliter('dealPrice', dealPrice)
 
 /**
  * 错误统计 https://docs.sentry.io/clients/javascript/integrations/vue/

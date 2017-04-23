@@ -27,7 +27,7 @@
         "desc": "最前沿的技术问答，最纯粹的技术切磋。让你不知不觉中开拓眼界，提高技能。在巨人的肩膀上，成为一名优秀开发者。",
         "like": 108,
         "hate": 5,
-        "views": 125,
+        "views": 12325,
         "tags": [
           "javascript",
           "FAQ"
@@ -53,9 +53,9 @@
         "link": "http://cn.vuejs.org/v2/guide/",
         "title": "Vue.js",
         "desc": "Vue.js 是一套构建用户界面的渐进式框架。",
-        "like": 108,
+        "like": 1008,
         "hate": 5,
-        "views": 125,
+        "views": 1125,
         "tags": [
           "javascript",
           "FAQ"
