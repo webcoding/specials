@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <svg-icons></svg-icons>
     <div id="mobile-bar">
       <a class="menu-button"></a>
       <a class="logo" href="/"></a>
@@ -15,6 +16,7 @@
 // <v-dialog :is-show="dialog" :msg="tips" @cancel="dialog = false" @sure="sureDialog"></v-dialog>
 // import hub from './store/hub'
 // import vDialog from './components/Dialog'
+import svgIcons from '../components/svg-icons'
 import xHeader from '../components/header'
 
 export default {
@@ -26,6 +28,7 @@ export default {
     }
   },
   components: {
+    svgIcons,
     // Dialog,
     xHeader,
   },

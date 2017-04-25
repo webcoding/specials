@@ -13,6 +13,7 @@ import help from '../pages/help'
 import changelog from '../pages/changelog'
 import about from '../pages/about'
 import support from '../pages/support'
+import svg from '../pages/svg'
 // import index from '../pages/index'
 import search from '../pages/search'
 import page from '../pages/page'
@@ -110,6 +111,11 @@ const router = new Router({
       path: '/support',
       name: 'support',
       component: support,
+    },
+    {
+      path: '/svg',
+      name: 'svg',
+      component: svg,
     },
     { path: '/guide', name: 'guide', component: page },
     { path: '/search', name: 'search', component: search },

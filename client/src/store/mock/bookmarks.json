@@ -21,6 +21,7 @@
       },
       {
         "id": 2,
+        "cover": "https://logo.clearbit.com/segmentfault.com?size=100",
         "logo": "https://static.segmentfault.com/v-58e87c57/global/img/logo-b.svg",
         "link": "http://segmentfault.com/",
         "title": "SegmentFault 程序员问答",

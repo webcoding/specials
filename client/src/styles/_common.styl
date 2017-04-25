@@ -78,11 +78,44 @@ button::-moz-focus-inner
 input::-moz-focus-inner
   border 0
   padding 0
+:root
+  --accentColor #1988e0
+html:not(.mobile)
+  font-size 16px
+svg:not(:root)
+  overflow hidden
+
+.logo-light
+  display inline-block
+  color #FFFFFF
+  background-color gray
+.logo-dark
+  color #46483E
 
 .text-center
   text-align center
 .text-right
   text-align right
+
+.btn
+  display inline-flex
+  color rgba(0,0,0,0.5)
+  font-size 12px
+  flex-shrink 2
+  min-width 0
+  outline none
+  -webkit-appearance none
+  background transparent
+  border 0
+  box-shadow none
+  transition background .1s ease-in-out,color .1s ease-in-out
+  line-height 1rem
+  align-items center
+  cursor pointer
+  user-select: none;
+
+a.btn
+  border none
 
 a.button
   padding 0.75em 2em

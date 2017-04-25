@@ -1,5 +1,5 @@
 <template>
-  <div class="content guide index-guide">
+  <div class="content">
     <h1>支持 DevNode 的开发</h1>
     <p>DevNode——开发者的后花园</p>
     <div class="support">
