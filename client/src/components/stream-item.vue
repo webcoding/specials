@@ -2,7 +2,9 @@
   <section class="stream-item">
     <div class="summary">
       <!--<viewCount :count="item.views"></viewCount>-->
+      <vote></vote>
       <div class="cover-wrap">
+        <a class="addToFavorite"></a>
         <div class="cover-over"></div>
         <template v-if="item.domain">
           <img :src="`https://logo.clearbit.com/${item.domain}?size=100`" alt="item.domain">
@@ -22,18 +24,19 @@
       <!--<div v-if="item.logo" class="bm-logo"><img :src="item.logo" alt=""></div>-->
       <a :href="item.link" tabindex="200" class="permalink superlink" target="_blank"></a>
     </div>
-    <!--<action></action>-->
   </section>
 </template>
 
 <script>
-// import action from './action'
+import vote from './vote'
+import action from './action'
 import viewCount from './view-count'
 export default {
   props: ['item'],
 
   components: {
-    // action,
+    vote,
+    action,
     viewCount,
   },
 }
@@ -67,33 +70,44 @@ export default {
     bottom 0
     top 0
 
+  .cover-wrap,
+  .cover-over,
+  .cover-placeholder
+    width 64px
+    height 64px
+
   .cover-wrap
     flex-shrink 0
     position relative
     margin-right 16px
-    width 64px
-    height 64px
+
+  .cover
+    display inline-block
+    border-radius 1px
+    background-color #fff
+
+  .cover-over
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 1px;
+    // box-shadow: inset 0 0 0 1px rgba(0,0,0,.07);
 
   .cover-placeholder
-    display inline-block
-    width 64px
-    height 64px
-    background-color rgba(66,185,131,0.1)
-
-  .bm-logo
-    margin-left 40px
-    // width 80px
-    height 32px
-    display inline-block
-
-    img
-      width auto
-      height 100%
+    border-radius 2px
+    background-color rgba(66, 185, 131, 0.2)
+    box-shadow inset 0 0 0 1px rgba(0, 0, 0, .1),
+               inset 0 -10px 20px hsla(0,0%,100%,.1)
 
   .x-vote
-    display none
+    // display none
     position absolute
-    left -56px
+    opacity 0
+
+    &:hover
+      opacity 1
+    // left -56px
 
   &:hover .x-vote
     // display inline-block

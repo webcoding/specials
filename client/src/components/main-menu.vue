@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <!--<li><router-link to="/explore" class="nav-link">探索</router-link></li>-->
+    <li><router-link to="/explore" class="nav-link">探索</router-link></li>
     <li><router-link to="/bookmarks" class="nav-link">收藏</router-link></li>
     <!--<li><router-link to="/read" class="nav-link">阅读</router-link></li>-->
     <!--<li><router-link to="/docs" class="nav-link">文档镜像</router-link></li>-->
