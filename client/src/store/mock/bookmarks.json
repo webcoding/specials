@@ -8,6 +8,7 @@
       {
         "id": 1,
         "logo": "",
+        "domain": "stackoverflow.com",
         "link": "http://stackoverflow.com/",
         "title": "Stack Overflow",
         "desc": "Q & A for professional and enthusiast programmers",
@@ -21,7 +22,7 @@
       },
       {
         "id": 2,
-        "cover": "https://logo.clearbit.com/segmentfault.com?size=100",
+        "domain": "segmentfault.com",
         "logo": "https://static.segmentfault.com/v-58e87c57/global/img/logo-b.svg",
         "link": "http://segmentfault.com/",
         "title": "SegmentFault 程序员问答",
@@ -36,8 +37,9 @@
       },
       {
         "id": 3,
+        "domain": "",
         "logo": "",
-        "link": "http://stackoverflow.com/",
+        "link": "http://amazeui.org/",
         "title": "Amaze UI 前端框架",
         "desc": "Amaze UI 是一个移动优先的跨屏前端框架。暂时不使用这个框架，现在使用 vuejs 生态体系，相对来说更先进。",
         "like": 108,
@@ -50,6 +52,7 @@
       },
       {
         "id": 4,
+        "domain": "vuejs.org",
         "logo": "http://cn.vuejs.org/images/logo.png",
         "link": "http://cn.vuejs.org/v2/guide/",
         "title": "Vue.js",

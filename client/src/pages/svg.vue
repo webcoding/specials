@@ -46,10 +46,7 @@
       <x-svg type="select_all">选择所有</x-svg>
       <x-svg type="upload">上传照片</x-svg>
       <x-svg type="upload_active"></x-svg>
-      <x-svg type="back"></x-svg>
       <x-svg type="close"></x-svg>
-      <x-svg type="fullscreen_active"></x-svg>
-      <x-svg type="info"></x-svg>
       <x-svg type="fonts"></x-svg>
       <x-svg type="search"></x-svg>
       <x-svg type="share"></x-svg>
@@ -115,6 +112,15 @@
       <x-svg type="sort_rating_active"></x-svg>
       <x-svg type="sort_domain">网站</x-svg>
       <x-svg type="sort_domain_active"></x-svg>
+      <h4>编辑</h4>
+      <x-svg type="back"></x-svg>
+      <x-svg type="fullscreen_active"></x-svg>
+      <x-svg type="article"></x-svg>
+      <x-svg type="article_active"></x-svg>
+      <x-svg type="web"></x-svg>
+      <x-svg type="web_active"></x-svg>
+      <x-svg type="info"></x-svg>
+      <x-svg type="info_active"></x-svg>
 
     </div>
     <p>跟设置的字体颜色一致</p>

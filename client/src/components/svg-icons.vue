@@ -196,9 +196,6 @@
       <symbol viewBox="0 0 20 20" id="fullscreen_active">
         <path fill-rule="evenodd" d="M3 16.5v-6a.5.5 0 0 1 1 0v4.793c-.252 1.646-.195 1.61-.146 1.56L4.707 16H4v-.707l4.146-4.147a.5.5 0 1 1 .708.708L4.707 16zm.085.28A.502.502 0 0 0 3.5 17h6a.5.5 0 0 0 0-1H4.707zM15 5.707V10.5a.5.5 0 0 0 1 0v-6a.498.498 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793l-4.147 4.146a.5.5 0 1 0 .708.708L15 5.707zM0 1.995C0 1.445.45 1 .995 1h17.01c.55 0 .995.45.995.995v17.01c0 .55-.45.995-.995.995H.995A.998.998 0 0 1 0 19.005V1.995z"></path>
       </symbol>
-      <symbol viewBox="0 0 20 20" id="info">
-        <path d="M11 13V9.99A1 1 0 0 0 10 9H9v5.01a1 1 0 0 0 1 .99h1v-1h1v-1h-1zm-1 5a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0-1a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM8 9h1v1H8V9zm1-4h2v2H9V5z" fill-rule="evenodd"></path>
-      </symbol>
       <symbol viewBox="0 0 20 20" id="open">
         <path d="M17.993 7V2.5c0-.277-.222-.5-.5-.5h-4.5c-.277 0-.5.222-.5.5s.223.5.5.5h3.246l-8.392 8.392a.5.5 0 1 0 .707.707l8.44-8.44V7a.5.5 0 1 0 1 0zM14 16l-9.033.017a.984.984 0 0 1-.983-.984L4 6c0-.543.457-1 1-1h4.5V4H5C3.913 4 3 5.11 3 6.197v8.836C3 16.119 3.881 17 4.967 17h8.836C14.889 17 16 16.086 16 15v-4.5h-1V15c0 .543-.457 1-1 1z" fill-rule="evenodd"></path>
       </symbol>
@@ -507,6 +504,29 @@
           <path d="M9 5.5v4a.5.5 0 0 0 1 0v-4a.5.5 0 0 0-1 0z"></path>
           <path d="M9.146 9.854l2.536 2.535a.5.5 0 1 0 .707-.707L9.854 9.146a.5.5 0 1 0-.708.708z"></path>
         </g>
+      </symbol>
+      <symbol viewBox="0 0 20 20" id="article">
+        <g fill-rule="evenodd">
+          <path d="M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-1a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm-3.5-5H14v-1H6v1h.5zm0 2H14v-1H6v1h.5zm5.833-6H14V7h-2v1h.333zm0 2H14V9h-2v1h.333z"></path>
+          <path d="M7.185 9l-.543 1H5.5l3-5.5 3 5.5h-1.145l-.542-1H7.185zm.543-1L8.5 6.58 9.27 8H7.728z"></path>
+        </g>
+      </symbol>
+      <symbol viewBox="0 0 20 20" id="article_active">
+        <path d="M7.185 9l-.543 1H5.5l3-5.5 3 5.5h-1.145l-.542-1H7.185zm.543-1L8.5 6.58 9.27 8H7.728zM10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm2.333-8H14V9h-2v1h.333zm0-2H14V7h-2v1h.333zM6.5 14H14v-1H6v1h.5zm0-2H14v-1H6v1h.5z" fill-rule="evenodd"></path>
+      </symbol>
+      <symbol viewBox="0 0 20 20" id="web">
+        <g fill-rule="evenodd">
+          <path opacity=".15" d="M13 8h4v8h-4z"></path><path d="M2 4.007C2 3.45 2.445 3 3 3h14c.552 0 1 .45 1 1.007v11.986C18 16.55 17.555 17 17 17H3c-.552 0-1-.45-1-1.007V4.007zM3 4h14v12H3V4zm0 3h14v1H3V7zm9 1h1v8h-1V8zM4 5h1v1H4V5zm2 0h1v1H6V5zm2 0h1v1H8V5z"></path>
+        </g>
+      </symbol>
+      <symbol viewBox="0 0 20 20" id="web_active">
+        <path d="M2 4.007C2 3.45 2.445 3 3 3h14c.552 0 1 .45 1 1.007v11.986C18 16.55 17.555 17 17 17H3c-.552 0-1-.45-1-1.007V4.007zM2 8h16v1H2V8zm10 1h1v8h-1V9zM4 5h1v1H4V5zm2 0h1v1H6V5zm2 0h1v1H8V5z" fill-rule="evenodd"></path>
+      </symbol>
+      <symbol viewBox="0 0 20 20" id="info">
+        <path d="M11 13V9.99A1 1 0 0 0 10 9H9v5.01a1 1 0 0 0 1 .99h1v-1h1v-1h-1zm-1 5a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0-1a7 7 0 1 1 0-14 7 7 0 0 1 0 14zM8 9h1v1H8V9zm1-4h2v2H9V5z" fill-rule="evenodd"></path>
+      </symbol>
+      <symbol viewBox="0 0 20 20" id="info_active">
+        <path d="M11 13h1v1h-1v1h-1a1 1 0 0 1-1-.99V10H8V9h2a1 1 0 0 1 1 .99V13zm-1 5a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM9 5h2v2H9V5z" fill-rule="evenodd"></path>
       </symbol>
 
     </defs>

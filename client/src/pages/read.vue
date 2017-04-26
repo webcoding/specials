@@ -1,5 +1,5 @@
 <template>
-  <div class="guide index-guide">
+  <div class="content">
     <h1>书山有路勤为径，学海无涯苦作舟 <small></small></h1>
     <blockquote>
       <cite>唐——韩愈《古今贤文·劝学篇》</cite>
