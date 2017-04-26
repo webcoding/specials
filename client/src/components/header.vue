@@ -1,9 +1,17 @@
 <template>
   <div id="header">
-    <a id="logo" href="/" title="开发者收藏">
-      <x-svg type="devnode_logo" fill="#46483E" width="166" height="40"></x-svg>
-      <span></span>
-    </a>
+    <div id="header-top">
+      <div id="menu">
+        <x-svg type="menu"></x-svg>
+      </div>
+      <a id="logo" href="/" title="开发者收藏">
+        <x-svg class="logo-dark" type="devnode_logo"></x-svg>
+        <span class="text">DevNode</span>
+      </a>
+      <form id="search-form">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+      </form>
+    </div>
     <main-menu id="nav"></main-menu>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <svg :style="wrapStyles" :title="type">
+  <svg class="svg-icon" :style="wrapStyles" :title="type">
     <use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="`#${type}`" :style="styles"></use>
   </svg>
 </template>
@@ -17,8 +17,8 @@ export default {
     // 目前单位暂时用的 px
     wrapStyles() {
       return [
-        this.width ? { width: this.width } : { width: 20 },
-        this.height ? { height: this.height } : { height: 20 },
+        this.width ? { width: this.width } : { },
+        this.height ? { height: this.height } : { },
       ]
     },
     styles () {
@@ -29,3 +29,9 @@ export default {
   },
 }
 </script>
+
+<style lang="stylus">
+.svg-icon
+  width 20px
+  height 20px
+</style>

@@ -1,10 +1,15 @@
 <template>
   <ul>
+    <li>
+      <form id="search-form">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+      </form>
+    </li>
     <!--<li><router-link to="/explore" class="nav-link">探索</router-link></li>-->
     <li><router-link to="/bookmarks" class="nav-link">收藏</router-link></li>
     <!--<li><router-link to="/read" class="nav-link">阅读</router-link></li>-->
     <!--<li><router-link to="/docs" class="nav-link">文档镜像</router-link></li>-->
-    <li><router-link to="/tags" class="nav-link">标签</router-link></li>
+    <!--<li><router-link to="/tags" class="nav-link">标签</router-link></li>-->
     <!--<li><router-link to="/features" class="nav-link">特性</router-link></li>-->
     <li class="nav-dropdown-container">
       <span class="nav-link">关于</span><span class="arrow"></span>

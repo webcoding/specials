@@ -1,11 +1,5 @@
 <template>
   <div id="app">
-    <svg-icons></svg-icons>
-    <!--<div id="mobile-bar">
-      <a class="menu-button"></a>
-      <a class="logo" href="/"></a>
-    </div>-->
-    <x-Header></x-Header>
     <transition>
       <router-view class="page"></router-view>
     </transition>
@@ -16,8 +10,7 @@
 // <v-dialog :is-show="dialog" :msg="tips" @cancel="dialog = false" @sure="sureDialog"></v-dialog>
 // import hub from './store/hub'
 // import vDialog from './components/Dialog'
-import svgIcons from '../components/svg-icons'
-import xHeader from '../components/header'
+// import xHeader from '../components/header'
 
 export default {
   data() {
@@ -28,9 +21,8 @@ export default {
     }
   },
   components: {
-    svgIcons,
     // Dialog,
-    xHeader,
+    // xHeader,
   },
   created() {
     // var self = this
@@ -114,7 +106,6 @@ a.tag
   font-size 13px
   line-height 1.2
   background-color rgba(66, 185, 131, 0.1)
-  cursor pointer
 
   &:hover
     background-color rgba(66, 185, 131, 0.2)

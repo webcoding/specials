@@ -84,9 +84,9 @@
     // anchors, for easier text highlighting.
     margin 1.2em 0 -1.2em
     padding-bottom 1.2em
+    position relative
     z-index: 1
   ul, ol
-    position relative
     padding-left 1.5em
 
   // dl
@@ -130,7 +130,6 @@
       code
         background-color #efefef
   p.tip
-    position relative
     padding 12px 24px 12px 30px
     margin 2em 0
     border-left 4px solid $red
@@ -197,27 +196,15 @@
     -webkit-text-size-adjust none
     font-size 14px
   #header
-    // display none
-    padding 0 16px 0 48px
-    box-shadow 0 0 2px rgba(0,0,0,.25)
-
-  #menu
-    display block
+    display none
   #logo
-    .logo-dark
-      display none
-      width 100px
-      height 32px
-    .text
-      display block
-  // #logo
-  //   display none
+    display none
   .nav-link
     padding-bottom 1px
     &:hover, &.current
       border-bottom 2px solid $green
-  // #mobile-bar
-  //   display block
+  #mobile-bar
+    display block
   #main
     padding 2em 1.4em 0
   .highlight pre

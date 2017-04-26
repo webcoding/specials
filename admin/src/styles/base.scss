@@ -1,0 +1,31 @@
+
+@import './var.scss';
+
+body {
+  // 这里有问题，被 基础的 base 公共样式 覆盖了，这加载顺序真是让人郁闷啊
+  min-width: 360px;
+}
+
+a {
+  color: $link-color;
+}
+
+dfn.price,
+del.price {
+
+  &::before{
+    display: none;
+    content: '';
+  }
+}
+
+img.full {
+  width: 100%;
+}
+
+.fullbg {
+  background-position: center;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
