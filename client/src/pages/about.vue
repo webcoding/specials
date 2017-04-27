@@ -1,5 +1,5 @@
 <template>
-  <div class="content guide index-guide">
+  <div class="content">
     <h1>贡献者</h1>
     <p>感谢 vue 的开发，没有 vue 生态圈，devnode 就将不完美</p>
     <p><router-link to="/about">devnode.cn/bookmarks 贡献者</router-link></p>
@@ -86,7 +86,7 @@
         </tr>
         <tr>
           <td>4</td>
-          <td>user</td>
+          <td>users</td>
           <td>用户系统</td>
           <td><a href="https://github.com/loonghere" target="_blank" rel="external">loonghere</a></td>
         </tr>

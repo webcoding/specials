@@ -17,6 +17,7 @@ import svg from '../pages/svg'
 // import index from '../pages/index'
 import search from '../pages/search'
 import page from '../pages/page'
+import updateBookmark from '../components/bookmark'
 // import score from '../pages/score'
 // import profile from '../pages/profile'
 
@@ -84,7 +85,8 @@ const contentRoutes = [
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+  // mode: 'history',
+  mode: 'hash',
   base: '',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
@@ -100,6 +102,11 @@ const router = new Router({
         name: 'bookmarks',
         component: bookmark,
       }].concat(contentRoutes),
+    },
+    {
+      path: '/bookmark/add',
+      name: 'bookmark-new',
+      component: updateBookmark,
     },
     {
       path: '/tag',

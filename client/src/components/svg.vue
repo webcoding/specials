@@ -5,12 +5,20 @@
 </template>
 
 <script>
+// import { preloader } from './svg-icons'
+
 export default {
+  data() {
+    return {
+      // preloader,
+    }
+  },
   props: [
     'type',
     'width',
     'height',
     'fill',
+    'less',
   ],
 
   computed: {

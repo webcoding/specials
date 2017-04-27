@@ -12,6 +12,8 @@
         <li><router-link to="changelog" class="nav-link">Changelog</router-link></li>
         <li><router-link to="help" class="nav-link">帮助中心</router-link></li>
         <li><router-link to="about" class="nav-link">工作</router-link></li>
+        <li><a :href="addBookmark" class="nav-link">快捷收藏</a></li>
+        <li><a :href="addNote" class="nav-link">云笔记</a></li>
       </ul>
     </li>
     <!--<li class="nav-dropdown-container ecosystem">
@@ -55,7 +57,15 @@
 </template>
 
 <script>
+import quicks from '../config/quick'
+
 export default {
+  data() {
+    return {
+      addBookmark: quicks.bookmarks,
+      addNote: quicks.notemarks,
+    }
+  },
   components: {
   },
 }

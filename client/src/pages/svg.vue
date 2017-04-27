@@ -12,6 +12,11 @@
     </div>
     <div class="panel hover">
       <h2>Icons</h2>
+      <span class="preloader">
+        <svg viewBox="0 0 40 40" class="preloaderCircular">
+          <circle class="preloaderPath" cx="20" cy="20" fill="none" r="12"></circle>
+        </svg>
+      </span>
       <x-svg type="menu"></x-svg>
       <x-svg type="add"></x-svg>
       <x-svg type="arrow_alt">层级</x-svg>
@@ -148,4 +153,105 @@ export default {
   // .tabs .item.active
   //   color #1988e0
   //   color var(--accentColor, #1988e0)
+
+.preloader {
+  position: relative;
+  margin: 0 auto;
+  width: 40px;
+  display: inline-block;
+  border-radius: 50%
+}
+
+.preloader:before {
+  content: '';
+  display: block;
+  padding-top: 100%
+}
+
+.preloader .preloaderCircular {
+  animation: rotate 1s linear infinite;
+  height: 100%;
+  transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.preloader .preloaderPath {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  animation: preloaderDash 1.5s ease-in-out infinite;
+  stroke-dasharray: 89, 200;
+  stroke-dashoffset: -35px;
+  stroke-linecap: square;
+  stroke-width: 2px;
+  stroke-miterlimit: 10px;
+  stroke: #1988e0;
+  stroke: var(--accentColor,#1988e0);
+  transition: stroke .2s ease-in-out;
+}
+
+.preloader.size-small {
+  width: 24px
+}
+
+.preloader.size-small .preloaderPath {
+  stroke-width: 3px
+}
+
+.preloader.size-medium {
+  width: 30px
+}
+
+.preloader.size-big {
+  width: 80px
+}
+
+.preloader.size-big .preloaderPath {
+  stroke-width: 1px
+}
+
+.preloaderMax {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn)
+  }
+}
+
+@keyframes preloaderAppear {
+  0% {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes preloaderDash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0
+  }
+
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35px
+  }
+
+  to {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124px
+  }
+}
 </style>

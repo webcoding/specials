@@ -537,10 +537,12 @@
 export default {
 
 }
+// export const preloader = '<svg viewBox="0 0 40 40" id="preloader"><circle class="preloaderPath" cx="327" cy="96" r="12"></circle></svg>'
 </script>
 
 <style lang="stylus">
 .svg-icon
   svg
     fill currentColor
+
 </style>

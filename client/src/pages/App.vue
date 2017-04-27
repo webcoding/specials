@@ -5,7 +5,7 @@
       <a class="menu-button"></a>
       <a class="logo" href="/"></a>
     </div>-->
-    <x-Header></x-Header>
+    <x-header></x-header>
     <transition>
       <router-view class="page"></router-view>
     </transition>
@@ -18,6 +18,7 @@
 // import vDialog from './components/Dialog'
 import svgIcons from '../components/svg-icons'
 import xHeader from '../components/header'
+// import xFooter from '../components/footer'
 
 export default {
   data() {
@@ -29,8 +30,8 @@ export default {
   },
   components: {
     svgIcons,
-    // Dialog,
     xHeader,
+    // Dialog,
   },
   created() {
     // var self = this

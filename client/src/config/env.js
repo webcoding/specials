@@ -7,20 +7,23 @@
  *
  */
 let baseUrl
+let apiBaseUrl
 let routerMode
 const imgBaseUrl = 'https://fuss10.elemecdn.com'
 
 // debugger
 if (process.env.NODE_ENV === 'development') {
-  // baseUrl = ''
-  baseUrl = 'http://operating-activities.putao.com'
+  baseUrl = 'http://127.0.0.1:8080'
+  apiBaseUrl = 'http://api.cloudai.net'
   routerMode = 'hash'
 } else {
-  baseUrl = 'http://operating-activities.putao.com'
+  baseUrl = 'http://bookmarks.cloudai.net'
+  apiBaseUrl = 'http://api.cloudai.net'
   routerMode = 'hash'
 }
 
-export {
+export default {
+  apiBaseUrl,
   baseUrl,
   routerMode,
   imgBaseUrl,
