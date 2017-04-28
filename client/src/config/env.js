@@ -9,7 +9,7 @@
 let baseUrl
 let apiBaseUrl
 let routerMode
-const imgBaseUrl = 'https://fuss10.elemecdn.com'
+const imgBaseUrl = 'https://static.cloudai.net'
 
 // debugger
 if (process.env.NODE_ENV === 'development') {
