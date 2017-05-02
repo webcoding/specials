@@ -1,5 +1,6 @@
 import env from './env'
 
+// 摘要
 const bookmarksUrl = `void function(e, t, n, r, c, i, s, o, u) {
     n = location.href,
     r = t.title,
@@ -11,7 +12,7 @@ const bookmarksUrl = `void function(e, t, n, r, c, i, s, o, u) {
         u && u.name.toLowerCase() === "description" && (i = u.content)
     }
     s = encodeURIComponent;
-    var f = "${env.baseUrl}/#/bookmark/add?title=" + s(r) + "&url=" + s(n) + "&summary=" + s(i) + "#content=" + s(c);
+    var f = "${env.baseUrl}/#/bookmark/add?title=" + s(r) + "&url=" + s(n) + "&description=" + s(i) + "#content=" + s(c);
     e.open(f, "_blank", "scrollbars=no,width=800,height=500,left=75,top=20,status=no,resizable=yes")
 } (window, document);`
 

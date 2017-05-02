@@ -2,27 +2,25 @@
   <section class="stream-item">
     <div class="summary">
       <!--<viewCount :count="item.views"></viewCount>-->
-      <vote></vote>
+      <vote :count="item.like"></vote>
       <div class="cover-wrap">
         <a class="addToFavorite"></a>
         <div class="cover-over"></div>
         <template v-if="item.domain">
-          <img :src="`https://logo.clearbit.com/${item.domain}?size=100`" alt="item.domain">
-        </template>
-        <template v-else>
           <span class="cover cover-placeholder"></span>
+          <img class="cover" :src="`https://logo.clearbit.com/${item.domain}?size=100`" alt="item.domain" @error="errorImg">
         </template>
       </div>
       <div class="about">
-        <a class="title" :href="item.link" target="_blank">{{item.title}}</a>
+        <a class="title" :href="item.url" target="_blank">{{item.title}}</a>
         <p class="taglist-inline">
           <!--<span>标签：</span>-->
           <router-link class="tag" v-for="tag in item.tags" :to="`/t/${tag}`" :key="tag">{{tag}}</router-link>
         </p>
-        <p class="desc">{{item.desc}}</p>
+        <p class="desc">{{item.description}}</p>
       </div>
       <!--<div v-if="item.logo" class="bm-logo"><img :src="item.logo" alt=""></div>-->
-      <a :href="item.link" tabindex="200" class="permalink superlink" target="_blank"></a>
+      <a :href="item.url" tabindex="200" class="permalink superlink" target="_blank"></a>
     </div>
   </section>
 </template>
@@ -31,6 +29,8 @@
 import vote from './vote'
 import action from './action'
 import viewCount from './view-count'
+// var errDefaultUrl
+// const coverPlaceholder = `<span class="cover cover-placeholder"></span>`
 export default {
   props: ['item'],
 
@@ -38,6 +38,19 @@ export default {
     vote,
     action,
     viewCount,
+  },
+
+  mounted () {
+    // this.$refs.img.onerror = () => {
+    //   console.log(this)
+    //   console.log(coverPlaceholder)
+    // }
+  },
+
+  methods: {
+    errorImg(e) {
+      e.target.remove()
+    },
   },
 }
 </script>
@@ -82,6 +95,7 @@ export default {
     margin-right 16px
 
   .cover
+    position absolute
     display inline-block
     border-radius 1px
     background-color #fff

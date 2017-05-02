@@ -1,7 +1,7 @@
 <template>
   <div class="content help-content">
     <h1>帮助中心 <small></small></h1>
-    <p>云智能网络乐园——为开发者服务</p>
+    <p>开发者收藏——基于云智能为开发者服务</p>
     <h3>常见问题</h3>
     <ol>
       <li v-for="item in helpList">
@@ -9,7 +9,7 @@
         <p>{{item.answer}}</p>
       </li>
     </ol>
-    <ul>
+    <!--<ul>
       <li><a href="###">与浏览器的“收藏夹”有什么区别？</a></li>
       <li><a href="###">如何共享收藏资源？</a></li>
       <li><a href="###">为什么添加收藏没有成功？</a></li>
@@ -32,22 +32,43 @@
       <li><a href="###">通过鼠标右键菜单快速收藏</a></li>
       <li><a href="###">通过浏览器快捷链接进行收藏</a></li>
       <li><a href="###">通过网页嵌入链接快速收藏</a></li>
-    </ul>
+    </ul>-->
     <!--<pager></pager>-->
   </div>
 </template>
 
 <script>
-import { data as helpList } from '../store/mock/help'
+// import { data as helpList } from '../store/mock/help'
 import pager from '../components/pager'
 export default {
   data() {
     return {
-      helpList: helpList.list,
+      helpList: [],
     }
   },
   components: {
     pager,
+  },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      // debugger
+      this.fetchHelps()
+    },
+    async fetchHelps() {
+      const res = await this.$ajax.getHelps({})
+      console.log(res)
+      if (res.errno === 0) {
+        const data = res.data
+
+        // this.timestamp = res.timestamp
+        this.helpList = data.list
+      } else {
+        console.log(res.message)
+      }
+    },
   },
 }
 </script>
