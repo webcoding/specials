@@ -2,7 +2,7 @@
   <section class="stream-item">
     <div class="summary">
       <!--<viewCount :count="item.views"></viewCount>-->
-      <vote></vote>
+      <vote :count="item.like"></vote>
       <div class="cover-wrap">
         <a class="addToFavorite"></a>
         <div class="cover-over"></div>
@@ -14,15 +14,15 @@
         </template>
       </div>
       <div class="about">
-        <a class="title" :href="item.link" target="_blank">{{item.title}}</a>
+        <a class="title" :href="item.url" target="_blank">{{item.title}}</a>
         <p class="taglist-inline">
           <!--<span>标签：</span>-->
           <router-link class="tag" v-for="tag in item.tags" :to="`/t/${tag}`" :key="tag">{{tag}}</router-link>
         </p>
-        <p class="desc">{{item.desc}}</p>
+        <p class="desc">{{item.description}}</p>
       </div>
       <!--<div v-if="item.logo" class="bm-logo"><img :src="item.logo" alt=""></div>-->
-      <a :href="item.link" tabindex="200" class="permalink superlink" target="_blank"></a>
+      <a :href="item.url" tabindex="200" class="permalink superlink" target="_blank"></a>
     </div>
   </section>
 </template>

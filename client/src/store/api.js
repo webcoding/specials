@@ -71,7 +71,6 @@ ajax.interceptors.request.use((config) => {
 // 添加响应拦截器
 ajax.interceptors.response.use((response) => {
   // 对响应数据做些事
-  debugger
   return checkStatus(response)
 }, function (error) {
   // 请求错误时做些事
@@ -104,7 +103,7 @@ if (process.env.NODE_ENV !== 'development') {
   console.log('开发环境使用 fake 数据')
 
   // 在实例创建之后改变默认值
-  ajax.defaults.baseURL = `http://api.cloudai.net${proxyPath}/bookmark`
+  ajax.defaults.baseURL = `http://api.cloudai.net/bookmark`
   ajax.defaults.headers.common['Authorization'] = AUTH_TOKEN
 
   getBookmarks = () => setPromise(mock.bookmarks)
