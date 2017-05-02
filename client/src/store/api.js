@@ -100,11 +100,11 @@ var getBookmarksWithTag
 var addBookmark
 var addTag
 var getHelps
-if (process.env.NODE_ENV !== 'development') {
+if (process.env.NODE_ENV === 'development') {
   console.log('开发环境使用 fake 数据')
 
   // 在实例创建之后改变默认值
-  ajax.defaults.baseURL = `http://api.cloudai.net/bookmark`
+  ajax.defaults.baseURL = `http://localhost:8080${proxyPath}/bookmark`
   ajax.defaults.headers.common['Authorization'] = AUTH_TOKEN
 
   getBookmarks = () => setPromise(mock.bookmarks)
@@ -112,7 +112,8 @@ if (process.env.NODE_ENV !== 'development') {
 } else {
   console.log('编译环境使用真实数据')
   // 在实例创建之后改变默认值
-  ajax.defaults.baseURL = `http://localhost:8080${proxyPath}/bookmark`
+  // ajax.defaults.baseURL = `http://localhost:8080${proxyPath}/bookmark`
+  ajax.defaults.baseURL = `//api.cloudai.net/bookmark`
 
   getBookmarks = function (params) {
     return ajax.get('/index', params)

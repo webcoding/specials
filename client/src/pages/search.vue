@@ -77,7 +77,7 @@ export default {
     handleClick(e) {
       console.log(e)
       e.preventDefault()
-      debugger
+      // debugger
       // 这里设置 to，以/开头了，这是有问题的
       return device.isHsq ? this.jumpApp('hsq://detail?sid=xxx') : this.$router.push(e.currentTarget.getAttribute('href'))
     },

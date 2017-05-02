@@ -35,8 +35,8 @@ var qnConfig = {
     prefix: '',
     ak: curASKey.ak,
     sk: curASKey.sk,
-    bucket: 'xxx', // your bucket name
-    domain: 'https://img.xxx.com/',  // //xxxx.xxx.xx.glb.clouddn.com
+    bucket: 'static-cloudai-net', // your bucket name
+    domain: 'https://static.cloudai.net/',  // //xxxx.xxx.xx.glb.clouddn.com
     path: '', // 路径: [hash] 或 zt/lie
   },
 }
