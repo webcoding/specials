@@ -4,6 +4,7 @@ import Vue from 'vue'
 // import store from './store/'
 import router from './router/'
 import App from './pages/App'
+import * as ajax from './store/api'
 // import currency from './filters/currency'
 // import '@common/init'
 // import '@common/rem'
@@ -21,6 +22,8 @@ import App from './pages/App'
  */
 import Raven from 'raven-js'
 import RavenVue from 'raven-js/plugins/vue'
+
+Vue.prototype.$ajax = ajax
 
 const debug = false
 

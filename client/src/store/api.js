@@ -1,8 +1,12 @@
 
 import axios from 'axios'
 // import fetchApi from '@common/services/fetch-api'
-import topicskusinfo from './mock/topicskusinfo'
-import topicskulist from './mock/topicskulist'
+import mock from './mock'
+
+// const apiPath = '/bookmark'
+// var buildUrl = function (url) {
+//   return apiPath + url
+// }
 
 // 添加请求拦截器
 axios.interceptors.request.use((config) => {
@@ -46,63 +50,94 @@ const setPromise = data => {
 //   },
 // }
 
-var ajax
+// 创建一个实例，并进行默认设置
+var ajax = axios.create({
+  baseURL: 'http://api.cloudai.net/bookmark',
+  timeout: 1000,
+  withCredentials: true,
+  headers: {
+    'X-Custom-Header': 'foobar',
+  },
+})
+
+const AUTH_TOKEN = 'sdfjsdlfjqweirjq'
+
+// ajax.fetch = function ajaxFetch(url, params) {
+//   const method = params.method || 'get'
+//   switch (method) {
+//     case 'get':
+//     case 'post':
+//     case 'delete':
+//     case 'put':
+//     case 'patch':
+//       delete params.method
+//       return ajax[method](arguments)
+//   }
+// }
+
 // 编译环境使用真实数据
-var getTopicInfo
-var getTopicList
+var getBookmarks
+var getTagsList
+var getBookmarksWithTag
+var addBookmark
+var addTag
+var getHelps
 if (process.env.NODE_ENV !== 'development') {
   console.log('开发环境使用 fake 数据')
 
-  ajax = axios.create({
-    baseURL: 'http://api.cloudai.net/bookmark',
-    timeout: 1000,
-    headers: {
-      'X-Custom-Header': 'foobar',
-    },
-  })
+  // 在实例创建之后改变默认值
+  ajax.defaults.baseURL = 'localhost'
+  ajax.defaults.headers.common['Authorization'] = AUTH_TOKEN
 
-  getTopicInfo = () => setPromise(topicskusinfo)
-  getTopicList = () => setPromise(topicskulist)
+  getBookmarks = () => setPromise(mock.bookmarks)
+  getTagsList = () => setPromise(mock.tags)
 } else {
   console.log('编译环境使用真实数据')
-  ajax = axios.create({
-    baseURL: 'http://api.cloudai.net/bookmark',
-    timeout: 1000,
-    withCredentials: true,
-    headers: {
-      'X-Custom-Header': 'foobar',
-    },
-  })
+  // 在实例创建之后改变默认值
+  // ajax.defaults.baseURL = ''
 
-  getTopicInfo = function (params) {
-    return ajax.get('/product/topicskusinfo', params)
+  getBookmarks = function (params) {
+    return ajax.get('/index', params)
   }
-  getTopicList = function (params) {
-    return ajax.get('/product/topicskulist', params)
+  getTagsList = function (params) {
+    return ajax.get('/tag/index', params)
   }
-  var getAboutMe = function (params) {
-    return ajax.get('me')
+  getBookmarksWithTag = function (tagId) {
+    return ajax.get('/index', { tag: tagId })
   }
-  var getPost = function (id) {
-    return ajax.get(`articles/${id}`)
+  addBookmark = function (params) {
+    return ajax.post('/index/create', params)
   }
-  var getPostList = function (params) {
-    return ajax.get('articles', params)
+  addTag = function (id) {
+    return ajax.post(`/tag/create`)
   }
-  var getPostListWithTag = function (tagId) {
-    return ajax.get('articles', { tag: tagId })
-  }
-  var getAllTags = function (params) {
-    return ajax.get('tags')
-  }
+  // getHelps = function (id) {
+  //   return ajax.post(`/help`)
+  // }
+  getHelps = () => setPromise(mock.helps)
+  // var getAboutMe = function (params) {
+  //   return ajax.get('me')
+  // }
+  // var getPost = function (id) {
+  //   return ajax.get(`articles/${id}`)
+  // }
+  // var getPostList = function (params) {
+  //   return ajax.get('articles', params)
+  // }
+  // var getAllTags = function (params) {
+  //   return ajax.get('tags')
+  // }
 }
 
 export {
-  getPost,
-  getAboutMe,
-  getPostList,
-  getPostListWithTag,
-  getAllTags,
-  getTopicInfo,
-  getTopicList,
+  getBookmarks,
+  getTagsList,
+  getBookmarksWithTag,
+  addBookmark,
+  addTag,
+  getHelps,
+  // getPostListWithTag,
+  // getAllTags,
+  // getTopicInfo,
+  // getTopicList,
 }
