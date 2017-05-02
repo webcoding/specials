@@ -10,6 +10,7 @@ import mock from './mock'
 function checkStatus({ status, statusText, data }) {
   if (status >= 200 && status < 300) {
     // 请求成功
+    console.log(data)
     return data
   } else {
     const error = new Error(statusText)
@@ -123,7 +124,19 @@ if (process.env.NODE_ENV !== 'development') {
     return ajax.get('/index', { tag: tagId })
   }
   addBookmark = function (params) {
-    return ajax.post('/index/create', params)
+    return ajax.post('/index/create', params, {
+      transformRequest: [function (data) {
+        // Do whatever you want to transform the data
+        let ret = ''
+        for (const it in data) {
+          ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+        }
+        return ret
+      }],
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
   }
   addTag = function (id) {
     return ajax.post(`/tag/create`)

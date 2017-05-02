@@ -5,19 +5,19 @@
         <h2>添加到收藏夹</h2>
         <label class="block">
           <span class="title">标题</span>
-          <input type="text" class="input-text" placeholder="标题" :value="query.title">
+          <input v-model.trim="bookmark.title" type="text" class="input-text" placeholder="标题">
         </label>
         <label class="block">
           <span class="title">链接</span>
-          <input type="text" class="input-text" placeholder="链接" :value="query.url">
+          <input v-model.trim="bookmark.url" type="text" class="input-text" placeholder="链接">
         </label>
         <label class="block">
           <span class="title">摘要</span>
-          <textarea type="text" class="input-text input-area" placeholder="摘要">{{query.summary}}</textarea>
+          <textarea v-model.trim="bookmark.description" type="text" class="input-text input-area" placeholder="摘要summary"></textarea>
         </label>
         <label class="block">
           <span class="title">标签</span>
-          <input type="text" class="input-text" placeholder="多个用“|”隔开">
+          <input v-model.trim="bookmark.tags" type="text" class="input-text" placeholder="多个用英文逗号隔开">
         </label>
         <label class="block">
           <span class="title"></span>
@@ -32,28 +32,41 @@
 export default {
   data() {
     return {
-      query: {},
-      form: {},
+      bookmark: {},
     }
   },
   created() {
     // 处理 url 参数
     console.log(this.$route)
-    this.query = this.$route.query
+    this.bookmark = this.$route.query
+  },
+
+  filters: {
+    // join(value, separator) {
+    //   if (!value) {
+    //     value = []
+    //   }
+    //   return value.join(separator)
+    // },
   },
 
   methods: {
-    async addBookmark() {
-      const res = await this.$ajax.addBookmark(this.form)
+    async addBookmark(e) {
+      e.preventDefault()
+      // e.stopPropagation()
+      const res = await this.$ajax.addBookmark(this.bookmark)
       console.log(res)
       if (res.errno === 0) {
         const data = res.data
 
         // this.timestamp = res.timestamp
+        alert('添加成功')
         console.log(data)
-        this.close()
+        window.close()
       } else {
-        console.log(res.message)
+        console.log(res.errmsg)
+        /*global alert */
+        alert(res.errmsg)
       }
     },
   },

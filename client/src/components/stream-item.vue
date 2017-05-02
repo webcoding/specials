@@ -7,10 +7,8 @@
         <a class="addToFavorite"></a>
         <div class="cover-over"></div>
         <template v-if="item.domain">
-          <img :src="`https://logo.clearbit.com/${item.domain}?size=100`" alt="item.domain">
-        </template>
-        <template v-else>
           <span class="cover cover-placeholder"></span>
+          <img class="cover" :src="`https://logo.clearbit.com/${item.domain}?size=100`" alt="item.domain" @error="errorImg">
         </template>
       </div>
       <div class="about">
@@ -31,6 +29,8 @@
 import vote from './vote'
 import action from './action'
 import viewCount from './view-count'
+// var errDefaultUrl
+// const coverPlaceholder = `<span class="cover cover-placeholder"></span>`
 export default {
   props: ['item'],
 
@@ -38,6 +38,19 @@ export default {
     vote,
     action,
     viewCount,
+  },
+
+  mounted () {
+    // this.$refs.img.onerror = () => {
+    //   console.log(this)
+    //   console.log(coverPlaceholder)
+    // }
+  },
+
+  methods: {
+    errorImg(e) {
+      e.target.remove()
+    },
   },
 }
 </script>
@@ -82,6 +95,7 @@ export default {
     margin-right 16px
 
   .cover
+    position absolute
     display inline-block
     border-radius 1px
     background-color #fff
