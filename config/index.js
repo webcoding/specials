@@ -2,6 +2,7 @@ var path = require('path')
 // see http://vuejs-templates.github.io/webpack for documentation.
 var devEnv = require('./dev.env')
 
+// 关于项目配置，应该读取项目根目录下 config 独立配置，扩展性更好
 var project = require('./project')
 
 function resolve (dir) {
@@ -65,6 +66,6 @@ module.exports = {
     // (https://github.com/webpack/css-loader#sourcemaps)
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
-    cssSourceMap: false,
+    cssSourceMap: true,
   },
 }

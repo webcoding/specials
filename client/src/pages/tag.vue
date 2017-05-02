@@ -24,17 +24,34 @@
 </template>
 
 <script>
-import { data as tags } from '../store/mock/tags'
-console.log(tags)
+// import { data as tags } from '../store/mock/tags'
+// console.log(tags)
 export default {
   data() {
     return {
-      tags: tags.list,
+      tags: [],
     }
   },
+  created() {
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      this.fetchTags()
+    },
+    async fetchTags() {
+      const res = await this.$ajax.getTags({})
+      console.log(res)
+      if (res.errno === 0) {
+        const data = res.data
 
-  methods: function () {
-
+        // this.timestamp = res.timestamp
+        console.log(data)
+        this.tags = data.list
+      } else {
+        console.log(res.message)
+      }
+    },
   },
 }
 </script>

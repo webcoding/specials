@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     fetchData() {
-      debugger
+      // debugger
       this.fetchHelps()
     },
     async fetchHelps() {

@@ -6,6 +6,7 @@ module.exports = merge(prodEnv, {
   api: {
     dev: 'http://m.devapi.haoshiqi.net/',
     beta: 'http://m.betaapi.haoshiqi.net/',
-    prod: 'http://m.api.haoshiqi.net/',
+    // prod: 'http://m.api.haoshiqi.net/',
+    prod: 'http://api.cloudai.net/',
   },
 })

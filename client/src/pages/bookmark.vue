@@ -13,14 +13,12 @@
 </template>
 
 <script>
-import { data as bookmarks } from '../store/mock/bookmarks'
 import streamItem from '../components/stream-item'
 import pager from '../components/pager'
-console.log(bookmarks)
 export default {
   data() {
     return {
-      bookmarks: bookmarks.list,
+      bookmarks: [],
     }
   },
 
@@ -28,9 +26,27 @@ export default {
     streamItem,
     pager,
   },
+  created() {
+    this.fetchData()
+  },
 
-  methods: function () {
+  methods: {
+    fetchData() {
+      this.fetchBookmarks()
+    },
+    async fetchBookmarks() {
+      const res = await this.$ajax.getBookmarks({})
+      console.log(res)
+      if (res.errno === 0) {
+        const data = res.data
 
+        // this.timestamp = res.timestamp
+        console.log(data)
+        this.bookmarks = data.list
+      } else {
+        console.log(res.message)
+      }
+    },
   },
 }
 </script>
