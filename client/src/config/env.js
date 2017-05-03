@@ -13,12 +13,12 @@ const imgBaseUrl = 'https://static.devnode.cn'
 
 // debugger
 if (process.env.NODE_ENV === 'development') {
-  baseUrl = 'http://localhost:8080'
-  apiBaseUrl = 'http://localhost:8080'
+  baseUrl = 'http://localhost:8080#'
+  apiBaseUrl = 'http://localhost:8080/proxy'
   routerMode = 'hash'
 } else {
-  baseUrl = 'http://devnode.cn'
-  apiBaseUrl = 'http://api.devnode.cn'
+  baseUrl = 'https://devnode.cn'
+  apiBaseUrl = 'https://api.devnode.cn'
   routerMode = 'history'
 }
 

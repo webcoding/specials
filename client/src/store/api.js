@@ -25,7 +25,7 @@ function checkStatus({ status, statusText, data }) {
 // var buildUrl = function (url) {
 //   return apiPath + url
 // }
-const proxyPath = process.env.NODE_ENV === 'production' ? '' : '/proxy'
+// const proxyPath = process.env.NODE_ENV === 'production' ? '' : '/proxy'
 
 // // 发送一个 get 请求
 // axios.get('package.json')
@@ -53,7 +53,7 @@ const setPromise = data => {
 
 // 创建一个实例，并进行默认设置
 var ajax = axios.create({
-  baseURL: `${env.apiBaseUrl}${proxyPath}/bookmark`,
+  baseURL: `${env.apiBaseUrl}/bookmark`,
   timeout: 20000,
   withCredentials: true,
   // headers: {
@@ -141,16 +141,14 @@ const ajaxApi = {
 }
 
 if (process.env.NODE_ENV === 'development') {
-  console.log('开发环境使用 fake 数据')
+  // console.log('开发环境使用 fake 数据')
 
   // 在实例创建之后改变默认值
-  ajax.defaults.baseURL = `${env.apiBaseUrl}${proxyPath}/bookmark`
   ajax.defaults.headers.common['Authorization'] = AUTH_TOKEN
 } else {
-  console.log('编译环境使用真实数据')
+  // console.log('编译环境使用真实数据')
   // 在实例创建之后改变默认值
-  // ajax.defaults.baseURL = `http://localhost:8080${proxyPath}/bookmark`
-  ajax.defaults.baseURL = `${env.apiBaseUrl}/bookmark`
+  // ajax.defaults.baseURL = `${env.apiBaseUrl}/bookmark`
 }
 
 export default ajaxApi

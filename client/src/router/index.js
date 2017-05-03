@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import env from '../config/env'
 // import store from '../store/'
 
 import layout from '../pages/layout'
@@ -85,8 +86,8 @@ const contentRoutes = [
 Vue.use(Router)
 
 const router = new Router({
-  // mode: 'history',
-  mode: 'hash',
+  // mode: 'history', // hash
+  mode: env.routerMode,
   base: '',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
