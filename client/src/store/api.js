@@ -53,7 +53,7 @@ const setPromise = data => {
 
 // 创建一个实例，并进行默认设置
 var ajax = axios.create({
-  baseURL: `${env.apiBaseUrl}/bookmark`,
+  baseURL: `${env.apiBaseUrl}`,
   timeout: 20000,
   withCredentials: true,
   // headers: {
@@ -97,18 +97,18 @@ const AUTH_TOKEN = 'sdfjsdlfjqweirjq'
 // 编译环境使用真实数据
 const ajaxApi = {
   getBookmarks(params) {
-    return ajax.get('/index', params)
+    return ajax.get('/bookmark', params)
   },
   // getBookmarks: () => setPromise(mock.bookmarks),
   getTags(params) {
-    return ajax.get('/tag/index', params)
+    return ajax.get('/tag', params)
   },
   // getTags: () => setPromise(mock.tags),
   getBookmarksWithTag(tagId) {
-    return ajax.get('/index', { tag: tagId })
+    return ajax.get('/bookmark', { tag: tagId })
   },
   addBookmark(params) {
-    return ajax.post('/index/create', params, {
+    return ajax.post('/bookmark/create', params, {
       transformRequest: [function (data) {
         // Do whatever you want to transform the data
         let ret = ''
@@ -122,8 +122,8 @@ const ajaxApi = {
       },
     })
   },
-  addTag(id) {
-    return ajax.post(`/tag/create`)
+  addTag(params) {
+    return ajax.post('/tag/create', params)
   },
   getHelps: () => setPromise(mock.helps),
   // getAboutMe(params) {
