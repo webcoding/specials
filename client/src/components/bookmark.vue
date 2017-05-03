@@ -13,7 +13,7 @@
         </label>
         <label class="block">
           <span class="title">摘要</span>
-          <textarea v-model.trim="bookmark.description" type="text" class="input-text input-area" placeholder="摘要summary"></textarea>
+          <textarea v-model.trim="bookmark.description" type="text" class="input-text input-area" placeholder="用于补充描述收藏的标题或链接，越精准的描述对以后的检索查找越有利"></textarea>
         </label>
         <label class="block">
           <span class="title">标签</span>

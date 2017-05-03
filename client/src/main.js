@@ -4,7 +4,7 @@ import Vue from 'vue'
 // import store from './store/'
 import router from './router/'
 import App from './pages/App'
-import * as ajax from './store/api'
+import ajaxApi from './store/api'
 // import currency from './filters/currency'
 // import '@common/init'
 // import '@common/rem'
@@ -23,7 +23,7 @@ import * as ajax from './store/api'
 import Raven from 'raven-js'
 import RavenVue from 'raven-js/plugins/vue'
 
-Vue.prototype.$ajax = ajax
+Vue.prototype.$ajax = ajaxApi
 
 const debug = false
 

@@ -94,37 +94,19 @@ const AUTH_TOKEN = 'sdfjsdlfjqweirjq'
 // }
 
 // 编译环境使用真实数据
-var getBookmarks
-var getTags
-var getBookmarksWithTag
-var addBookmark
-var addTag
-var getHelps
-if (process.env.NODE_ENV === 'development') {
-  console.log('开发环境使用 fake 数据')
-
-  // 在实例创建之后改变默认值
-  ajax.defaults.baseURL = `http://localhost:8080${proxyPath}/bookmark`
-  ajax.defaults.headers.common['Authorization'] = AUTH_TOKEN
-
-  getBookmarks = () => setPromise(mock.bookmarks)
-  getTags = () => setPromise(mock.tags)
-} else {
-  console.log('编译环境使用真实数据')
-  // 在实例创建之后改变默认值
-  // ajax.defaults.baseURL = `http://localhost:8080${proxyPath}/bookmark`
-  ajax.defaults.baseURL = `//api.cloudai.net/bookmark`
-
-  getBookmarks = function (params) {
+const ajaxApi = {
+  getBookmarks(params) {
     return ajax.get('/index', params)
-  }
-  getTags = function (params) {
+  },
+  // getBookmarks: () => setPromise(mock.bookmarks),
+  getTags(params) {
     return ajax.get('/tag/index', params)
-  }
-  getBookmarksWithTag = function (tagId) {
+  },
+  // getTags: () => setPromise(mock.tags),
+  getBookmarksWithTag(tagId) {
     return ajax.get('/index', { tag: tagId })
-  }
-  addBookmark = function (params) {
+  },
+  addBookmark(params) {
     return ajax.post('/index/create', params, {
       transformRequest: [function (data) {
         // Do whatever you want to transform the data
@@ -138,38 +120,36 @@ if (process.env.NODE_ENV === 'development') {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
     })
-  }
-  addTag = function (id) {
+  },
+  addTag(id) {
     return ajax.post(`/tag/create`)
-  }
-  // getHelps = function (id) {
-  //   return ajax.post(`/help`)
-  // }
-  getTags = () => setPromise(mock.tags)
-  getHelps = () => setPromise(mock.helps)
-  // var getAboutMe = function (params) {
+  },
+  getHelps: () => setPromise(mock.helps),
+  // getAboutMe(params) {
   //   return ajax.get('me')
-  // }
-  // var getPost = function (id) {
+  // },
+  // getPost(id) {
   //   return ajax.get(`articles/${id}`)
-  // }
-  // var getPostList = function (params) {
+  // },
+  // getPostList(params) {
   //   return ajax.get('articles', params)
-  // }
-  // var getAllTags = function (params) {
+  // },
+  // getAllTags(params) {
   //   return ajax.get('tags')
-  // }
+  // },
 }
 
-export {
-  getBookmarks,
-  getTags,
-  getBookmarksWithTag,
-  addBookmark,
-  addTag,
-  getHelps,
-  // getPostListWithTag,
-  // getAllTags,
-  // getTopicInfo,
-  // getTopicList,
+if (process.env.NODE_ENV === 'development') {
+  console.log('开发环境使用 fake 数据')
+
+  // 在实例创建之后改变默认值
+  ajax.defaults.baseURL = `http://localhost:8080${proxyPath}/bookmark`
+  ajax.defaults.headers.common['Authorization'] = AUTH_TOKEN
+} else {
+  console.log('编译环境使用真实数据')
+  // 在实例创建之后改变默认值
+  // ajax.defaults.baseURL = `http://localhost:8080${proxyPath}/bookmark`
+  ajax.defaults.baseURL = `//api.cloudai.net/bookmark`
 }
+
+export default ajaxApi
