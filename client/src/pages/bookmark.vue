@@ -36,12 +36,12 @@ export default {
     },
     async fetchBookmarks() {
       const res = await this.$ajax.getBookmarks({})
-      console.log(res)
+      // console.log(res)
       if (res.errno === 0) {
         const data = res.data
 
         // this.timestamp = res.timestamp
-        console.log(data)
+        // console.log(data)
         this.bookmarks = data.list
       } else {
         console.log(res.message)

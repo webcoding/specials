@@ -41,12 +41,12 @@ export default {
     },
     async fetchTags() {
       const res = await this.$ajax.getTags({})
-      console.log(res)
+      // console.log(res)
       if (res.errno === 0) {
         const data = res.data
 
         // this.timestamp = res.timestamp
-        console.log(data)
+        // console.log(data)
         this.tags = data.list
       } else {
         console.log(res.message)

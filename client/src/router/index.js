@@ -18,7 +18,7 @@ import svg from '../pages/svg'
 // import index from '../pages/index'
 import search from '../pages/search'
 import page from '../pages/page'
-import updateBookmark from '../components/bookmark'
+import bookmarkAdd from '../pages/bookmark-add'
 // import score from '../pages/score'
 // import profile from '../pages/profile'
 
@@ -106,8 +106,8 @@ const router = new Router({
     },
     {
       path: '/bookmark/add',
-      name: 'bookmark-new',
-      component: updateBookmark,
+      name: 'bookmark-add',
+      component: bookmarkAdd,
     },
     {
       path: '/tag',

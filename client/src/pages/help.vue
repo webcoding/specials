@@ -59,7 +59,7 @@ export default {
     },
     async fetchHelps() {
       const res = await this.$ajax.getHelps({})
-      console.log(res)
+      // console.log(res)
       if (res.errno === 0) {
         const data = res.data
 
