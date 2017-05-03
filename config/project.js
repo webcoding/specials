@@ -37,7 +37,8 @@ var project = {
   name: appName,
   dir: appName,
   dist: buildDist + appName,
-  qn: qnConfig.cdn,
+  qn: qnConfig[appName] || qnConfig.cdn,
+  isSingle: !!qnConfig[appName], // 独立项目配置
 }
 
 if (isSpecial) {
@@ -73,7 +74,7 @@ if (isSpecial) {
   }
 }
 
-if (!project.qn.path) {
+if (!project.qn.path && !project.isSingle) {
   project.qn.path = project.dir
 }
 

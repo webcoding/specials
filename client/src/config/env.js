@@ -9,17 +9,17 @@
 let baseUrl
 let apiBaseUrl
 let routerMode
-const imgBaseUrl = 'https://static.cloudai.net'
+const imgBaseUrl = 'https://static.devnode.cn'
 
 // debugger
 if (process.env.NODE_ENV === 'development') {
   baseUrl = 'http://localhost:8080'
-  apiBaseUrl = 'http://api.cloudai.net'
+  apiBaseUrl = 'http://localhost:8080'
   routerMode = 'hash'
 } else {
-  baseUrl = 'http://bookmarks.cloudai.net'
-  apiBaseUrl = 'http://api.cloudai.net'
-  routerMode = 'hash'
+  baseUrl = 'http://devnode.cn'
+  apiBaseUrl = 'http://api.devnode.cn'
+  routerMode = 'history'
 }
 
 export default {

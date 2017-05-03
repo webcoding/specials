@@ -9,6 +9,9 @@ function resolve (dir) {
   return path.join(__dirname, '../' + dir)
 }
 
+var prodPublicPath = project.qn.domain +
+        (project.isSingle ? '' : (project.dir + '/'))
+
 module.exports = {
   qnConfig: project.qn,
   // target: 'web',
@@ -26,9 +29,9 @@ module.exports = {
     assetsRoot: resolve(project.dist),
     // 输出解析文件的目录，url 相对于 HTML 页面
     assetsSubDirectory: 'assets/',
-    assetsPublicPath: project.qn.domain + project.dir + '/', // 不使用 cdn，设为空
+    assetsPublicPath: prodPublicPath, // 不使用 cdn，设为空
     // assetsPublicPath: 'https://cdn.xxx.cn/' + project.dir, // 这里可以设置 cdn
-    productionSourceMap: true,
+    productionSourceMap: false,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
     // Before setting to `true`, make sure to:
