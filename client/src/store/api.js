@@ -60,9 +60,7 @@ var ajax = axios.create({
     'Accept': 'application/json',
     // 'dataType': 'json',
     // 'Content-Type': 'application/json; charset=utf-8',
-    'Content-Type': 'application/x-www-form-urlencoded',
-    /* global XMLHttpRequest */
-    'X-Requested-With': XMLHttpRequest,
+    // 'Content-Type': 'application/x-www-form-urlencoded',
     // 'Content-Type': 'text/html; charset=UTF-8',
   },
 })

@@ -22,14 +22,6 @@ var ASKey = {
 var curASKey = ASKey['cloudai']
 
 var qnConfig = {
-  zt: {
-    prefix: '',
-    ak: curASKey.ak,
-    sk: curASKey.sk,
-    bucket: 'static-cloudai-net', // your bucket name
-    domain: 'https://static.cloudai.net/',  // //xxxx.xxx.xx.glb.clouddn.com
-    path: '', // 路径: [hash] 或 zt/lie
-  },
   // cdn资源合一
   cdn: {
     prefix: '',
@@ -39,12 +31,22 @@ var qnConfig = {
     domain: 'https://static.cloudai.net/',  // //xxxx.xxx.xx.glb.clouddn.com
     path: '', // 路径: [hash] 或 zt/lie
   },
+  zt: {
+    prefix: '',
+    ak: curASKey.ak,
+    sk: curASKey.sk,
+    bucket: 'static-cloudai-net',
+    domain: 'https://static.cloudai.net/',
+    path: '', // 路径: [hash] 或 zt/lie
+  },
   client: {
     prefix: '',
     ak: curASKey.ak,
     sk: curASKey.sk,
-    bucket: 'static-cloudai-net', // your bucket name
-    domain: 'https://static.cloudai.net/',  // //xxxx.xxx.xx.glb.clouddn.com
+    bucket: 'static-cloudai-net',
+    domain: 'https://static.cloudai.net/',
+    // bucket: 'static-devnode-cn',
+    // domain: 'https://static.devnode.cn/',
     path: '', // 路径: [hash] 或 zt/lie
   },
 }
