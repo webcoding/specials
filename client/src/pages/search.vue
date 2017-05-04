@@ -102,7 +102,7 @@ export default {
         this.ztIntro = decodeURIComponent(data.detail) || ''
         this.headerData.title = data.title
       } else {
-        console.log(res.message)
+        console.log(res.errmsg)
       }
     },
     async fetchTopicList() {
@@ -120,7 +120,7 @@ export default {
         this.timestamp = res.timestamp
         this.topicList = data.list
       } else {
-        console.log(res.message)
+        console.log(res.errmsg)
       }
     },
   },

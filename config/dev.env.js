@@ -7,6 +7,6 @@ module.exports = merge(prodEnv, {
     dev: 'http://m.devapi.haoshiqi.net/',
     beta: 'http://m.betaapi.haoshiqi.net/',
     // prod: 'http://m.api.haoshiqi.net/',
-    prod: 'http://api.cloudai.net/',
+    prod: 'http://api.devnode.cn/',
   },
 })

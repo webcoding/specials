@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import env from '../config/env'
-import store from '../store/'
+// import store from '../store/'
+import ajaxApi from '../store/api'
 
 import login from '../pages/login'
 import layout from '../pages/layout'
@@ -108,8 +109,19 @@ const router = new Router({
     {
       path: '/bookmark/add',
       name: 'bookmark-add',
+      meta: {
+        requiresAuth: true,
+      },
       component: bookmarkAdd,
     },
+    // {
+    //   path: '/tag/add',
+    //   name: 'tag-add',
+    //   meta: {
+    //     requiresAuth: true,
+    //   },
+    //   component: tagAdd,
+    // },
     {
       path: '/tag',
       name: 'tag',
@@ -148,32 +160,44 @@ const router = new Router({
   ],
 })
 
-const auth = {
-  loggedIn() {
-    return Boolean(store.state.user.email === '1395093509@qq.com' && store.state.user.passward === 'xiaohan')
-  },
-}
-
 
 const loginPath = '/login'
+let logged
+async function checkAuth() {
+  const res = await ajaxApi.checkLogin()
+  if (res.errno === 0) {
+    logged = true
+  } else {
+    console.log(res.errmsg)
+    logged = false
+  }
+  return logged
+}
+
 // let indexScrollTop = 0
 // 权限检测
 router.beforeEach((to, from, next) => {
   const { meta, path } = to
-  const { requiresAuth = true } = meta
+  const { requiresAuth = false } = meta
 
   // if (to.matched.some(record => record.meta.requiresAuth)) {
-  if (requiresAuth && !auth.loggedIn() && path !== loginPath) {
+  if (requiresAuth && path !== loginPath) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    return next({
-      path: loginPath,
-      query: { redirect: to.fullPath },
+    checkAuth().then((logged) => {
+      if (!logged) {
+        return next({
+          path: loginPath,
+          query: { redirect: to.fullPath },
+        })
+      } else {
+        next()
+      }
     })
+  } else {
+    // 确保一定要调用 next()
+    return next()
   }
-
-  // 确保一定要调用 next()
-  return next()
 })
 
 export default router

@@ -29,6 +29,7 @@
 </template>
 
 <script>
+// var logged
 export default {
   data() {
     return {
@@ -59,14 +60,12 @@ export default {
       if (res.errno === 0) {
         const data = res.data
 
-        // this.timestamp = res.timestamp
+        /*global alert */
         alert('添加成功')
         console.log(data)
         window.close()
       } else {
         console.log(res.errmsg)
-        /*global alert */
-        alert(res.errmsg)
       }
     },
   },

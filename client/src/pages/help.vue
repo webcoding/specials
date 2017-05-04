@@ -66,7 +66,7 @@ export default {
         // this.timestamp = res.timestamp
         this.helpList = data.list
       } else {
-        console.log(res.message)
+        console.log(res.errmsg)
       }
     },
   },

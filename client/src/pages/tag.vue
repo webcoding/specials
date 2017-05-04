@@ -49,7 +49,7 @@ export default {
         // console.log(data)
         this.tags = data.list
       } else {
-        console.log(res.message)
+        console.log(res.errmsg)
       }
     },
   },

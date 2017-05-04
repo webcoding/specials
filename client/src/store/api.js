@@ -46,20 +46,42 @@ const setPromise = data => {
 }
 
 // let modal = {
-//   getTopicList(params) {
-//     return api.get('/product/topicskusinfo', params)
+//   getTopicList(data) {
+//     return api.get('/product/topicskusinfo', data)
 //   },
 // }
 
 // 创建一个实例，并进行默认设置
 var ajax = axios.create({
   baseURL: `${env.apiBaseUrl}`,
-  timeout: 20000,
+  timeout: 15000,
   withCredentials: true,
-  // headers: {
-  //   // 'X-Custom-Header': 'foobar',
-  // },
+  headers: {
+    'Accept': 'application/json',
+    // 'dataType': 'json',
+    // 'Content-Type': 'application/json; charset=utf-8',
+    'Content-Type': 'application/x-www-form-urlencoded',
+    /* global XMLHttpRequest */
+    'X-Requested-With': XMLHttpRequest,
+    // 'Content-Type': 'text/html; charset=UTF-8',
+  },
 })
+
+ajax.form = function (url, data) {
+  return ajax.post(url, data, {
+    transformRequest: [function (data) {
+      // Do whatever you want to transform the data
+      let ret = ''
+      for (const it in data) {
+        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+      }
+      return ret
+    }],
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  })
+}
 
 // 添加请求拦截器
 ajax.interceptors.request.use((config) => {
@@ -79,63 +101,57 @@ ajax.interceptors.response.use((response) => {
   return Promise.reject(error)
 })
 
-const AUTH_TOKEN = 'sdfjsdlfjqweirjq'
+const AUTH_TOKEN = ''
 
 // ajax.fetch = function ajaxFetch(url, params) {
-//   const method = params.method || 'get'
+//   const method = data.method || 'get'
 //   switch (method) {
 //     case 'get':
 //     case 'post':
 //     case 'delete':
 //     case 'put':
 //     case 'patch':
-//       delete params.method
+//       delete data.method
 //       return ajax[method](arguments)
 //   }
 // }
 
 // 编译环境使用真实数据
 const ajaxApi = {
-  getBookmarks(params) {
-    return ajax.get('/bookmark', params)
+  getBookmarks(data) {
+    return ajax.get('/bookmark', data)
   },
   // getBookmarks: () => setPromise(mock.bookmarks),
-  getTags(params) {
-    return ajax.get('/tag', params)
+  getTags(data) {
+    return ajax.get('/tag', data)
   },
   // getTags: () => setPromise(mock.tags),
   getBookmarksWithTag(tagId) {
     return ajax.get('/bookmark', { tag: tagId })
   },
-  addBookmark(params) {
-    return ajax.post('/bookmark/create', params, {
-      transformRequest: [function (data) {
-        // Do whatever you want to transform the data
-        let ret = ''
-        for (const it in data) {
-          ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-        }
-        return ret
-      }],
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    })
+  addBookmark(data) {
+    return ajax.form('/bookmark/create', data)
   },
-  addTag(params) {
-    return ajax.post('/tag/create', params)
+  addTag(data) {
+    return ajax.form('/tag/create', data)
+  },
+  login(data) {
+    return ajax.form('/login', data)
+  },
+  checkLogin() {
+    return ajax.get('/login/check')
   },
   getHelps: () => setPromise(mock.helps),
-  // getAboutMe(params) {
+  // getAboutMe(data) {
   //   return ajax.get('me')
   // },
   // getPost(id) {
   //   return ajax.get(`articles/${id}`)
   // },
-  // getPostList(params) {
-  //   return ajax.get('articles', params)
+  // getPostList(data) {
+  //   return ajax.get('articles', data)
   // },
-  // getAllTags(params) {
+  // getAllTags(data) {
   //   return ajax.get('tags')
   // },
 }

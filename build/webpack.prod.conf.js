@@ -46,7 +46,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         // 排除不想要压缩的对象名称
         // except: ['$super', '$', 'exports', 'require', 'module', '_']
       },
-      sourceMap: false,
+      sourceMap: config.build.productionSourceMap,
     }),
     // extract css into its own file
     new ExtractTextPlugin({
