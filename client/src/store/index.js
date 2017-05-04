@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 // import actions from './actions'
 // import mutations from './mutations'
 import user from './user'
+// import { mapState } from 'vuex'
+
 
 Vue.use(Vuex)
 

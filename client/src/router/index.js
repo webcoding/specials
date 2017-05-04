@@ -150,7 +150,7 @@ const router = new Router({
 
 const auth = {
   loggedIn() {
-    return Boolean(store.state.user.id)
+    return Boolean(store.state.user.id === '123' && store.state.user.name === 'xiaohan')
   },
 }
 
