@@ -1,12 +1,16 @@
 <template>
   <form class="login" v-on:submit.prevent="submitLogin">
+    <!--<div class="line">
+      <div v-show="btn && !form.name">用户名不能为空</div>
+      <input type="text" placeholder="用户名" v-model="form.name">
+    </div>-->
     <div class="line">
-      <div v-show="btn && !form.id">id不能为空</div>
-      <input type="number" placeholder="输入你的id" v-model="form.id">
+      <div v-show="btn && !form.email">Email不能为空</div>
+      <input type="email" placeholder="Email" v-model="form.email">
     </div>
     <div class="line">
-      <div v-show="btn && !form.name">用户名不能为空</div>
-      <input type="text" placeholder="输入你的用户名" v-model="form.name">
+      <div v-show="btn && !form.passward">请输入密码</div>
+      <input type="passward" placeholder="密码" v-model="form.passward">
     </div>
     <button>登录</button>
   </form>
@@ -22,8 +26,8 @@ export default {
       // true 已经提交过 false 没有提交过
       btn: false,
       form: {
-        id: '',
-        name: '',
+        email: '',
+        passward: '',
       },
     }
   },
@@ -34,7 +38,7 @@ export default {
     submitLogin() {
       this.btn = true
 
-      if (!this.form.id || !this.form.name) return
+      if (!this.form.email || !this.form.passward) return
 
       this.USER_SIGNIN(this.form)
 
