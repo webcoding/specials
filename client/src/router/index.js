@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import env from '../config/env'
-// import store from '../store/'
+import store from '../store/'
 
+import login from '../pages/login'
 import layout from '../pages/layout'
 import explore from '../pages/explore'
 import bookmark from '../pages/bookmark'
@@ -127,6 +128,7 @@ const router = new Router({
     },
     { path: '/guide', name: 'guide', component: page },
     { path: '/search', name: 'search', component: search },
+    { path: '/login', name: 'login', component: login },
     { path: '/coming', name: 'coming', component: coming },
     { path: '/*', name: '404', component: page404 },
     // { path: '/score', name: 'score', component: score },
@@ -148,7 +150,7 @@ const router = new Router({
 
 const auth = {
   loggedIn() {
-    // return Boolean(store.state.user.id)
+    return Boolean(store.state.user.id)
   },
 }
 
@@ -158,7 +160,7 @@ const loginPath = '/login'
 // 权限检测
 router.beforeEach((to, from, next) => {
   const { meta, path } = to
-  const { requiresAuth = false } = meta
+  const { requiresAuth = true } = meta
 
   // if (to.matched.some(record => record.meta.requiresAuth)) {
   if (requiresAuth && !auth.loggedIn() && path !== loginPath) {

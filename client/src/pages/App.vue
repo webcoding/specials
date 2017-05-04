@@ -1,13 +1,8 @@
 <template>
   <div id="app">
     <svg-icons></svg-icons>
-    <!--<div id="mobile-bar">
-      <a class="menu-button"></a>
-      <a class="logo" href="/"></a>
-    </div>-->
-    <x-header></x-header>
     <transition>
-      <router-view class="page"></router-view>
+      <router-view></router-view>
     </transition>
   </div>
 </template>
@@ -17,8 +12,6 @@
 // import hub from './store/hub'
 // import vDialog from './components/Dialog'
 import svgIcons from '../components/svg-icons'
-import xHeader from '../components/header'
-// import xFooter from '../components/footer'
 
 export default {
   data() {
@@ -30,7 +23,6 @@ export default {
   },
   components: {
     svgIcons,
-    xHeader,
     // Dialog,
   },
   created() {

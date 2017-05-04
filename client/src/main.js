@@ -1,7 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-// import store from './store/'
+import store from './store/'
 import router from './router/'
 import App from './pages/App'
 import ajaxApi from './store/api'
@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === 'production' || debug) {
 // FIXME: 为什么没有替换的效果，这里使用 transition 时有 bug
 new Vue({
   router,
-  // store,
+  store,
   el: '#app',
   template: '<App/>',
   components: { App },

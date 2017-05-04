@@ -3,20 +3,15 @@ import Vuex from 'vuex'
 // import { state } from './state'
 // import actions from './actions'
 // import mutations from './mutations'
-
-// import cart from './modules/cart'
-
-// import * as api from './api'
+import user from './user'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   // 在非生产环境下，才可以使用严格模式
   strict: process.env.NODE_ENV !== 'production',
-
   state: {
-    topicList: [],
-    answerid: {},
+
   },
   actions: {
     // getTopicList({ commit, state }) {
@@ -36,6 +31,7 @@ export default new Vuex.Store({
   },
   mutations: {},
   modules: {
+    user,
     // cart,
   },
 })
