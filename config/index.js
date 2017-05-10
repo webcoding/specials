@@ -12,6 +12,16 @@ function resolve (dir) {
 var prodPublicPath = project.qn.domain +
         (project.isSingle ? '' : (project.dir + '/'))
 
+
+// var request = require('request')
+// var url = 'https://api.devnode.cn/login/check'
+// request(url, (error, response, body) => {
+//   console.log(error)
+//   console.log(response.headers)
+//   console.log(response.headers['set-cookie'])
+// })
+
+var cookie
 module.exports = {
   qnConfig: project.qn,
   // target: 'web',
@@ -53,6 +63,7 @@ module.exports = {
     // https://vuejs-templates.github.io/webpack/proxy.html
     // https://github.com/chimurai/http-proxy-middleware
     proxyTable: {
+      // 如果把 cookie 设置为HttpOnly，则可能无法通过代理传递 cookie
       // proxy all requests starting with /api to jsonplaceholder
       '/proxy': {
         target: devEnv.api['prod'],
@@ -61,6 +72,21 @@ module.exports = {
         // secure: false,
         pathRewrite: {
           '^/proxy': '',
+        },
+        logLevel: 'debug',
+        onProxyReq: function relayRequestHeaders(proxyReq, req) {
+          // console.log(proxyReq.headers)
+          if (cookie) {
+            proxyReq.setHeader('cookie', cookie)
+          }
+          // proxyReq.setHeader('Access-Control-Allow-Credentials', 'true')
+        },
+        onProxyRes: function relayResponseHeaders(proxyRes, req, res) {
+          // console.log(proxyRes.headers)
+          var proxyCookie = proxyRes.headers['set-cookie']
+          if (proxyCookie) {
+            cookie = proxyCookie
+          }
         },
       },
     },

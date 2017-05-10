@@ -11,6 +11,7 @@ import env from '../config/env'
 function checkStatus({ status, statusText, data }) {
   if (status >= 200 && status < 300) {
     // 请求成功
+    console.log('请求成功: ')
     console.log(data)
     return data
   } else {
@@ -51,13 +52,17 @@ const setPromise = data => {
 //   },
 // }
 
+// https://github.com/mzabriskie/axios
 // 创建一个实例，并进行默认设置
+
 var ajax = axios.create({
   baseURL: `${env.apiBaseUrl}`,
   timeout: 15000,
   withCredentials: true,
+  responseType: 'json',
   headers: {
-    'Accept': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest',
+    // 'Accept': 'application/json',
     // 'dataType': 'json',
     // 'Content-Type': 'application/json; charset=utf-8',
     // 'Content-Type': 'application/x-www-form-urlencoded',
@@ -99,7 +104,7 @@ ajax.interceptors.response.use((response) => {
   return Promise.reject(error)
 })
 
-const AUTH_TOKEN = ''
+// const AUTH_TOKEN = ''
 
 // ajax.fetch = function ajaxFetch(url, params) {
 //   const method = data.method || 'get'
@@ -136,6 +141,9 @@ const ajaxApi = {
   login(data) {
     return ajax.form('/login', data)
   },
+  logout() {
+    return ajax.get('/logout')
+  },
   checkLogin() {
     return ajax.get('/login/check')
   },
@@ -158,7 +166,7 @@ if (process.env.NODE_ENV === 'development') {
   // console.log('开发环境使用 fake 数据')
 
   // 在实例创建之后改变默认值
-  ajax.defaults.headers.common['Authorization'] = AUTH_TOKEN
+  // ajax.defaults.headers.common['Authorization'] = AUTH_TOKEN
 } else {
   // console.log('编译环境使用真实数据')
   // 在实例创建之后改变默认值

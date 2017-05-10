@@ -22,6 +22,7 @@
         <label class="block">
           <span class="title"></span>
           <button class="btn" @click="addBookmark">提交</button>
+          <button @click="logout">注销</button>
         </label>
       </form>
     </div>
@@ -64,6 +65,17 @@ export default {
         alert('添加成功')
         console.log(data)
         window.close()
+      } else {
+        console.log(res.errmsg)
+      }
+    },
+    async logout(e) {
+      e.preventDefault()
+      const res = await this.$ajax.logout()
+      console.log(res)
+      if (res.errno === 0) {
+        console.log(res)
+        console.log('注销成功')
       } else {
         console.log(res.errmsg)
       }

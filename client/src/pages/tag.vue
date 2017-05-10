@@ -6,12 +6,13 @@
       <!--<small><router-link to="tags/all">全部</router-link></small>-->
     </h2>
     <div class="tags-list">
-      <dl class="tag-item" v-for="item in tags" :key="item.name">
+      <router-link class="tag" v-for="tag in tags" :to="`/t/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
+      <!--<dl class="tag-item" v-for="item in tags" :key="item.name">
         <dt>{{item.name}}</dt>
         <dd>
           <router-link class="tag" v-for="tag in item.list" :to="`/t/${tag}`" :key="tag">{{tag}}</router-link>
         </dd>
-      </dl>
+      </dl>-->
     </div>
     <h2>分类聚合探究</h2>
     <p>实际用途中，分类是个不定的元素，所以不能够仅通过一种形式的划分就达到优良分类的目的，分类存在重叠或包含的情况</p>
