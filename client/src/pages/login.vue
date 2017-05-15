@@ -15,6 +15,7 @@
       </div>
       <div class="line">
         <input type="password" class="input-text" placeholder="密码" v-model="form.password">
+        <router-link class="btn forget-password-btn" to="/password/forget">忘记密码？</router-link>
         <p class="errors" v-show="btned && !validation.password">请输入密码</p>
       </div>
       <div class="line">
@@ -108,6 +109,7 @@ export default {
     text-align: center;
 
   .line
+    position: relative;
     margin-bottom: 16px;
 
   .input-text
@@ -121,6 +123,18 @@ export default {
     border: 1px solid #e1e6f0;
     transition: border-color ease-in-out .15s,
                 box-shadow ease-in-out .15s;
+
+  .forget-password-btn
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 42px;
+    border: 1px solid #e1e6f0;
+    border-radius: 4px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    line-height: 42px;
+    padding: 0 10px 0 14px;
 
 </style>
 

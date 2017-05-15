@@ -2,6 +2,10 @@
 @import "_settings"
 @import "_syntax"
 
+*, :after, :before {
+  box-sizing: border-box;
+}
+
 body
   font-family $body-font
   font-size $body-font-size
@@ -109,13 +113,15 @@ svg:not(:root)
   outline none
   -webkit-appearance none
   background transparent
-  border 0
+  border: 1px solid transparent;
   box-shadow none
   transition background .1s ease-in-out,color .1s ease-in-out
   line-height 1em
   align-items center
   cursor pointer
   user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
 
   &.btn-block
     display block
