@@ -43,10 +43,10 @@ var qnConfig = {
     prefix: '',
     ak: curASKey.ak,
     sk: curASKey.sk,
-    bucket: 'static-cloudai-net',
-    domain: 'https://static.cloudai.net/',
-    // bucket: 'static-devnode-cn',
-    // domain: 'https://static.devnode.cn/',
+    // bucket: 'static-cloudai-net',
+    // domain: 'https://static.cloudai.net/',
+    bucket: 'static-devnode-cn',
+    domain: 'https://static.devnode.cn/',
     path: '', // 路径: [hash] 或 zt/lie
   },
 }

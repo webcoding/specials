@@ -1,32 +1,42 @@
 <template>
-  <form class="login" v-on:submit.prevent="submitLogin">
-    <!--<div class="line">
-      <div v-show="btn && !form.name">用户名不能为空</div>
-      <input type="text" placeholder="用户名" v-model="form.name">
-    </div>-->
-    <div class="line">
-      <input type="email" placeholder="email@email.com" v-model="form.email">
-    </div>
-    <div class="line">
-      <input type="password" placeholder="密码" v-model="form.password">
-    </div>
-    <div class="line">
-      <label><input type="checkbox" v-model="form.rememberMe"> 自动登录</label>
-    </div>
-    <ul class="errors">
-      <li v-show="btned && !validation.email">邮箱格式错误</li>
-      <li v-show="btned && !validation.password">请输入密码</li>
-    </ul>
-    <button>登录</button>
-  </form>
+  <div class="page-login">
+    <form class="form-login" v-on:submit.prevent="submitLogin">
+      <a class="logo" href="/" title="开发者收藏">
+        <x-svg class="logo-dark" type="devnode_logo"></x-svg>
+        <span class="text">DevNode</span>
+      </a>
+      <!--<div class="line">
+        <div v-show="btn && !form.name">用户名不能为空</div>
+        <input type="text" placeholder="用户名" v-model="form.name">
+      </div>-->
+      <div class="line">
+        <input type="email" class="input-text" placeholder="email@email.com" v-model="form.email">
+        <p class="errors" v-show="btned && !validation.email">邮箱格式错误</p>
+      </div>
+      <div class="line">
+        <input type="password" class="input-text" placeholder="密码" v-model="form.password">
+        <p class="errors" v-show="btned && !validation.password">请输入密码</p>
+      </div>
+      <div class="line">
+        <label><input type="checkbox" v-model="form.rememberMe"> 自动登录</label>
+      </div>
+      <button class="btn btn-block btn-big">登录</button>
+    </form>
+  </div>
 </template>
 
 <script>
+// 登录界面仍然保留 header 头，在小窗口时，隐藏即可
 var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 import { mapActions } from 'vuex'
 import { USER_SIGNIN } from '../store/user'
+import xSvg from '../components/svg'
 
 export default {
+  components: {
+    xSvg,
+  },
+
   data() {
     return {
       // true 已经提交过 false 没有提交过
@@ -81,4 +91,36 @@ export default {
   },
 }
 </script>
+
+<style lang="stylus">
+.page-login
+  margin: 80px 40px 0;
+
+  .form-login
+    margin: 20px auto 0;
+    width: 100%;
+    min-width: 280px;
+    max-width: 400px;
+
+  .logo
+    display: block;
+    margin-bottom: 40px;
+    text-align: center;
+
+  .line
+    margin-bottom: 16px;
+
+  .input-text
+    box-sizing: border-box;
+    box-shadow: none;
+    display: block;
+    width: 100%;
+    height: 42px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #e1e6f0;
+    transition: border-color ease-in-out .15s,
+                box-shadow ease-in-out .15s;
+
+</style>
 

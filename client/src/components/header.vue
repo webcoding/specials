@@ -4,7 +4,7 @@
       <div id="menu">
         <x-svg type="menu"></x-svg>
       </div>
-      <a id="logo" href="/" title="开发者收藏">
+      <a class="logo" href="/" title="开发者收藏">
         <x-svg class="logo-dark" type="devnode_logo"></x-svg>
         <span class="text">DevNode</span>
       </a>

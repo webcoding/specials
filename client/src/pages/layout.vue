@@ -7,7 +7,7 @@
         <router-view class="content with-sidebar"></router-view>
       </transition>
     </div>
-    <x-footer></x-footer>
+    <!--<x-footer></x-footer>-->
   </div>
 </template>
 

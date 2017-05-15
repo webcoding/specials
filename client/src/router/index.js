@@ -21,6 +21,7 @@ import svg from '../pages/svg'
 import search from '../pages/search'
 import page from '../pages/page'
 import bookmarkAdd from '../pages/bookmark-add'
+import dev from '../pages/dev'
 // import score from '../pages/score'
 // import profile from '../pages/profile'
 
@@ -83,6 +84,11 @@ const contentRoutes = [
     name: 'about',
     component: about,
   },
+  {
+    path: '/dev',
+    name: 'dev',
+    component: dev,
+  },
 ]
 
 Vue.use(Router)
@@ -100,11 +106,24 @@ const router = new Router({
       // 否则使用 `:to="{name: 'demo'"` 会导致默认子路由不会render
       name: '',
       component: layout,
-      children: [{
-        path: '/',
-        name: 'bookmarks',
-        component: bookmark,
-      }].concat(contentRoutes),
+      children: [
+        {
+          path: '/',
+          name: 'bookmarks',
+          component: bookmark,
+        },
+        {
+          path: '/tag',
+          name: 'tag',
+          component: tag,
+          alias: ['/tags', '/t'],
+        },
+        {
+          path: '/svg',
+          name: 'svg',
+          component: svg,
+        },
+      ].concat(contentRoutes),
     },
     {
       path: '/bookmark/add',
@@ -122,21 +141,11 @@ const router = new Router({
     //   },
     //   component: tagAdd,
     // },
-    {
-      path: '/tag',
-      name: 'tag',
-      component: tag,
-      alias: ['/tags', '/t'],
-    },
+
     {
       path: '/support',
       name: 'support',
       component: support,
-    },
-    {
-      path: '/svg',
-      name: 'svg',
-      component: svg,
     },
     { path: '/guide', name: 'guide', component: page },
     { path: '/search', name: 'search', component: search },
@@ -159,7 +168,6 @@ const router = new Router({
     // },
   ],
 })
-
 
 const loginPath = '/login'
 let logged
