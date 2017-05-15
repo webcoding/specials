@@ -5,24 +5,30 @@
         <x-svg class="logo-dark" type="devnode_logo"></x-svg>
         <span class="text">DevNode</span>
       </a>
-      <!--<div class="line">
+      <!--<div class="form-block">
         <div v-show="btn && !form.name">用户名不能为空</div>
         <input type="text" placeholder="用户名" v-model="form.name">
       </div>-->
-      <div class="line">
+      <div class="form-block">
         <input type="email" class="input-text" placeholder="email@email.com" v-model="form.email">
         <p class="errors" v-show="btned && !validation.email">邮箱格式错误</p>
       </div>
-      <div class="line">
+      <div class="form-block">
         <input type="password" class="input-text" placeholder="密码" v-model="form.password">
         <router-link class="btn forget-password-btn" to="/password/forget">忘记密码？</router-link>
         <p class="errors" v-show="btned && !validation.password">请输入密码</p>
       </div>
-      <div class="line">
+      <div class="form-block">
         <label><input type="checkbox" v-model="form.rememberMe"> 自动登录</label>
       </div>
       <button class="btn btn-block btn-big">登录</button>
     </form>
+    <x-line content="第三方登录"></x-line>
+    <div class="third-way">
+      <span class="vendor-icon">qq</span>
+      <span class="vendor-icon">wechat</span>
+      <span class="vendor-icon">github</span>
+    </div>
   </div>
 </template>
 
@@ -32,10 +38,12 @@ var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(
 import { mapActions } from 'vuex'
 import { USER_SIGNIN } from '../store/user'
 import xSvg from '../components/svg'
+import xLine from '../components/line'
 
 export default {
   components: {
     xSvg,
+    xLine,
   },
 
   data() {
@@ -97,7 +105,7 @@ export default {
 .page-login
   margin: 80px 40px 0;
 
-  .form-login
+.form-login
     margin: 20px auto 0;
     width: 100%;
     min-width: 280px;
@@ -108,7 +116,7 @@ export default {
     margin-bottom: 40px;
     text-align: center;
 
-  .line
+  .form-block
     position: relative;
     margin-bottom: 16px;
 
