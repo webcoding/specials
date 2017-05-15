@@ -103,13 +103,13 @@ export default {
 
 <style lang="stylus">
 .page-login
-  margin: 80px 40px 0;
+  margin: 40px auto 0;
+  width: 100%;
+  min-width: 280px;
+  max-width: 320px;
 
 .form-login
-    margin: 20px auto 0;
-    width: 100%;
-    min-width: 280px;
-    max-width: 400px;
+  margin: 20px auto;
 
   .logo
     display: block;
