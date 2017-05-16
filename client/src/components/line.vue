@@ -1,7 +1,7 @@
 <template>
   <div class="x-line-box" :style="styleBox">
     <i class="x-line" :style="styleLine"></i>
-    <span class="x-line-content" :style="styleContent">{{content}}<slot></slot></span>
+    <span class="x-line-content" :style="styleContent"><slot></slot></span>
     <i class="x-line" :style="styleLine"></i>
   </div>
 </template>
@@ -9,7 +9,7 @@
 <script>
 export default {
   props: [
-    'content',
+    // 'content',
     'color',
     'bg',
   ],

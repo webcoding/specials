@@ -23,7 +23,7 @@
       </div>
       <button class="btn btn-block btn-big">登录</button>
     </form>
-    <x-line content="第三方登录"></x-line>
+    <x-line>第三方登录</x-line>
     <div class="third-way">
       <span class="vendor-icon">qq</span>
       <span class="vendor-icon">wechat</span>

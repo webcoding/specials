@@ -12,17 +12,21 @@
       </label>
       <label class="block">
         <span class="title">摘要</span>
-        <textarea v-model.trim="bookmark.description" type="text" class="input-text input-area" placeholder="补充描述信息，精准定位此收藏，便于以后检索使用" required></textarea>
+        <textarea
+          class="input-text input-area"
+          placeholder="补充描述信息，精准定位此收藏，便于以后检索使用"
+          v-model.trim="bookmark.description"
+          ></textarea>
       </label>
       <label class="block">
         <span class="title">标签</span>
         <input
-          ref="input"
-          v-bind:value="bookmark.tags"
-          v-on:input="updateTags($event.target.value)"
           type="text"
           class="input-text"
           placeholder="多个用英文逗号隔开"
+          ref="inputTags"
+          v-bind:value="bookmark.tags"
+          v-on:input="updateTags($event.target.value)"
           required>
       </label>
       <label class="block">
@@ -42,6 +46,7 @@
 </template>
 
 <script>
+var splitReg = /[,|，、]+/g
 // var logged
 export default {
   data() {
@@ -62,18 +67,26 @@ export default {
     // },
   },
 
+  computed: {
+
+  },
+
   methods: {
     updateTags(value) {
-      const formattedValue = value.trim().split(/[,|，]+/).join(',')
+      const formattedValue = value.trim().replace(splitReg, ',')
+      console.log(formattedValue)
+      // 通过 input 事件发出数值
+      this.bookmark.tags = formattedValue
       if (formattedValue !== value) {
-        this.$refs.input.value = formattedValue
-        // 通过 input 事件发出数值
+        this.$refs.inputTags.value = formattedValue
+        this.$emit('input', formattedValue)
       }
-      this.$emit('input', formattedValue)
+      return formattedValue
     },
     async addBookmark(e) {
+      console.log(this.bookmark.tags)
       if (this.$refs.form.checkValidity()) {
-        // e.preventDefault()
+        e.preventDefault()
         // e.stopPropagation()
         const res = await this.$ajax.addBookmark(this.bookmark)
         const data = res.data || {}
