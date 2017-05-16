@@ -106,6 +106,15 @@ html:not(.mobile)
 svg:not(:root)
   overflow hidden
 
+input:required:invalid
+input:focus:invalid
+  background: rgba(255, 171, 171, 0.1);
+  -moz-box-shadow: none;
+
+input:required:valid
+  background: rgba(79, 192, 171, 0.1);
+
+
 .logo-light
   display inline-block
   color #FFFFFF

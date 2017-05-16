@@ -1,37 +1,42 @@
 <template>
-  <div class="content">
-    <div class="bookmark-update">
-      <form class="bookmark-form" ref="form">
-        <h2>添加到收藏夹</h2>
-        <label class="block">
-          <span class="title">标题</span>
-          <input v-model.trim="bookmark.title" type="text" class="input-text" placeholder="标题" required min="2" max="50">
-        </label>
-        <label class="block">
-          <span class="title">链接</span>
-          <input v-model.trim="bookmark.url" type="text" class="input-text" placeholder="链接" required pattern="https?://.+">
-        </label>
-        <label class="block">
-          <span class="title">摘要</span>
-          <textarea v-model.trim="bookmark.description" type="text" class="input-text input-area" placeholder="用于补充描述收藏的标题或链接，越精准的描述对以后的检索查找越有利" required></textarea>
-        </label>
-        <label class="block">
-          <span class="title">标签</span>
-          <input v-model.trim="bookmark.tags" type="text" class="input-text" placeholder="多个用英文逗号隔开"  required>
-        </label>
-        <label class="block">
-          <span class="title"></span>
-          <button class="btn" @click="addBookmark">提交</button>
-          <!--<button @click="logout">注销</button>-->
-        </label>
-      </form>
-      <div class="bookmark-been">
-        <span class="text-error">{{warning.tip}}</span>
-        <h4>{{warning.title}}</h4>
-        <p>{{warning.url}}</p>
-        <p>{{warning.description}}</p>
-        <p>{{warning.tags}}</p>
-      </div>
+  <div class="content bookmark-update">
+    <form class="bookmark-form" ref="form">
+      <h2>添加到收藏夹</h2>
+      <label class="block">
+        <span class="title">标题</span>
+        <input v-model.trim="bookmark.title" type="text" class="input-text" placeholder="标题" required min="2" max="50">
+      </label>
+      <label class="block">
+        <span class="title">链接</span>
+        <input v-model.trim="bookmark.url" type="text" class="input-text" placeholder="链接" required pattern="https?://.+">
+      </label>
+      <label class="block">
+        <span class="title">摘要</span>
+        <textarea v-model.trim="bookmark.description" type="text" class="input-text input-area" placeholder="补充描述信息，精准定位此收藏，便于以后检索使用" required></textarea>
+      </label>
+      <label class="block">
+        <span class="title">标签</span>
+        <input
+          ref="input"
+          v-bind:value="bookmark.tags"
+          v-on:input="updateTags($event.target.value)"
+          type="text"
+          class="input-text"
+          placeholder="多个用英文逗号隔开"
+          required>
+      </label>
+      <label class="block">
+        <span class="title"></span>
+        <button class="btn" @click="addBookmark">提交</button>
+        <!--<button @click="logout">注销</button>-->
+      </label>
+    </form>
+    <div class="bookmark-been">
+      <span class="text-error">{{warning.tip}}</span>
+      <h4>{{warning.title}}</h4>
+      <p>{{warning.url}}</p>
+      <p>{{warning.description}}</p>
+      <p>{{warning.tags}}</p>
     </div>
   </div>
 </template>
@@ -52,16 +57,19 @@ export default {
   },
 
   filters: {
-    // join(value, separator) {
-    //   if (!value) {
-    //     value = []
-    //   }
-    //   return value.join(separator)
+    // format(value) {
+    //   return value.split(/[,|，]/).join(',')
     // },
   },
 
   methods: {
-    checkData() {
+    updateTags(value) {
+      const formattedValue = value.trim().split(/[,|，]+/).join(',')
+      if (formattedValue !== value) {
+        this.$refs.input.value = formattedValue
+        // 通过 input 事件发出数值
+      }
+      this.$emit('input', formattedValue)
     },
     async addBookmark(e) {
       if (this.$refs.form.checkValidity()) {
@@ -109,14 +117,6 @@ export default {
   margin 20px auto
 
 .bookmark-form
-  input:required:invalid
-  input:focus:invalid
-    background: rgba(255, 171, 171, 0.1);
-    -moz-box-shadow: none;
-
-  input:required:valid
-    background: rgba(79, 192, 171, 0.1);
-
   // + .text-tip
     //   position: absolute;
     //   right: 8px;
