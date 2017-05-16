@@ -1,4 +1,5 @@
 // @import "_fonts"
+@import "_mixins"
 @import "_settings"
 @import "_syntax"
 
@@ -6,6 +7,19 @@
   box-sizing: border-box;
 }
 
+// color
+
+.text-info
+  color #666
+.text-warning
+  color orange
+.text-error
+  color red
+
+.max-line-2
+  max-line(2)
+.max-line-3
+  max-line(3)
 body
   font-family $body-font
   font-size $body-font-size

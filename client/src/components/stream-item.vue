@@ -17,7 +17,7 @@
           <!--<span>标签：</span>-->
           <router-link class="tag" v-for="tag in item.tags" :to="`/t/${tag}`" :key="tag">{{tag}}</router-link>
         </p>
-        <p class="desc">{{item.description}}</p>
+        <p class="desc max-line-2">{{item.description}}</p>
       </div>
       <!--<div v-if="item.logo" class="bm-logo"><img :src="item.logo" alt=""></div>-->
       <a :href="item.url" tabindex="200" class="permalink superlink" target="_blank"></a>
@@ -58,6 +58,8 @@ export default {
 <style lang="stylus">
 @import '../styles/_settings'
 
+$iconSize = 48px
+
 .stream-list
   margin 20px 0
 
@@ -70,7 +72,7 @@ export default {
     content ''
     position absolute
     bottom 0
-    left 80px
+    left $iconSize + 16px
     right 0
     height 1px
     background #eee
@@ -86,8 +88,8 @@ export default {
   .cover-wrap,
   .cover-over,
   .cover-placeholder
-    width 64px
-    height 64px
+    width $iconSize
+    height $iconSize
 
   .cover-wrap
     flex-shrink 0

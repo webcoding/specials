@@ -15,6 +15,9 @@ export default {
 </script>
 
 <style lang="stylus">
+
+$iconSize = 48px;
+
 .x-vote
   position relative
   z-index 2
@@ -22,9 +25,9 @@ export default {
   // width 40px
   // height 54px
   // line-height 54px
-  width 64px
-  height 64px
-  line-height 64px
+  width $iconSize
+  height $iconSize
+  line-height $iconSize
   font-size 18px
   background #f3f3f3
   color #666
@@ -46,19 +49,21 @@ export default {
     width 100%
     background url(../assets/img/vote-bg.svg) 0 0 no-repeat
     background-size auto 72px
-    background-position 8px top
+    // background-position 8px top
+    background-position 0 top
 
   .like
     top 0
     height 36px
     &:hover
-      background-position -40px 0
+      // background-position -40px 0
+      background-position -48px 0
 
   .hate
     bottom 0
     height 18px
     // background-position 0 bottom
-    background-position 8px bottom
+    background-position 0 bottom
     &:hover
-      background-position -40px bottom
+      background-position -48px bottom
 </style>
