@@ -130,18 +130,6 @@ export default {
   margin 20px auto
 
 .bookmark-form
-  // + .text-tip
-    //   position: absolute;
-    //   right: 8px;
-    //   top: 6px;
-    //   &:after
-    //     content: '*';
-  // input:focus:invalid
-  //   + .text-tip
-  //     &:after
-  //       content: 'error'
-    //     color: red;
-
   label.block
     position relative
     display flex
