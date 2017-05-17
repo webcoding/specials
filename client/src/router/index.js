@@ -3,13 +3,14 @@ import Router from 'vue-router'
 import env from '../config/env'
 // import store from '../store/'
 import ajaxApi from '../store/api'
-import login from '../pages/login'
-import support from '../pages/support'
-// import index from '../pages/index'
-import search from '../pages/search'
-import page from '../pages/page'
+
 import bookmarkPages from './bookmark'
 import userPages from './user'
+
+const login = () => import('../pages/login')
+const support = () => import('../pages/support')
+const search = () => import('../pages/search')
+const page = () => import('../pages/page')
 
 // import score from '../pages/score'
 // import profile from '../pages/profile'

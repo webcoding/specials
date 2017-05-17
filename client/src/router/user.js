@@ -1,6 +1,6 @@
 
-import user from '../pages/user'
-import profile from '../pages/profile'
+const user = () => import('../pages/user')
+const profile = () => import('../pages/profile')
 
 // 别名与跳转
 // 暂时用别名 后期如为归纳统一路径 则使用跳转比别名好
@@ -22,12 +22,13 @@ const userPages = [
     component: user,
     children: [
       {
-        path: 'profile',
+        path: '/',
         name: 'profile',
         component: profile,
         meta: {
           requiresAuth: true,
         },
+        alias: ['profile'],
       },
     ].concat(pages),
   },

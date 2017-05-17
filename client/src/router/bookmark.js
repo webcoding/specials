@@ -1,16 +1,17 @@
 
-import layout from '../pages/layout'
-import tag from '../pages/tag'
-import svg from '../pages/svg'
-import bookmark from '../pages/bookmark'
-import explore from '../pages/explore'
-import docs from '../pages/docs'
-import read from '../pages/read'
-import help from '../pages/help'
-import changelog from '../pages/changelog'
-import about from '../pages/about'
-import dev from '../pages/dev'
-import bookmarkAdd from '../pages/bookmark-add'
+// import layout from '../pages/layout'
+const layout = () => import('../pages/layout')
+const tag = () => import('../pages/tag')
+const svg = () => import('../pages/svg')
+const bookmark = () => import('../pages/bookmark')
+const explore = () => import('../pages/explore')
+const docs = () => import('../pages/docs')
+const read = () => import('../pages/read')
+const help = () => import('../pages/help')
+const changelog = () => import('../pages/changelog')
+const about = () => import('../pages/about')
+const dev = () => import('../pages/dev')
+const bookmarkAdd = () => import('../pages/bookmark-add')
 
 // 别名与跳转
 // 暂时用别名 后期如为归纳统一路径 则使用跳转比别名好
