@@ -132,6 +132,9 @@ export default {
     transition: border-color ease-in-out .15s,
                 box-shadow ease-in-out .15s;
 
+    &:focus
+      outline: none;
+
   .forget-password-btn
     position: absolute;
     right: 0;
@@ -143,6 +146,9 @@ export default {
     border-bottom-left-radius: 0;
     line-height: 42px;
     padding: 0 10px 0 14px;
+
+    &:hover
+      color: #666;
 
 </style>
 
