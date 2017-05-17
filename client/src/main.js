@@ -5,6 +5,7 @@ import store from './store/'
 import router from './router/'
 import App from './pages/App'
 import ajaxApi from './store/api'
+import './config/analysis' // 统计信息
 // import currency from './filters/currency'
 // import '@common/init'
 // import '@common/rem'
