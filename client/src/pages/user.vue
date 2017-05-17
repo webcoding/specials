@@ -1,16 +1,32 @@
 <template>
-  <div class="content guide index-guide">
-    <h1>用户 <small>User</small></h1>
-    <p>云智能网络乐园——为开发者服务</p>
-    <pager></pager>
+  <div class="page">
+    <x-header></x-header>
+    <div id="main" class="fix-sidebar">
+      <x-sidebar></x-sidebar>
+      <transition>
+        <router-view class="content with-sidebar"></router-view>
+      </transition>
+    </div>
+    <!--<x-footer></x-footer>-->
   </div>
 </template>
 
 <script>
-import pager from '../components/pager'
+import xHeader from '../components/header'
+import xSidebar from '../components/sidebar'
+import xFooter from '../components/footer'
+
 export default {
   components: {
-    pager,
+    xHeader,
+    xSidebar,
+    xFooter,
   },
 }
 </script>
+
+<style lang="stylus">
+// @import "../styles/page.styl";
+
+</style>
+

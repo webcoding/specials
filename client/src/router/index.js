@@ -3,25 +3,14 @@ import Router from 'vue-router'
 import env from '../config/env'
 // import store from '../store/'
 import ajaxApi from '../store/api'
-
 import login from '../pages/login'
-import layout from '../pages/layout'
-import explore from '../pages/explore'
-import bookmark from '../pages/bookmark'
-import tag from '../pages/tag'
-import docs from '../pages/docs'
-import read from '../pages/read'
-import user from '../pages/user'
-import help from '../pages/help'
-import changelog from '../pages/changelog'
-import about from '../pages/about'
 import support from '../pages/support'
-import svg from '../pages/svg'
 // import index from '../pages/index'
 import search from '../pages/search'
 import page from '../pages/page'
-import bookmarkAdd from '../pages/bookmark-add'
-import dev from '../pages/dev'
+import bookmarkPages from './bookmark'
+import userPages from './user'
+
 // import score from '../pages/score'
 // import profile from '../pages/profile'
 
@@ -38,57 +27,41 @@ const page404 = {
     </div>`,
 }
 
-// 别名与跳转
-// 暂时用别名 后期如为归纳统一路径 则使用跳转比别名好
-const contentRoutes = [
+const systemPages = [
+  // { path: '/', name: 'index', component: index },
+  // {
+  //   path: '/tag/add',
+  //   name: 'tag-add',
+  //   meta: {
+  //     requiresAuth: true,
+  //   },
+  //   component: tagAdd,
+  // },
+
   {
-    path: '/explore',
-    name: 'explore',
-    component: explore,
+    path: '/support',
+    name: 'support',
+    component: support,
   },
-  {
-    path: '/read',
-    name: 'read',
-    component: read,
-  },
-  {
-    path: '/bookmark',
-    name: 'bookmark',
-    component: bookmark,
-    alias: ['/bookmarks', 'b'],
-  },
-  {
-    path: '/user',
-    name: 'user',
-    component: user,
-    alias: ['/users', 'u'],
-  },
-  {
-    path: '/docs',
-    name: 'docs',
-    component: docs,
-    alias: '/doc',
-  },
-  {
-    path: '/changelog',
-    name: 'changelog',
-    component: changelog,
-  },
-  {
-    path: '/help',
-    name: 'help',
-    component: help,
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: about,
-  },
-  {
-    path: '/dev',
-    name: 'dev',
-    component: dev,
-  },
+  { path: '/guide', name: 'guide', component: page },
+  { path: '/search', name: 'search', component: search },
+  { path: '/login', name: 'login', component: login },
+  { path: '/coming', name: 'coming', component: coming },
+  { path: '/*', name: '404', component: page404 },
+  // { path: '/score', name: 'score', component: score },
+  // {
+  //   path: '/item',
+  //   name: 'item',
+  //   component: resolve => require(['../pages/item'], resolve),
+  //   // component: r => require.ensure([], () => r(require('../page/home')), 'home')
+  // },
+  // { path: '*', redirect: '/' },
+  // {
+  //   path: '/',
+  //   // component: App,
+  //   children: [
+  //   ],
+  // },
 ]
 
 Vue.use(Router)
@@ -98,75 +71,11 @@ const router = new Router({
   mode: env.routerMode,
   base: '',
   scrollBehavior: () => ({ y: 0 }),
-  routes: [
-    // { path: '/', name: 'index', component: index },
-    {
-      path: '/',
-      // 使用默认子路由，则父路由的 name 就得去掉
-      // 否则使用 `:to="{name: 'demo'"` 会导致默认子路由不会render
-      name: '',
-      component: layout,
-      children: [
-        {
-          path: '/',
-          name: 'bookmarks',
-          component: bookmark,
-        },
-        {
-          path: '/tag',
-          name: 'tag',
-          component: tag,
-          alias: ['/tags', '/t'],
-        },
-        {
-          path: '/svg',
-          name: 'svg',
-          component: svg,
-        },
-      ].concat(contentRoutes),
-    },
-    {
-      path: '/bookmark/add',
-      name: 'bookmark-add',
-      meta: {
-        requiresAuth: true,
-      },
-      component: bookmarkAdd,
-    },
-    // {
-    //   path: '/tag/add',
-    //   name: 'tag-add',
-    //   meta: {
-    //     requiresAuth: true,
-    //   },
-    //   component: tagAdd,
-    // },
-
-    {
-      path: '/support',
-      name: 'support',
-      component: support,
-    },
-    { path: '/guide', name: 'guide', component: page },
-    { path: '/search', name: 'search', component: search },
-    { path: '/login', name: 'login', component: login },
-    { path: '/coming', name: 'coming', component: coming },
-    { path: '/*', name: '404', component: page404 },
-    // { path: '/score', name: 'score', component: score },
-    // {
-    //   path: '/item',
-    //   name: 'item',
-    //   component: resolve => require(['../pages/item'], resolve),
-    //   // component: r => require.ensure([], () => r(require('../page/home')), 'home')
-    // },
-    // { path: '*', redirect: '/' },
-    // {
-    //   path: '/',
-    //   // component: App,
-    //   children: [
-    //   ],
-    // },
-  ],
+  routes: [].concat(
+    bookmarkPages,
+    userPages,
+    systemPages,
+  ),
 })
 
 const loginPath = '/login'
