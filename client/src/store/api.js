@@ -129,8 +129,8 @@ const ajaxApi = {
     return ajax.get('/tag', data)
   },
   // getTags: () => setPromise(mock.tags),
-  getBookmarksWithTag(tagName) {
-    return ajax.get('/bookmark', { tag: tagName })
+  getBookmarksWithTag(data) {
+    return ajax.get('/bookmark/tag', data)
   },
   addBookmark(data) {
     return ajax.form('/bookmark/create', data)

@@ -39,7 +39,11 @@ export default {
     },
     async fetchTagBookmarks() {
       this.tag = this.$route.params.tag
-      const res = await this.$ajax.getBookmarksWithTag(this.tag)
+      const res = await this.$ajax.getBookmarksWithTag({
+        params: {
+          tag: this.tag,
+        },
+      })
       console.log(res)
       if (res.errno === 0) {
         const data = res.data
