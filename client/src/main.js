@@ -30,7 +30,7 @@ const debug = false
 
 if (process.env.NODE_ENV === 'production' || debug) {
   Raven
-    .config('https://37695669ab8e4d0688819f320de4a73a@sentry.io/144523')
+    .config('https://9ea85fb7e2a34fe6b74b4fb8c9e25435@sentry.io/169395')
     .addPlugin(RavenVue, Vue)
     .install()
 }

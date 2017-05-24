@@ -15,12 +15,14 @@
 import xHeader from '../components/header'
 import xSidebar from '../components/sidebar'
 import xFooter from '../components/footer'
+// import playBall from '../components/playball'
 
 export default {
   components: {
     xHeader,
     xSidebar,
     xFooter,
+    // playBall,
   },
 }
 </script>
