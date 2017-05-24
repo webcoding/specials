@@ -12,6 +12,7 @@ const changelog = () => import('../pages/changelog')
 const about = () => import('../pages/about')
 const dev = () => import('../pages/dev')
 const bookmarkAdd = () => import('../pages/bookmark-add')
+const tagBookmark = () => import('../pages/tag-bookmark')
 
 // 别名与跳转
 // 暂时用别名 后期如为归纳统一路径 则使用跳转比别名好
@@ -74,10 +75,15 @@ const bookmarkPages = [
         component: bookmark,
       },
       {
-        path: '/tag',
+        path: '/t',
         name: 'tag',
         component: tag,
-        alias: ['/tags', '/t'],
+        alias: ['tag'],
+      },
+      {
+        path: '/t/:tag',
+        name: 'tag-bookmarks',
+        component: tagBookmark,
       },
       {
         path: '/svg',
