@@ -75,10 +75,10 @@ const bookmarkPages = [
         component: bookmark,
       },
       {
-        path: '/t',
+        path: '/tags',
         name: 'tag',
         component: tag,
-        alias: ['tag'],
+        // alias: ['tag', 't'],
       },
       {
         path: '/t/:tag',
