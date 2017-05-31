@@ -6,12 +6,12 @@ import ajaxApi from '../store/api'
 
 import bookmarkPages from './bookmark'
 import userPages from './user'
+import link from '../pages/link'
 
 const login = () => import('../pages/login')
 const support = () => import('../pages/support')
 const search = () => import('../pages/search')
 const page = () => import('../pages/page')
-const link = () => import('../pages/link')
 
 // import score from '../pages/score'
 // import profile from '../pages/profile'
