@@ -11,6 +11,7 @@ const login = () => import('../pages/login')
 const support = () => import('../pages/support')
 const search = () => import('../pages/search')
 const page = () => import('../pages/page')
+const link = () => import('../pages/link')
 
 // import score from '../pages/score'
 // import profile from '../pages/profile'
@@ -44,6 +45,7 @@ const systemPages = [
     name: 'support',
     component: support,
   },
+  { path: '/link', name: 'link', component: link },
   { path: '/guide', name: 'guide', component: page },
   { path: '/search', name: 'search', component: search },
   { path: '/login', name: 'login', component: login },

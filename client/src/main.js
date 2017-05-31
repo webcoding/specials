@@ -10,12 +10,12 @@ import './config/analysis' // 统计信息
 // import '@common/init'
 // import '@common/rem'
 
-// import * as filters from '@common/filters'
+import * as filters from './filters'
 
-// // // register global utility filters.
-// Object.keys(filters).forEach(key => {
-//   Vue.filter(key, filters[key])
-// })
+// register global utility filters.
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 
 /**
  * 错误统计 https://docs.sentry.io/clients/javascript/integrations/vue/

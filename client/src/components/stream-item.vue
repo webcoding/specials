@@ -12,7 +12,7 @@
         </template>
       </div>
       <div class="about">
-        <a class="title" :href="item.url" target="_blank">{{item.title}}</a>
+        <router-link class="title" :to="`/link?url=${item.url}`">{{item.title}}</router-link>
         <p class="taglist-inline">
           <!--<span>标签：</span>-->
           <router-link class="tag" v-for="tag in item.tags" :to="`/tag/${tag}`" :key="tag">{{tag}}</router-link>
@@ -20,13 +20,15 @@
         <p class="desc max-line-2">{{item.description}}</p>
       </div>
       <!--<div v-if="item.logo" class="bm-logo"><img :src="item.logo" alt=""></div>-->
-      <a :href="item.url" tabindex="200" class="permalink superlink" target="_blank"></a>
+      <router-link :to="`/link?url=${item.url}`" tabindex="200" class="permalink superlink"></router-link>
     </div>
   </section>
 </template>
 
 <script>
+// `/link?url=${item.url | encode}`
 import vote from './vote'
+// import Base64 from 'Base64'
 import action from './action'
 import viewCount from './view-count'
 // var errDefaultUrl

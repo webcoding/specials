@@ -23,6 +23,7 @@
     "vuex-router-sync": "^4.1.2"
   },
   "devDependencies": {
+    "Base64": "^1.0.1",
     "autoprefixer": "^7.1.1",
     "axios": "^0.16.1",
     "babel-core": "^6.24.1",
