@@ -15,7 +15,7 @@
         <a class="title" :href="item.url" target="_blank">{{item.title}}</a>
         <p class="taglist-inline">
           <!--<span>标签：</span>-->
-          <router-link class="tag" v-for="tag in item.tags" :to="`/t/${tag}`" :key="tag">{{tag}}</router-link>
+          <router-link class="tag" v-for="tag in item.tags" :to="`/tag/${tag}`" :key="tag">{{tag}}</router-link>
         </p>
         <p class="desc max-line-2">{{item.description}}</p>
       </div>

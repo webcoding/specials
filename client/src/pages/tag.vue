@@ -6,7 +6,7 @@
       <!--<small><router-link to="tags/all">全部</router-link></small>-->
     </h2>
     <div class="tags-list">
-      <router-link class="tag" v-for="tag in tags" :to="`/t/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
+      <router-link class="tag" v-for="tag in tags" :to="`/tag/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
       <!--<dl class="tag-item" v-for="item in tags" :key="item.name">
         <dt>{{item.name}}</dt>
         <dd>
