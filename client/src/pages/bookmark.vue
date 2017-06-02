@@ -1,7 +1,7 @@
 <template>
   <div class="bookmark-content">
     <h1>开发者收藏 <small>Bookmarks</small></h1>
-    <p>懒人专用收藏夹——切记：社会进步是由懒人推进的。</p>
+    <p>懒人专用收藏夹——切记：社会进步是由懒人推进的。<router-link class="btn" :to="`/bookmark/add`">新增收藏</router-link></p>
     <div class="tags-list">
       <strong>快捷入口：</strong><router-link class="tag" v-for="tag in tags" :to="`/tag/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
     </div>
