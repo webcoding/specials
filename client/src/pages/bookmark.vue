@@ -1,9 +1,10 @@
 <template>
   <div class="bookmark-content">
     <h1>开发者收藏 <small>Bookmarks</small></h1>
-    <p>开发者收藏——懒人专用。</p>
-    <p>支持自定义分组、圈子共享、私密收藏等。</p>
-    <p>数据数据源自本地收藏夹以及网友的提交收藏</p>
+    <p>懒人专用收藏夹——切记：社会进步是由懒人推进的。</p>
+    <div class="tags-list">
+      <strong>快捷入口：</strong><router-link class="tag" v-for="tag in tags" :to="`/tag/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
+    </div>
     <div class="stream-list">
       <template v-for="item in bookmarks">
         <stream-item :item="item" :key="item.id"></stream-item>
@@ -14,11 +15,30 @@
 </template>
 
 <script>
+const tags = [
+  {
+    id: 1,
+    name: '微信公众号',
+  },
+  {
+    id: 4,
+    name: '小程序',
+  },
+  {
+    id: 2,
+    name: '支付宝接入',
+  },
+  {
+    id: 3,
+    name: '七牛SDK',
+  },
+]
 import streamItem from '../components/stream-item'
 import pager from '../components/pager'
 export default {
   data() {
     return {
+      tags: tags,
       bookmarks: [],
     }
   },

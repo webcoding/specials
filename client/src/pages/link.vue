@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  // 这里可以改为服务端中转
   created() {
     this.jumpUrl()
   },

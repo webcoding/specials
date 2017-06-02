@@ -78,7 +78,7 @@ export default {
 #app .no-margin
   margin 0
 
-.tag-list
+.tags-list
   margin 20px 0
 
 .tag-item
