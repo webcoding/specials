@@ -1,6 +1,6 @@
 
-const user = () => import('../pages/user')
-const profile = () => import('../pages/profile')
+const user = () => import('../user/user')
+const profile = () => import('../user/profile')
 
 // 别名与跳转
 // 暂时用别名 后期如为归纳统一路径 则使用跳转比别名好

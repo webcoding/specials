@@ -11,7 +11,7 @@
 // <v-dialog :is-show="dialog" :msg="tips" @cancel="dialog = false" @sure="sureDialog"></v-dialog>
 // import hub from './store/hub'
 // import vDialog from './components/Dialog'
-import svgIcons from '../components/svg-icons'
+import svgIcons from './components/svg-icons'
 
 export default {
   data() {
@@ -73,7 +73,7 @@ export default {
 
 
 <style lang="stylus">
-@import "../styles/page.styl";
+@import "./styles/page.styl";
 
 #app .no-margin
   margin 0
@@ -111,8 +111,6 @@ a.tag
 
   &:hover
     background-color rgba(66, 185, 131, 0.2)
-
-
 
 .contributors
   margin 16px 0

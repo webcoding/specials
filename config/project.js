@@ -79,9 +79,9 @@ if (!project.qn.path && !project.isSingle) {
 }
 
 console.log('')
-console.log('    build: ', project.dir)
-console.log('   output: ', project.dist)
-console.log('    qndir: ', project.qn.domain + project.qn.path)
+console.log('     build: ', project.dir)
+console.log('    output: ', project.dist)
+console.log('prod qndir: ', project.qn.domain + project.qn.path)
 console.log('')
 
 // 都是绝对路径

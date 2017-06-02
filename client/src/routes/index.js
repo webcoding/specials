@@ -4,14 +4,21 @@ import env from '../config/env'
 // import store from '../store/'
 import ajaxApi from '../store/api'
 
-import bookmarkPages from './bookmark'
-import userPages from './user'
+import routesBookmark from './bookmarks'
+import routesUser from './user'
+
 import link from '../pages/link'
 
 const login = () => import('../pages/login')
 const support = () => import('../pages/support')
 const search = () => import('../pages/search')
 const page = () => import('../pages/page')
+const svg = () => import('../pages/svg')
+const docs = () => import('../pages/docs')
+const read = () => import('../pages/read')
+const help = () => import('../pages/help')
+const changelog = () => import('../pages/changelog')
+const about = () => import('../pages/about')
 // const page404 = () => import('../components/404')
 
 // import score from '../pages/score'
@@ -30,7 +37,7 @@ const page404 = {
     </div>`,
 }
 
-const systemPages = [
+const routesSystem = [
   // { path: '/', name: 'index', component: index },
   // {
   //   path: '/tag/add',
@@ -40,12 +47,43 @@ const systemPages = [
   //   },
   //   component: tagAdd,
   // },
-
+  {
+    path: '/read',
+    name: 'read',
+    component: read,
+  },
+  {
+    path: '/docs',
+    name: 'docs',
+    component: docs,
+    alias: '/doc',
+  },
+  {
+    path: '/changelog',
+    name: 'changelog',
+    component: changelog,
+  },
+  {
+    path: '/help',
+    name: 'help',
+    component: help,
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: about,
+  },
   {
     path: '/support',
     name: 'support',
     component: support,
   },
+  {
+    path: '/svg',
+    name: 'svg',
+    component: svg,
+  },
+
   { path: '/link', name: 'link', component: link },
   { path: '/guide', name: 'guide', component: page },
   { path: '/search', name: 'search', component: search },
@@ -76,9 +114,9 @@ const router = new Router({
   base: '',
   scrollBehavior: () => ({ y: 0 }),
   routes: [].concat(
-    bookmarkPages,
-    userPages,
-    systemPages,
+    routesBookmark,
+    routesUser,
+    routesSystem,
   ),
 })
 
@@ -94,6 +132,8 @@ async function checkAuth() {
   }
   return logged
 }
+
+console.log(router)
 
 // let indexScrollTop = 0
 // 权限检测
