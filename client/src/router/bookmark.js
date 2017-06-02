@@ -1,18 +1,18 @@
 
 // import layout from '../pages/layout'
 const layout = () => import('../pages/layout')
-const tag = () => import('../pages/tag')
 const svg = () => import('../pages/svg')
 const bookmark = () => import('../pages/bookmark')
+const bookmarkAdd = () => import('../pages/bookmark-add')
 const explore = () => import('../pages/explore')
+const dev = () => import('../pages/dev')
+const tags = () => import('../pages/tags')
+const tag = () => import('../pages/tag')
 const docs = () => import('../pages/docs')
 const read = () => import('../pages/read')
 const help = () => import('../pages/help')
 const changelog = () => import('../pages/changelog')
 const about = () => import('../pages/about')
-const dev = () => import('../pages/dev')
-const bookmarkAdd = () => import('../pages/bookmark-add')
-const tagBookmark = () => import('../pages/tag-bookmark')
 
 // 别名与跳转
 // 暂时用别名 后期如为归纳统一路径 则使用跳转比别名好
@@ -76,14 +76,14 @@ const bookmarkPages = [
       },
       {
         path: '/tags',
-        name: 'tag',
-        component: tag,
+        name: 'tags',
+        component: tags,
         // alias: ['tag', 't'],
       },
       {
         path: '/tag/:tag',
-        name: 'tag-bookmarks',
-        component: tagBookmark,
+        name: 'tag',
+        component: tag,
       },
       {
         path: '/svg',

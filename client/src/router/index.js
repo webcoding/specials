@@ -12,6 +12,7 @@ const login = () => import('../pages/login')
 const support = () => import('../pages/support')
 const search = () => import('../pages/search')
 const page = () => import('../pages/page')
+// const page404 = () => import('../components/404')
 
 // import score from '../pages/score'
 // import profile from '../pages/profile'
