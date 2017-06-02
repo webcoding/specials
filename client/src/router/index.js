@@ -4,8 +4,8 @@ import env from '../config/env'
 // import store from '../store/'
 import ajaxApi from '../store/api'
 
-import routesBookmark from './bookmarks'
-import routesUser from './user'
+import bookmarkRoutes from './bookmarks'
+import userRoutes from './user'
 
 import link from '../pages/link'
 
@@ -37,7 +37,7 @@ const page404 = {
     </div>`,
 }
 
-const routesSystem = [
+const systemRoutes = [
   // { path: '/', name: 'index', component: index },
   // {
   //   path: '/tag/add',
@@ -114,9 +114,9 @@ const router = new Router({
   base: '',
   scrollBehavior: () => ({ y: 0 }),
   routes: [].concat(
-    routesBookmark,
-    routesUser,
-    routesSystem,
+    bookmarkRoutes,
+    userRoutes,
+    systemRoutes,
   ),
 })
 

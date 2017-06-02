@@ -9,7 +9,9 @@
 <script>
 export default {
   props: [
-    // 'content',
+    'margin',
+    'height',
+    'padding',
     'color',
     'bg',
   ],
@@ -23,8 +25,8 @@ export default {
   computed: {
     styleBox() {
       return [
-        this.height ? { height: this.height } : {},
         this.margin ? { margin: this.margin } : {},
+        this.height ? { height: this.height } : {},
       ]
     },
     styleContent() {

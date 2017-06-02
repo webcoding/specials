@@ -18,16 +18,19 @@
         <router-link class="btn forget-password-btn" to="/password/forget">忘记密码？</router-link>
         <p class="errors" v-show="btned && !validation.password">请输入密码</p>
       </div>
-      <div class="form-block">
+      <div class="form-block flex-center">
         <label><input type="checkbox" v-model="form.rememberMe"> 自动登录</label>
+        <span>还没有账户？<router-link to="/register">立即注册</router-link></span>
       </div>
-      <button class="btn btn-block btn-big">登录</button>
+      <div class="form-block">
+        <button class="btn btn-block btn-big">登录</button>
+      </div>
     </form>
-    <x-line>第三方登录</x-line>
-    <div class="third-way">
-      <span class="vendor-icon">qq</span>
-      <span class="vendor-icon">wechat</span>
-      <span class="vendor-icon">github</span>
+    <x-line margin="40px 0 30px">第三方登录</x-line>
+    <div class="third-way flex-center">
+      <router-link class="item" to="/auth/qq">QQ</router-link>
+      <router-link class="item" to="/auth/wechat">Wechat</router-link>
+      <router-link class="item" to="/auth/github">Github</router-link>
     </div>
   </div>
 </template>
@@ -149,6 +152,16 @@ export default {
 
     &:hover
       color: #666;
+
+.third-way
+  .item
+    display flex
+    align-items center
+    justify-content: center;
+    width 64px
+    height 64px
+    border 1px solid #ccc
+    border-radius 100%
 
 </style>
 
