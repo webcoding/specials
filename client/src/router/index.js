@@ -15,7 +15,7 @@ const search = () => import('../pages/search')
 const page = () => import('../pages/page')
 const svg = () => import('../pages/svg')
 const docs = () => import('../pages/docs')
-const read = () => import('../pages/read')
+const unread = () => import('../pages/unread')
 const help = () => import('../pages/help')
 const changelog = () => import('../pages/changelog')
 const about = () => import('../pages/about')
@@ -48,9 +48,9 @@ const routesSystem = [
   //   component: tagAdd,
   // },
   {
-    path: '/read',
-    name: 'read',
-    component: read,
+    path: '/unread',
+    name: 'unread',
+    component: unread,
   },
   {
     path: '/docs',
