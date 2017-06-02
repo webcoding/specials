@@ -39,7 +39,7 @@ var qnConfig = {
     domain: 'https://static.cloudai.net/',
     path: '', // 路径: [hash] 或 zt/lie
   },
-  client: {
+  dev: {
     prefix: '',
     ak: curASKey.ak,
     sk: curASKey.sk,
