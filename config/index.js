@@ -56,7 +56,7 @@ module.exports = {
   },
   dev: {
     env: devEnv,
-    port: 8080,
+    port: project.port,
     autoOpenBrowser: true,
     assetsSubDirectory: 'assets',
     assetsPublicPath: '',

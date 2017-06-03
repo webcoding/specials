@@ -33,11 +33,29 @@ appName = appName.replace(ztDirReg, '')
  * ztFolder: '', // 专题文件夹绝对路径，用于列出专题路径
  */
 
+var devQn = appName
+var port
+switch (appName) {
+  case 'devnode':
+    devQn = 'dev'
+    port = '8080'
+    break
+  case 'devapi':
+    devQn = 'dev'
+    port = '8090'
+    break
+  default:
+    devQn = appName
+    port = '8080'
+    break
+}
+port = process.env.npm_config_port || port
 var project = {
+  port: port,
   name: appName,
   dir: appName,
   dist: buildDist + appName,
-  qn: qnConfig[appName] || qnConfig.cdn,
+  qn: qnConfig[devQn] || qnConfig.cdn,
   isSingle: !!qnConfig[appName], // 独立项目配置
 }
 

@@ -1,4 +1,4 @@
 module.exports = {
   NODE_ENV: '"production"',
-  api: '//m.api.haoshiqi.net/',
+  api: 'https://m.api.haoshiqi.net/',
 }
