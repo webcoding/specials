@@ -126,7 +126,12 @@
       <x-svg type="web_active"></x-svg>
       <x-svg type="info"></x-svg>
       <x-svg type="info_active"></x-svg>
-
+      <h4>register/login</h4>
+      <x-svg type="email"></x-svg>
+      <x-svg type="user"></x-svg>
+      <x-svg type="lock"></x-svg>
+      <x-svg type="keyword"></x-svg>
+      <!--<x-svg type="title"></x-svg>-->
     </div>
     <p>跟设置的字体颜色一致</p>
   </div>

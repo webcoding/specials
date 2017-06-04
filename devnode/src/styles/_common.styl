@@ -4,7 +4,16 @@
 @import "_syntax"
 
 *, :after, :before {
-  box-sizing: border-box;
+  box-sizing border-box
+}
+
+.ellipsis {
+  display block
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+  word-wrap normal
+  overflow-wrap normal
 }
 
 // color
@@ -108,11 +117,11 @@ svg:not(:root)
 
 input:required:invalid
 input:focus:invalid
-  background: rgba(255, 171, 171, 0.1);
-  -moz-box-shadow: none;
+  background rgba(255, 171, 171, 0.1)
+  -moz-box-shadow none
 
 input:required:valid
-  background: rgba(79, 192, 171, 0.1);
+  background rgba(79, 192, 171, 0.1)
 
 .flex-center
   display flex
@@ -122,7 +131,7 @@ input:required:valid
 .logo-light
   display inline-block
   color #FFFFFF
-  background-color gray
+  // background-color gray
 .logo-dark
   color #46483E
 
@@ -140,15 +149,15 @@ input:required:valid
   outline none
   -webkit-appearance none
   background transparent
-  border: 1px solid transparent;
+  border 1px solid transparent
   box-shadow none
   transition background .1s ease-in-out,color .1s ease-in-out
   line-height 1em
   align-items center
   cursor pointer
-  user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
+  user-select none
+  touch-action manipulation
+  white-space nowrap
 
   &.btn-block
     display block
@@ -172,10 +181,23 @@ button.btn
     color $green
 
 .btn-big
-  padding: 0.75em 2em;
+  padding 0.75em 2em
   font-size 16px
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-weight 600
+  letter-spacing 0.1em
+
+.keywords
+  display flex
+  font-size 14px
+  color #858585
+  line-height 20px
+
+  a.keyword
+    display inline-block
+    margin-left 8px
+    color inherit
+    &:hover
+      text-decoration underline
 
 .highlight
   overflow-x auto
@@ -224,7 +246,7 @@ button.btn
 #main
   position relative
   z-index 1
-  padding 0 60px 30px
+  padding 0 0 30px
   overflow-x hidden
 
 #ad
@@ -260,6 +282,7 @@ button.btn
 #nav
   .nav-link
     cursor pointer
+    color #fff
   .nav-dropdown-container
     .nav-link
       &:hover

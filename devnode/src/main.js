@@ -12,7 +12,12 @@ import './config/analysis' // 统计信息
 
 Vue.prototype.$ajax = ajaxApi
 
-import * as filters from './filters'
+// import titleMixin from './util/title'
+import * as filters from './util/filters'
+
+// mixin for handling title
+// Vue.mixin(titleMixin)
+
 // register global utility filters.
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
@@ -31,12 +36,6 @@ if (process.env.NODE_ENV === 'production' || debug) {
     .addPlugin(RavenVue, Vue)
     .install()
 }
-
-Vue.mixin({
-  goBack() {
-    window.history.go(-1)
-  },
-})
 
 // Vue.config.productionTip = false
 

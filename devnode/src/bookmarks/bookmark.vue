@@ -10,7 +10,7 @@
         <stream-item :item="item" :key="item.id"></stream-item>
       </template>
     </div>
-    <pager></pager>
+    <!--<pager></pager>-->
   </div>
 </template>
 

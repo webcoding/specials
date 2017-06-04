@@ -106,6 +106,7 @@ a.tag
   white-space nowrap
   font-size 13px
   line-height 1.2
+  color $green
   background-color rgba(66, 185, 131, 0.1)
   cursor pointer
 

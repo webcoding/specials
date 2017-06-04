@@ -1,6 +1,8 @@
 
-// import layout from '../pages/layout'
-const layout = () => import('../bookmarks/layout')
+import layout from '../layout/bookmark'
+import search from '../pages/search'
+// const search = () => import('../pages/search')
+// const layout = () => import('../pages/layout')
 const bookmark = () => import('../bookmarks/bookmark')
 const bookmarkAdd = () => import('../bookmarks/bookmark-add')
 const explore = () => import('../bookmarks/explore')
@@ -13,9 +15,15 @@ const tag = () => import('../bookmarks/tag')
 const pages = [
   {
     path: '/',
+    name: 'search',
+    component: search,
+    alias: ['s', 'search'],
+  },
+  {
+    path: '/bookmarks',
     name: 'bookmarks',
     component: bookmark,
-    alias: ['/bookmarks', 'b'],
+    alias: ['b', 'bookmark'],
   },
   {
     path: '/explore',

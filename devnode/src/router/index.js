@@ -11,7 +11,6 @@ import link from '../pages/link'
 
 const login = () => import('../pages/login')
 const support = () => import('../pages/support')
-const search = () => import('../pages/search')
 const page = () => import('../pages/page')
 const svg = () => import('../pages/svg')
 const docs = () => import('../pages/docs')
@@ -86,7 +85,6 @@ const systemRoutes = [
 
   { path: '/link', name: 'link', component: link },
   { path: '/guide', name: 'guide', component: page },
-  { path: '/search', name: 'search', component: search },
   { path: '/login', name: 'login', component: login },
   { path: '/coming', name: 'coming', component: coming },
   { path: '/*', name: '404', component: page404 },

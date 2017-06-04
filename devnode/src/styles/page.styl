@@ -6,14 +6,12 @@
 @import "_sidebar"
 
 #header
-  box-shadow 0 0 1px rgba(0,0,0,.25)
+  box-shadow 0 1px 1px -1px rgba(0,0,0,.25)
   transition background-color .3s ease-in-out
 
 .content
   position relative
   padding 2.2em 0
-  max-width 800px
-  margin 0 auto
   &.api
     > a:first-of-type > h2
       margin-top 0
@@ -160,6 +158,18 @@
 
     em
       color $medium
+
+.content.with-sidebar
+  max-width 800px
+  margin 0 auto
+
+.page-search
+  .content
+    margin-left 150px
+    max-width 700px
+    padding 16px 0
+  .result-count
+    padding-left 150px
 
 .guide-links
   margin-top 2em

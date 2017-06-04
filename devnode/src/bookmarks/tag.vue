@@ -1,6 +1,9 @@
 <template>
   <div class="bookmark-content">
     <h1>{{tag}} <small></small></h1>
+    <div class="hint-tips" v-if="tags.length">
+      <span>相关推荐：</span><router-link class="key" v-for="tag in tags" :to="`/tag/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
+    </div>
     <div class="stream-list">
       <template v-for="item in bookmarks">
         <stream-item :item="item" :key="item.id"></stream-item>
@@ -16,6 +19,7 @@ import pager from '../components/pager'
 export default {
   data() {
     return {
+      tags: [],
       tag: '',
       bookmarks: [],
     }

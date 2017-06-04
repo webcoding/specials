@@ -6,16 +6,46 @@ $header-height = 40px
   align-items center
   justify-content space-between
   background-color #fff
-  height: $heading-inner-height
-  padding $heading-padding-vertical 60px
+  height $heading-inner-height
+  padding $heading-padding-vertical $header-padding-horizontal
   position relative
   z-index 2
+
+.logo
+  display inline-block
+  font-size 1.5em
+  line-height $header-height
+  color $dark
+  font-family $logo-font
+  font-weight 500
+  vertical-align middle
+  // color #46483E
+  .svg-icon
+    display: inline-block;
+    width 120px
+    height 28px
+    vertical-align: middle;
+
+  .text
+    font-size 16px
+    display none
+  // img
+  //   vertical-align middle
+  //   margin-right 6px
+  //   width $header-width
+  //   height $header-height
+
 
 #header-top
   display flex
   align-items center
-  justify-content space-between
+  justify-content flex-start
+  // justify-content space-between
   width 100%
+  .logo
+    margin -6px 0 0 0
+    width $logo-width
+    flex-shrink 0
 
 // body.docs
 #header
@@ -23,6 +53,7 @@ $header-height = 40px
   top 0
   left 0
   right 0
+  background #35405b
 #nav
   // position fixed
 
@@ -49,17 +80,19 @@ $header-height = 40px
     border-bottom 3px solid $green
 
 .search-query
-  height 30px
-  line-height 30px
+  width 100%
+  height 40px
+  line-height 40px
   box-sizing border-box
-  padding 0 15px 0 30px
+  padding 0 16px 0 32px
   border 1px solid #e3e3e3
+  border-radius 2px 0 0 2px
   color $dark
   outline none
-  border-radius 15px
-  margin-right 10px
+  // border-radius 40px
+  // margin-right 10px
   transition border-color .2s ease
-  background #fff url(./assets/img/search.png) 8px 5px no-repeat
+  background #fff url(./assets/img/search.png) 8px 10px no-repeat
   background-size 20px
   vertical-align middle !important
   &:focus
@@ -72,32 +105,17 @@ $header-height = 40px
   left 16px
   cursor pointer
 
-.logo
-  display inline-block
-  font-size 1.5em
-  line-height $header-height
-  color $dark
-  font-family $logo-font
-  font-weight 500
-  vertical-align middle
-  // color #46483E
-  .logo-dark
-    display: inline-block;
-    width 166px
-    height 40px
-    vertical-align: middle;
-
-  .text
-    font-size 16px
-    display none
-  img
-    vertical-align middle
-    margin-right 6px
-    width $header-width
-    height $header-height
-
 #search-form
-  display inline-block
+  display flex
+  width 700px
+  align-items center
+
+  .btn-search
+    margin-left -1px
+    border-radius 0 2px 2px 0
+    height 40px
+    font-size 16px
+    flex-shrink 0
 
 // #mobile-bar
 //   position fixed

@@ -1,45 +1,61 @@
 <template>
   <section class="stream-item">
     <div class="summary">
-      <!--<viewCount :count="item.views"></viewCount>-->
+      <template v-if="item.domain">
       <vote :count="item.like"></vote>
       <div class="cover-wrap">
         <a class="addToFavorite"></a>
         <div class="cover-over"></div>
-        <template v-if="item.domain">
           <span class="cover cover-placeholder"></span>
           <img class="cover" :src="`https://logo.clearbit.com/${item.domain}?size=100`" alt="item.domain" @error="errorImg">
-        </template>
       </div>
+      </template>
       <div class="about">
-        <router-link class="title" :to="`/link?url=${item.url}`">{{item.title}}</router-link>
-        <p class="taglist-inline">
-          <!--<span>标签：</span>-->
-          <router-link class="tag" v-for="tag in item.tags" :to="`/tag/${tag}`" :key="tag">{{tag}}</router-link>
-        </p>
-        <p class="desc max-line-2">{{item.description}}</p>
+        <router-link class="title ellipsis" :to="`/link?url=${item.url}`">{{item.title}}</router-link>
+        <!--<div class="link-score">32</div>-->
+        <div class="desc max-line-2">{{item.description}}</div>
+        <div class="keywords ellipsis">
+          <x-svg type="tag"></x-svg>
+          <router-link class="keyword" v-for="tag in item.tags" :to="`/tag/${tag}`" :key="tag">{{`#${tag}`}}</router-link>
+        </div>
+        <div class="update-info">
+          <span>更新于</span>
+          <span class="date">{{ item.updateTime | timeAgo }}</span>
+          <span>By</span>
+          <router-link :to="`/user/${item.userName}`" target="_blank" class="publisher-name">晓寒</router-link>
+          <span class="publisher-avatar"></span>
+        </div>
+        <!--<div class="links">
+          <a class="analysis">分析</a>
+          <a class="source">源站</a>
+          <a class="snapshot">快照</a>
+        </div>-->
       </div>
+      <linkScore :count="item.views"></linkScore>
+      <!--<viewCount :count="item.views"></viewCount>-->
       <!--<div v-if="item.logo" class="bm-logo"><img :src="item.logo" alt=""></div>-->
-      <router-link :to="`/link?url=${item.url}`" tabindex="200" class="permalink superlink"></router-link>
+      <!--<router-link :to="`/link?url=${item.url}`" tabindex="200" class="permalink superlink"></router-link>-->
     </div>
   </section>
 </template>
 
 <script>
 // `/link?url=${item.url | encode}`
+import xSvg from '../components/svg'
 import vote from './vote'
 // import Base64 from 'Base64'
 import action from './action'
-import viewCount from './view-count'
+import linkScore from './link-score'
 // var errDefaultUrl
 // const coverPlaceholder = `<span class="cover cover-placeholder"></span>`
 export default {
   props: ['item'],
 
   components: {
+    xSvg,
     vote,
     action,
-    viewCount,
+    linkScore,
   },
 
   mounted () {
@@ -68,16 +84,19 @@ $iconSize = 48px
 .stream-item
   position relative
   margin 0
-  padding 10px 0
+  margin 10px 0 30px
 
-  &::after
-    content ''
-    position absolute
-    bottom 0
-    left $iconSize + 16px
-    right 0
-    height 1px
-    background #eee
+  a:hover
+    text-decoration underline
+
+  // &::after
+  //   content ''
+  //   position absolute
+  //   bottom 0
+  //   left $iconSize + 16px
+  //   right 0
+  //   height 1px
+  //   background #eee
 
   .permalink
     outline none
@@ -101,7 +120,8 @@ $iconSize = 48px
   .cover
     position absolute
     display inline-block
-    border-radius 1px
+    max-width 100%
+    border-radius 2px
     background-color #fff
 
   .cover-over
@@ -109,7 +129,7 @@ $iconSize = 48px
     left: 0;
     top: 0;
     bottom: 0;
-    border-radius: 1px;
+    border-radius: 2px;
     // box-shadow: inset 0 0 0 1px rgba(0,0,0,.07);
 
   .cover-placeholder
@@ -139,38 +159,44 @@ $iconSize = 48px
 
     .about
       width 100%
+      overflow hidden
 
   .title
-    display inline
+    // display inline
     margin 0 8px 0 0
-    font-size 16px
+    font-size 20px
     color $medium
     font-weight 600
+    // text-decoration underline
 
-    &:hover
-      // text-decoration underline
-      color $green
+    // &:hover
+    //   color $green
 
     &:active
       top 1px
 
   .desc
-    margin 0
+    margin 4px 0
     padding 0
+    font-size 14px
+    line-height 1.3
 
-  .taglist,
-  .taglist-inline
-  .taglist-block
-    list-style none
-    margin 0
-    padding 0
+  // .taglist,
+  // .taglist-inline
+  // .taglist-block
+  //   list-style none
+  //   margin 0
+  //   padding 0
 
   .title,
-  .tag
+  .keywords
     position relative
     z-index 2
 
-  .taglist-inline
-    display inline-block
+  .update-info
+    font-size 12px
+
+  // .taglist-inline
+  //   display inline-block
 
 </style>
