@@ -8,9 +8,16 @@
         <x-svg class="logo-light" type="devnode_logo"></x-svg>
         <span class="text">DevNode</span>
       </a>
-      <form id="search-form">
-        <input type="text" id="search-query-nav" class="search-query">
+      <form id="search-form" action="/search">
+        <input type="text" id="search-query-nav" class="search-query" v-model.trim="keyword">
         <button class="btn btn-search">搜索</button>
+        <div class="search-auto-suggest">
+          <ul class="listbox" v-if="keywords.length">
+            <template v-for="keyword in keywords">
+              <li class="item">{{keyword}}</li>
+            </template>
+          </ul>
+        </div>
       </form>
     </div>
     <main-menu id="nav"></main-menu>
@@ -26,6 +33,14 @@ export default {
     xSvg,
     mainMenu,
   },
+
+  data() {
+    return {
+      keyword: '',
+      keywords: [],
+    }
+  },
+
 }
 </script>
 
