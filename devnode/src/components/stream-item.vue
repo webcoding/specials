@@ -16,7 +16,7 @@
         <div class="desc max-line-2">{{item.description}}</div>
         <div class="keywords ellipsis">
           <x-svg type="tag"></x-svg>
-          <router-link class="keyword" v-for="tag in item.tags" :to="`/tag/${tag}`" :key="tag">{{`#${tag}`}}</router-link>
+          <router-link class="keyword" v-for="tag in item.tags" :to="`/tag/${tag}`" :key="tag">{{tag}}</router-link>
         </div>
         <div class="update-info">
           <span>更新于</span>
@@ -163,7 +163,7 @@ $iconSize = 48px
 
   .title
     // display inline
-    margin 0 8px 0 0
+    margin 0 0 8px 0
     font-size 20px
     color $medium
     font-weight 600
