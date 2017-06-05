@@ -1,10 +1,6 @@
 <template>
   <div class="content guide index-guide">
     <h1>分类 <small>Tags</small></h1>
-    <p>本质是分类聚合，其意义包含 category、classify、tag、tpoic、group、keyword，缩写暂用 t。合理的使用分类聚合能有效归档杂乱的信息，使结构更清晰合理，检索时也更加便捷。</p>
-    <h2>分类
-      <!--<small><router-link to="tags/all">全部</router-link></small>-->
-    </h2>
     <div class="tags-list">
       <router-link class="tag" v-for="tag in tags" :to="`/tag/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
       <!--<dl class="tag-item" v-for="item in tags" :key="item.name">
@@ -14,6 +10,10 @@
         </dd>
       </dl>-->
     </div>
+    <h2>分类
+      <!--<small><router-link to="tags/all">全部</router-link></small>-->
+    </h2>
+    <p>本质是分类聚合，其意义包含 category、classify、tag、tpoic、group、keyword，缩写暂用 t。合理的使用分类聚合能有效归档杂乱的信息，使结构更清晰合理，检索时也更加便捷。</p>
     <h2>分类聚合探究</h2>
     <p>实际用途中，分类是个不定的元素，所以不能够仅通过一种形式的划分就达到优良分类的目的，分类存在重叠或包含的情况</p>
     <p>比如开发语言分类、算法分类，这种分类不能覆盖所有的类目，也需要按使用者期望获取的知识点形式进行分类，不同分类方式各有优势，而且有时存在隶属关系需要子类，所以要先进行分类，之后还要再聚合处理（分类的集合）</p>

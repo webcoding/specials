@@ -170,7 +170,7 @@
 .page-search
   .content
     margin-left 150px
-    width $search-content-width
+    max-width $search-content-width
     padding 16px 0
   .result-count
     padding-left 150px
@@ -212,7 +212,7 @@
     font-size 14px
   #header
     // display none
-    padding 0 16px 0 48px
+    // padding 0 16px 0 48px
     box-shadow 0 0 2px rgba(0,0,0,.25)
 
   #menu
@@ -220,22 +220,28 @@
   #header-top
 
     .logo
-      .logo-dark
-        display none
-        width 100px
-        height 32px
-      .text
-        display block
+      display none
+    //   .logo-dark
+    //     display none
+    //     width 100px
+    //     height 32px
+    //   .text
+    //     display block
     // .logo
     //   display none
+  // #nav
+  //   display none
   .nav-link
     padding-bottom 1px
     &:hover, &.current
       border-bottom 2px solid $green
   // #mobile-bar
   //   display block
-  #main
-    padding 2em 1.4em 0
+  // #main
+  //   padding 2em 1.4em 0
+  .page-search
+    .content
+      margin-left 16px
   .highlight pre
     padding 1.2em 1em
   .content
