@@ -105,11 +105,20 @@ const systemRoutes = [
 
 Vue.use(Router)
 
+// console.log(env.routerMode)
 const router = new Router({
   // mode: 'history', // hash
   mode: env.routerMode,
-  base: '',
+  // base: '',
   scrollBehavior: () => ({ y: 0 }),
+  // scrollBehavior (to, from, savedPosition) {
+  //   console.log('savedPosition: ' + savedPosition)
+  //   if (savedPosition) {
+  //     return savedPosition
+  //   } else {
+  //     return { x: 0, y: 0 }
+  //   }
+  // },
   routes: [
     ...bookmarkRoutes,
     ...userRoutes,
