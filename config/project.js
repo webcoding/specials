@@ -35,14 +35,17 @@ appName = appName.replace(ztDirReg, '')
 
 var devQn = appName
 var port
+var isSingle = !!qnConfig[appName]
 switch (appName) {
   case 'devnode':
     devQn = 'dev'
     port = '8080'
+    isSingle = true
     break
   case 'devapi':
     devQn = 'dev'
     port = '8090'
+    isSingle = true
     break
   default:
     devQn = appName
@@ -56,7 +59,7 @@ var project = {
   dir: appName,
   dist: buildDist + appName,
   qn: qnConfig[devQn] || qnConfig.cdn,
-  isSingle: !!qnConfig[appName], // 独立项目配置
+  isSingle: isSingle, // 独立项目配置
 }
 
 if (isSpecial) {
