@@ -132,6 +132,7 @@ export default {
 
 .bookmark-form
   h2
+    margin-top 0
     ::before
       display: none
   label.block
