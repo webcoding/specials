@@ -127,9 +127,13 @@ export default {
 
 .bookmark-update
   width 500px
-  margin 20px auto
+  margin 0 auto
+  padding 0 16px
 
 .bookmark-form
+  h2
+    ::before
+      display: none
   label.block
     position relative
     display flex

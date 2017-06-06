@@ -9,7 +9,7 @@
       </template>
     </div>
     <div v-else>
-      没有搜索到 <span class="keyword">{{keyword}}</span> 相关的结果
+      好伤心，没搜索到 <span class="keyword">{{keyword}}</span> 相关的结果。我来<router-link :to="`/bookmark/add`">推荐一个</router-link>
     </div>
     <!--<pager></pager>-->
   </div>
@@ -65,17 +65,16 @@ export default {
     },
     async fetchBookmarks() {
       this.keyword = this.$route.query.q
-      console.log(this.keyword)
-      // const res = await this.$ajax.getBookmarks({
-      //   params: {
-      //     key: this.keyword,
-      //   },
-      // })
-      const res = await this.$ajax.getBookmarksWithTag({
+      const res = await this.$ajax.getBookmarks({
         params: {
-          tag: this.keyword,
+          key: this.keyword,
         },
       })
+      // const res = await this.$ajax.getBookmarksWithTag({
+      //   params: {
+      //     tag: this.keyword,
+      //   },
+      // })
       // console.log(res)
       if (res.errno === 0) {
         const data = res.data

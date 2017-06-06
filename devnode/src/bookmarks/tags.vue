@@ -10,8 +10,8 @@
         </dd>
       </dl>-->
     </div>
-    <h2>分类
-      <!--<small><router-link to="tags/all">全部</router-link></small>-->
+    <!--<h2>分类
+      <small><router-link to="tags/all">全部</router-link></small>
     </h2>
     <p>本质是分类聚合，其意义包含 category、classify、tag、tpoic、group、keyword，缩写暂用 t。合理的使用分类聚合能有效归档杂乱的信息，使结构更清晰合理，检索时也更加便捷。</p>
     <h2>分类聚合探究</h2>
@@ -20,7 +20,7 @@
     <p>这样就能以聚合形式再次整理分类，处理分类重叠和包含的情况。推荐某种形式的聚合来展示分类，随时可以优化展示，而新增内容只是提交到分类里，而不是聚合里</p>
     <p>所以，这里使用tag 标签对内容进行标记作为分类分组，这里注意，聚合不会作为分类标识的推荐，这是一个整理过程。分类和聚合可以相互转化</p>
     <p>聚合类可以参考 https://www.gede123.com/ http://www.36zhen.com/setTag https://www.betterso.com/ https://my.betterso.com/document.html</p>
-    <p>比较好的收藏类网站 https://getpocket.com https://www.instapaper.com https://raindrop.io</p>
+    <p>比较好的收藏类网站 https://getpocket.com https://www.instapaper.com https://raindrop.io</p>-->
   </div>
 </template>
 

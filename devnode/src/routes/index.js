@@ -6,7 +6,7 @@ import ajaxApi from '../store/api'
 
 import bookmarkRoutes from './bookmarks'
 import userRoutes from './user'
-
+import layout from '../layout/layout'
 import link from '../pages/link'
 
 const login = () => import('../pages/login')
@@ -85,9 +85,8 @@ const systemRoutes = [
 
   { path: '/link', name: 'link', component: link },
   { path: '/guide', name: 'guide', component: page },
-  { path: '/login', name: 'login', component: login },
+
   { path: '/coming', name: 'coming', component: coming },
-  { path: '/*', name: '404', component: page404 },
   // { path: '/score', name: 'score', component: score },
   // {
   //   path: '/item',
@@ -111,11 +110,23 @@ const router = new Router({
   mode: env.routerMode,
   base: '',
   scrollBehavior: () => ({ y: 0 }),
-  routes: [].concat(
-    bookmarkRoutes,
-    userRoutes,
-    systemRoutes,
-  ),
+  routes: [
+    ...bookmarkRoutes,
+    ...userRoutes,
+    { path: '/login', name: 'login', component: login },
+    {
+      path: '/',
+      // 使用默认子路由，则父路由的 name 就得去掉
+      // 否则使用 `:to="{name: 'demo'"` 会导致默认子路由不会render
+      name: 'layout',
+      component: layout,
+      // component: bookmark,
+      children: [
+        ...systemRoutes,
+      ],
+    },
+    { path: '/*', name: '404', component: page404 },
+  ],
 })
 
 const loginPath = '/login'

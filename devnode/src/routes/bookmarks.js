@@ -3,10 +3,10 @@ import layout from '../layout/bookmark'
 import search from '../pages/search'
 import tag from '../bookmarks/tag'
 import bookmarkAdd from '../bookmarks/bookmark-add'
+// const layout = () => import('../pages/layout')
+// const search = () => import('../pages/search')
 // const tag = () => import('../bookmarks/tag')
 // const bookmarkAdd = () => import('../bookmarks/bookmark-add')
-// const search = () => import('../pages/search')
-// const layout = () => import('../pages/layout')
 const bookmark = () => import('../bookmarks/bookmark')
 const explore = () => import('../bookmarks/explore')
 const dev = () => import('../bookmarks/dev')
@@ -58,7 +58,9 @@ const bookmarkPages = [
     // name: '',
     component: layout,
     // component: bookmark,
-    children: [].concat(pages),
+    children: [
+      ...pages,
+    ],
   },
   {
     path: '/bookmark/add',
