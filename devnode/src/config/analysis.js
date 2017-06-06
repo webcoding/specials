@@ -6,6 +6,9 @@ var _hmt = _hmt || []
   hm.src = 'https://hm.baidu.com/hm.js?97185224affb9782323dfcb8c919d612'
   var s = document.getElementsByTagName('script')[0]
   s.parentNode.insertBefore(hm, s)
+  if (window.location.origin !== 'https://devnode.cn') {
+    _hmt.push(['_setAutoPageview', false])
+  }
 })()
 
 var _vds = _vds || []

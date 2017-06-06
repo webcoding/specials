@@ -83,9 +83,7 @@ const systemRoutes = [
     component: svg,
   },
 
-  { path: '/link', name: 'link', component: link },
   { path: '/guide', name: 'guide', component: page },
-
   { path: '/coming', name: 'coming', component: coming },
   // { path: '/score', name: 'score', component: score },
   // {
@@ -122,6 +120,7 @@ const router = new Router({
   routes: [
     ...bookmarkRoutes,
     ...userRoutes,
+    { path: '/link', name: 'link', component: link },
     { path: '/login', name: 'login', component: login },
     {
       path: '/',
