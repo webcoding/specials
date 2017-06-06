@@ -137,10 +137,10 @@ async function checkAuth() {
 // 权限检测
 router.beforeEach((to, from, next) => {
   const { meta, path } = to
-  const { requiresAuth = false } = meta
+  const { auth = false } = meta
 
   // if (to.matched.some(record => record.meta.requiresAuth)) {
-  if (requiresAuth && path !== loginPath) {
+  if (auth && path !== loginPath) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     checkAuth().then((logged) => {

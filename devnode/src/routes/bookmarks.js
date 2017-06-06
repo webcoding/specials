@@ -1,14 +1,16 @@
 
 import layout from '../layout/bookmark'
 import search from '../pages/search'
+import tag from '../bookmarks/tag'
+import bookmarkAdd from '../bookmarks/bookmark-add'
+// const tag = () => import('../bookmarks/tag')
+// const bookmarkAdd = () => import('../bookmarks/bookmark-add')
 // const search = () => import('../pages/search')
 // const layout = () => import('../pages/layout')
 const bookmark = () => import('../bookmarks/bookmark')
-const bookmarkAdd = () => import('../bookmarks/bookmark-add')
 const explore = () => import('../bookmarks/explore')
 const dev = () => import('../bookmarks/dev')
 const tags = () => import('../bookmarks/tags')
-const tag = () => import('../bookmarks/tag')
 
 // 别名与跳转
 // 暂时用别名 后期如为归纳统一路径 则使用跳转比别名好
@@ -62,7 +64,7 @@ const bookmarkPages = [
     path: '/bookmark/add',
     name: 'bookmark-add',
     meta: {
-      requiresAuth: true,
+      auth: true,
     },
     component: bookmarkAdd,
   },

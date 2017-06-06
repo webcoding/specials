@@ -25,12 +25,15 @@ export default {
 
 <style lang="stylus">
 .link-score
-  margin-left 16px
-  min-width 100px
+  margin-left 32px
+  min-width 64px
   font-size 12px
   text-align right
 
-
   .num
     font-size 18px
+
+@media screen and (max-width: 560px)
+  .link-score
+    margin-left 16px
 </style>

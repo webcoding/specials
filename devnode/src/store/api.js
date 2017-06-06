@@ -128,6 +128,14 @@ const ajaxApi = {
   getTags(data) {
     return ajax.get('/tag', data)
   },
+  // data = {
+  //   params: {
+  //     keyword: this.keyword,
+  //   },
+  // }
+  getSupport(data) {
+    return ajax.get('/tag/search', data)
+  },
   // getTags: () => setPromise(mock.tags),
   getBookmarksWithTag(data) {
     return ajax.get('/bookmark/tag', data)

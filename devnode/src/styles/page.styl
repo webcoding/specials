@@ -169,7 +169,8 @@
 
 .page-search
   .content
-    margin-left 150px
+    margin-left $search-content-left
+    margin-right 16px
     max-width $search-content-width
     padding 16px 0
   .result-count
@@ -259,6 +260,9 @@
     text-align center
 
 @media screen and (max-width: 560px)
+
+  #nav
+    display none
   #downloads
     text-align center
     margin-bottom 25px
