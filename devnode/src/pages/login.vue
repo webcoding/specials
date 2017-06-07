@@ -28,9 +28,9 @@
     </form>
     <x-line margin="40px 0 30px">第三方登录</x-line>
     <div class="third-way flex-between">
-      <router-link class="item" to="/auth/qq">QQ</router-link>
-      <router-link class="item" to="/auth/wechat">Wechat</router-link>
-      <router-link class="item" to="/auth/github">Github</router-link>
+      <router-link class="item disabled" to="/auth/qq"><x-svg type="qq" width="64" height="64"></x-svg></router-link>
+      <router-link class="item disabled" to="/auth/wechat"><x-svg type="wechat" width="64" height="64"></x-svg></router-link>
+      <router-link class="item disabled" to="/auth/github"><x-svg type="github" width="64" height="64"></x-svg></router-link>
     </div>
   </div>
 </template>
@@ -160,7 +160,7 @@ export default {
     justify-content: center;
     width 64px
     height 64px
-    border 1px solid #ccc
+    // border 1px solid #ccc
     border-radius 100%
 
 </style>

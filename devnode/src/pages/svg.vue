@@ -133,6 +133,9 @@
       <x-svg type="user"></x-svg>
       <x-svg type="lock"></x-svg>
       <x-svg type="keyword"></x-svg>
+      <x-svg type="qq"></x-svg>
+      <x-svg type="wechat"></x-svg>
+      <x-svg type="github"></x-svg>
       <!--<x-svg type="title"></x-svg>-->
     </div>
     <p>跟设置的字体颜色一致</p>

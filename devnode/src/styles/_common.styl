@@ -102,6 +102,22 @@ input[type="submit"]
   -webkit-appearance button
   cursor pointer
 
+[disabled]
+.disabled
+  pointer-events none // Disable mouse events
+  cursor default
+  opacity 0.5
+
+  // 可以使用滤镜变灰
+  filter grayscale(100%)
+  filter gray
+
+  &:hover
+    cursor default
+  &:focus
+    outline none
+
+
 button[disabled]
 html input[disabled]
   cursor default
