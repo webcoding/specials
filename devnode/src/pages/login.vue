@@ -18,7 +18,7 @@
         <router-link class="btn forget-password-btn" to="/password/forget">忘记密码？</router-link>
         <p class="errors" v-show="btned && !validation.password">请输入密码</p>
       </div>
-      <div class="form-block flex-center">
+      <div class="form-block flex-between">
         <label><input type="checkbox" v-model="form.rememberMe"> 自动登录</label>
         <span>还没有账户？<router-link to="/register">立即注册</router-link></span>
       </div>
@@ -27,7 +27,7 @@
       </div>
     </form>
     <x-line margin="40px 0 30px">第三方登录</x-line>
-    <div class="third-way flex-center">
+    <div class="third-way flex-between">
       <router-link class="item" to="/auth/qq">QQ</router-link>
       <router-link class="item" to="/auth/wechat">Wechat</router-link>
       <router-link class="item" to="/auth/github">Github</router-link>

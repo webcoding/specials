@@ -1,14 +1,16 @@
 <template>
-  <div class="content">
+  <div class="content page-svg">
     <h1>SVG 图标集</h1>
     <div class="panel">
       <h2>Logo</h2>
-      <span class="logo-dark">
-        <x-svg type="devnode_logo" width="166" height="40"></x-svg>
-      </span>
-      <span class="logo-light">
-        <x-svg type="devnode_logo" width="166" height="40"></x-svg>
-      </span>
+      <div class="flex">
+        <span class="logo-dark flex-center box400">
+          <x-svg type="devnode_logo" width="280" height="70"></x-svg>
+        </span>
+        <span class="logo-light flex-center box400" style="background: #35405b;">
+          <x-svg type="devnode_logo" width="280" height="70"></x-svg>
+        </span>
+      </div>
     </div>
     <div class="panel hover">
       <h2>Icons</h2>
@@ -148,7 +150,7 @@ export default {
 </script>
 
 <style lang="stylus">
-.panel
+.page-svg
   svg
     margin 10px
   // &.hover:hover
@@ -158,6 +160,11 @@ export default {
   // .tabs .item.active
   //   color #1988e0
   //   color var(--accentColor, #1988e0)
+
+  .box400
+    width 400px
+    height 400px
+
 
 .preloader {
   position: relative;
