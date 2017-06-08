@@ -21,7 +21,7 @@
           @keydown.enter="search()"
           autocomplete="off"
         >
-        <button class="btn btn-search" @click="search()">搜索</button>
+        <button class="btn btn-search" @click.prevent="search()">搜索</button>
         <div class="search-auto-suggest">
           <transition-group class="listbox"
             tag="ul"
