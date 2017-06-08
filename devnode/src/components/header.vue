@@ -72,7 +72,7 @@ export default {
 
   methods: {
     watchQuery() {
-      this.keyword = this.$route.query.q
+      this.keyword = this.$route.query.q || this.$route.params.tag
     },
     // 键盘下事件
     selectDown() {

@@ -5,12 +5,16 @@
     <div class="hint-tips keywords">
       <strong>快捷入口：</strong><router-link class="keyword" v-for="tag in tags" :to="`/tag/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
     </div>
-    <div class="stream-list">
+    <div class="stream-list" v-if="bookmarks.length > 0">
       <template v-for="item in bookmarks">
-        <stream-item :item="item" :key="item.id"></stream-item>
+      <stream-item :item="item" :key="item.id"></stream-item>
       </template>
+      <p class="get-more flex-center" @click="getMore" v-show="!botLoading && hasMore">点击加载更多</p>
+      <p class="loading flex-center" v-show="botLoading">加载中...</p>
     </div>
-    <!--<pager></pager>-->
+    <div v-else>
+      好伤心，没找到的结果。我来<router-link :to="`/bookmark/add`">提交一个</router-link>
+    </div>
   </div>
 </template>
 
@@ -40,6 +44,13 @@ export default {
     return {
       tags: tags,
       bookmarks: [],
+      botLoading: false,
+      hasMore: true,
+      pager: {
+        current: 1,
+        total: 0,
+        pageSize: 10,
+      },
     }
   },
 
@@ -56,14 +67,31 @@ export default {
       this.fetchBookmarks()
     },
     async fetchBookmarks() {
-      const res = await this.$ajax.getBookmarks({})
+      const res = await this.$ajax.getBookmarks({
+        params: {
+          page: this.pager.current,
+        },
+      })
       // console.log(res)
       if (res.errno === 0) {
         const data = res.data
-
-        this.bookmarks = data.list
+        if (this.pager.current === 1) {
+          this.bookmarks = data.list
+        } else {
+          this.bookmarks = this.bookmarks.concat(data.list)
+        }
+        this.hasMore = this.bookmarks.length < data.totalCount
       } else {
+        this.pager.current--
         console.log(res.errmsg)
+      }
+      this.botLoading = false
+    },
+    getMore() {
+      if (!this.botLoading && this.hasMore) {
+        this.botLoading = true
+        this.pager.current++
+        this.fetchData()
       }
     },
   },

@@ -7,11 +7,11 @@
       <template v-for="item in bookmarks">
       <stream-item :item="item" :key="item.id"></stream-item>
       </template>
-      <p class="get-more flex-center" @click="getMore" v-show="!bottomLoading && hasMore">点击加载更多</p>
-      <p class="loading flex-center" v-show="bottomLoading">加载中...</p>
+      <p class="get-more flex-center" @click="getMore" v-show="!botLoading && hasMore">点击加载更多</p>
+      <p class="loading flex-center" v-show="botLoading">加载中...</p>
     </div>
     <div v-else>
-      好伤心，没搜索到 <span class="keyword">{{keyword}}</span> 相关的结果。我来<router-link :to="`/bookmark/add`">提交一个</router-link>
+      好伤心，没找到 <span class="keyword">{{keyword}}</span> 相关的结果。我来<router-link :to="`/bookmark/add`">提交一个</router-link>
     </div>
     <!--<pager></pager>-->
   </div>
@@ -46,15 +46,15 @@ export default {
   data() {
     return {
       scroll: true,
-      bottomLoading: false,
-      keyword: '',
-      oldKeyword: '',
       tags: tags,
       bookmarks: [],
+      keyword: '',
+      botLoading: false,
+      hasMore: true,
       pager: {
+        oldKey: '',
         current: 1,
         total: 0,
-        hasMore: true,
         pageSize: 10,
       },
     }
@@ -85,24 +85,20 @@ export default {
     },
     async fetchBookmarks() {
       this.keyword = this.$route.query.q
-      var { keyword, oldKeyword } = this
-      if (oldKeyword && (oldKeyword !== keyword)) {
+      var { keyword, pager } = this
+      if (pager.oldKey && (pager.oldKey !== keyword)) {
         this.hasMore = true
         pager.current = 1
         this.bookmarks = []
       }
+      // const res = await this.$ajax.getBookmarksWithTag({
       const res = await this.$ajax.getBookmarks({
         params: {
           page: this.pager.current,
           key: this.keyword,
+          // tag: this.keyword,
         },
       })
-      // const res = await this.$ajax.getBookmarksWithTag({
-      //   params: {
-      //     tag: this.keyword,
-      //   },
-      // })
-      // console.log(res)
       if (res.errno === 0) {
         const data = res.data
         if (this.pager.current === 1) {
@@ -115,14 +111,14 @@ export default {
         this.pager.current--
         console.log(res.errmsg)
       }
-      this.bottomLoading = false
-      this.oldKeyword = this.keyword
+      this.botLoading = false
+      pager.oldKeyword = this.keyword
     },
     getMore() {
-      if (!this.bottomLoading && this.hasMore) {
-        this.bottomLoading = true
+      if (!this.botLoading && this.hasMore) {
+        this.botLoading = true
         this.pager.current++
-        this.fetchBookmarks()
+        this.fetchData()
       }
     },
   },
