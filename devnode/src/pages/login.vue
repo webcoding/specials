@@ -20,7 +20,7 @@
       </div>
       <div class="form-block flex-between">
         <label><input type="checkbox" v-model="form.rememberMe"> 自动登录</label>
-        <span>还没有账户？<router-link to="/register">立即注册</router-link></span>
+        <span>还没有账户？<router-link class="link" to="/register">立即注册</router-link></span>
       </div>
       <div class="form-block">
         <button class="btn btn-block btn-big">登录</button>
