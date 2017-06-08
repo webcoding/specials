@@ -61,6 +61,10 @@ export default {
     }
   },
 
+  created() {
+    this.watchQuery()
+  },
+
   watch: {
     // 如果路由有变化，会再次执行该方法
     '$route': 'watchQuery',
@@ -105,9 +109,9 @@ export default {
     },
     search() {
       // 去搜索
+      this.$router.push({ path: '/search', query: { q: this.keyword }})
       this.keywords = []
       this.$refs.inputSearch.blur()
-      this.$router.push({ path: '/search', query: { q: this.keyword }})
     },
     selectClick(index) {
       this.keyword = this.keywords[index].name

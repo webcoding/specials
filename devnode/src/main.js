@@ -12,11 +12,11 @@ import './config/analysis' // 统计信息
 
 Vue.prototype.$ajax = ajaxApi
 
-// import titleMixin from './util/title'
-import * as filters from './util/filters'
+import utils from './utils'
+import * as filters from './utils/filters'
 
 // mixin for handling title
-// Vue.mixin(titleMixin)
+Vue.mixin(utils)
 
 // register global utility filters.
 Object.keys(filters).forEach(key => {

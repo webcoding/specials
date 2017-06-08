@@ -7,9 +7,11 @@
       <template v-for="item in bookmarks">
       <stream-item :item="item" :key="item.id"></stream-item>
       </template>
+      <p class="get-more flex-center" @click="getMore" v-show="!bottomLoading && hasMore">点击加载更多</p>
+      <p class="loading flex-center" v-show="bottomLoading">加载中...</p>
     </div>
     <div v-else>
-      好伤心，没搜索到 <span class="keyword">{{keyword}}</span> 相关的结果。我来<router-link :to="`/bookmark/add`">推荐一个</router-link>
+      好伤心，没搜索到 <span class="keyword">{{keyword}}</span> 相关的结果。我来<router-link :to="`/bookmark/add`">提交一个</router-link>
     </div>
     <!--<pager></pager>-->
   </div>
@@ -36,12 +38,25 @@ const tags = [
 ]
 import streamItem from '../components/stream-item'
 import pager from '../components/pager'
+
+// https://lodash.com/docs/#debounce
+// import debounce from 'lodash/debounce'
+
 export default {
   data() {
     return {
-      key: '',
+      scroll: true,
+      bottomLoading: false,
+      keyword: '',
+      oldKeyword: '',
       tags: tags,
       bookmarks: [],
+      pager: {
+        current: 1,
+        total: 0,
+        hasMore: true,
+        pageSize: 10,
+      },
     }
   },
 
@@ -59,14 +74,26 @@ export default {
     '$route': 'fetchData',
   },
 
+  mounted() {
+    // 滚动加载
+    // $(window).on('scroll', debounce(this.getScrollData, 300, { maxWait: 1000 }))
+  },
+
   methods: {
     fetchData() {
       this.fetchBookmarks()
     },
     async fetchBookmarks() {
       this.keyword = this.$route.query.q
+      var { keyword, oldKeyword } = this
+      if (oldKeyword && (oldKeyword !== keyword)) {
+        this.hasMore = true
+        pager.current = 1
+        this.bookmarks = []
+      }
       const res = await this.$ajax.getBookmarks({
         params: {
+          page: this.pager.current,
           key: this.keyword,
         },
       })
@@ -78,9 +105,24 @@ export default {
       // console.log(res)
       if (res.errno === 0) {
         const data = res.data
-        this.bookmarks = data.list
+        if (this.pager.current === 1) {
+          this.bookmarks = data.list
+        } else {
+          this.bookmarks = this.bookmarks.concat(data.list)
+        }
+        this.hasMore = this.bookmarks.length < data.totalCount
       } else {
+        this.pager.current--
         console.log(res.errmsg)
+      }
+      this.bottomLoading = false
+      this.oldKeyword = this.keyword
+    },
+    getMore() {
+      if (!this.bottomLoading && this.hasMore) {
+        this.bottomLoading = true
+        this.pager.current++
+        this.fetchBookmarks()
       }
     },
   },

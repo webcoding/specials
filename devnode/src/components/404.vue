@@ -11,9 +11,9 @@
 export default {
   name: 'error404',
   methods: {
-    goBack() {
-      window.history.go(-1)
-    },
+    // goBack() {
+    //   window.history.go(-1)
+    // },
   },
 }
 </script>
