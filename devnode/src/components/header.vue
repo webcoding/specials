@@ -15,6 +15,7 @@
           id="search-query-nav"
           class="search-query"
           v-model.trim="keyword"
+          @focus="focusInput($event)"
           @keyup="get($event)"
           @keydown.down="selectDown()"
           @keydown.up="selectUp()"
@@ -22,16 +23,16 @@
           autocomplete="off"
         >
         <button class="btn btn-search" @click.prevent="search()">搜索</button>
-        <div class="search-auto-suggest">
+        <div class="search-auto-suggest" @click="blurInput" v-show="focus && keyword">
           <transition-group class="listbox"
             tag="ul"
-            v-if="keywords.length"
+            v-show="searchTipList"
             name="itemfade"
             mode="out-in" v-cloak>
             <li class="item"
             v-for="(item, index) in keywords"
             :class="{active:index == now}"
-            @click="selectClick(index)"
+            @click.prevent="selectClick(index)"
             @mouseenter="selectEnter($event, index)"
             :key="item.id">{{item.name}}</li>
           </transition-group>
@@ -54,11 +55,18 @@ export default {
 
   data() {
     return {
+      focus: false,
       keyword: '',
       keywords: [],
       now: -1,
       searchIndex: 0,
     }
+  },
+
+  computed: {
+    searchTipList() {
+      return this.focus && this.keyword && this.keywords.length
+    },
   },
 
   created() {
@@ -74,8 +82,15 @@ export default {
     watchQuery() {
       this.keyword = this.$route.query.q || this.$route.params.tag
     },
+    focusInput(e) {
+      this.focus = true
+    },
+    blurInput() {
+      this.focus = false
+    },
     // 键盘下事件
     selectDown() {
+      this.focus = true
       this.now++
       if (this.now === this.keywords.length) {
         this.now = 0
@@ -85,7 +100,7 @@ export default {
     },
     // 键盘上事件
     selectUp() {
-      console.log(this)
+      this.focus = true
       this.now--
       if (this.now < 0) {
         this.now = 0
@@ -111,7 +126,8 @@ export default {
       // 去搜索
       this.$router.push({ path: '/search', query: { q: this.keyword }})
       this.keywords = []
-      this.$refs.inputSearch.blur()
+      this.focus = false
+      // this.$refs.inputSearch.blur()
     },
     selectClick(index) {
       this.keyword = this.keywords[index].name
@@ -131,14 +147,25 @@ export default {
 
 <style lang="stylus">
 /* transition-group有关的特效样式 */
-.search-auto-suggest {
-  transition: all 0.5s
-}
-.itemfade-enter,
-.itemfade-leave-active {
-  opacity: 0;
-}
-.itemfade-leave-active {
-  position: absolute;
-}
+.search-auto-suggest
+  transition all 0.5s
+  &::before
+    content ''
+    position absolute
+    z-index 1
+    width 1000rem
+    height 1000rem
+    transform translate(-50%, -50%)
+    opacity 0
+  .listbox
+    position relative
+    z-index 2
+
+.itemfade-enter
+.itemfade-leave-active
+  opacity 0
+
+.itemfade-leave-active
+  position absolute
+
 </style>

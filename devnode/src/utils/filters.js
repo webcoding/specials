@@ -13,11 +13,11 @@ const isBrowser = !(typeof document === 'undefined')
 function enUrl(url) {
   var ssl = url.substr(0, 8) === 'https://'
   var preCode = isBrowser && ssl ? 'n' : 'b'
-  return preCode + url.substr(7 + Number(ssl))
+  return encodeURIComponent(preCode + url.substr(7 + Number(ssl)))
 }
 function deUrl(url) {
   var ssl = url[0] === 'b' ? '' : 's'
-  return `http${ssl}://${url.substr(1)}`
+  return decodeURIComponent(`http${ssl}://${url.substr(1)}`)
 }
 export function cEncode(value) {
   return encode(enUrl(value))
