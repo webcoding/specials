@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { decode } from '../utils/filters'
+import { cDecode } from '../utils/filters'
 export default {
   // 这里可以改为服务端中转
   created() {
@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     jumpUrl: function () {
-      var url = decode(this.$route.query.url)
+      var url = cDecode(this.$route.query.url)
       window.location.replace(url)
     },
   },

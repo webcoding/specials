@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { encode } from '../utils/filters'
+import { cEncode } from '../utils/filters'
 import xSvg from '../components/svg'
 import vote from './vote'
 // import Base64 from 'Base64'
@@ -60,7 +60,8 @@ export default {
 
   filters: {
     linkEncode(value) {
-      return `/link?url=${encode(value)}`
+      console.log(cEncode(value))
+      return `/link?url=${cEncode(value)}`
     },
   },
 
