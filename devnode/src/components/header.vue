@@ -16,7 +16,7 @@
           class="search-query"
           v-model.trim="keyword"
           @focus="focusInput($event)"
-          @keyup="get($event)"
+          @keyup="searchTips($event)"
           @keydown.down="selectDown()"
           @keydown.up="selectUp()"
           @keydown.enter="search()"
@@ -46,6 +46,7 @@
 <script>
 import xSvg from './svg'
 import mainMenu from './main-menu'
+import throttle from 'lodash/throttle'
 
 export default {
   components: {
@@ -65,17 +66,24 @@ export default {
 
   computed: {
     searchTipList() {
-      return this.focus && this.keyword && this.keywords.length
+      return (this.focus && this.keyword && this.keywords.length)
     },
   },
 
   created() {
     this.watchQuery()
+    // document.addEventListener('scroll', throttle(this.fetchSupport, 300, {
+    //   maxWait: 1000,
+    // }), false)
   },
 
   watch: {
     // 如果路由有变化，会再次执行该方法
     '$route': 'watchQuery',
+    // keyword: function () {
+    //   // this.searchQueryIsDirty = true
+    //   this.getSupport()
+    // },
   },
 
   methods: {
@@ -107,12 +115,16 @@ export default {
       }
       this.keyword = this.keywords[this.now].name
     },
-    // ajax请求
-    get(e) {
+    searchTips(e) {
+      // ajax请求
       // 如果按的是上键或者下键，就不进行ajax请求
-      if (e.keyCode === 38 || e.keyCode === 40) {
+      if (e && (e.keyCode === 38 || e.keyCode === 40)) {
         return
       }
+      this.fetchSupport()
+    },
+    fetchSupport: throttle(function () {
+      // this.fetchSupport(e)
       // 请求推荐的字段
       this.$ajax.getSupport({
         params: {
@@ -121,13 +133,13 @@ export default {
       }).then((res) => {
         this.keywords = res.data.list
       })
-    },
+    }, 300),
     search() {
       // 去搜索
       this.$router.push({ path: '/search', query: { q: this.keyword }})
       this.keywords = []
       this.focus = false
-      // this.$refs.inputSearch.blur()
+      this.$refs.inputSearch.blur()
     },
     selectClick(index) {
       this.keyword = this.keywords[index].name

@@ -60,7 +60,6 @@ export default {
 
   filters: {
     linkEncode(value) {
-      console.log(cEncode(value))
       return `/link?url=${cEncode(value)}`
     },
   },

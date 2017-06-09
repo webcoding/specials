@@ -11,8 +11,8 @@ import env from '../config/env'
 function checkStatus({ status, statusText, data }) {
   if (status >= 200 && status < 300) {
     // 请求成功
-    console.log('请求成功: ')
-    console.log(data)
+    // console.log('请求成功: ')
+    // console.log(data)
     return data
   } else {
     const error = new Error(statusText)
