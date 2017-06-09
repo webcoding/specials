@@ -11,7 +11,7 @@
       </div>
       </template>
       <div class="about">
-        <router-link class="title ellipsis" :to="`/link?url=${item.url}`">{{item.title}}</router-link>
+        <router-link class="title ellipsis" :to="item.url | linkEncode">{{item.title}}</router-link>
         <!--<div class="link-score">32</div>-->
         <div class="desc max-line-2">{{item.description}}</div>
         <div class="keywords ellipsis">
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-// `/link?url=${item.url | encode}`
+import { encode } from '../utils/filters'
 import xSvg from '../components/svg'
 import vote from './vote'
 // import Base64 from 'Base64'
@@ -56,6 +56,12 @@ export default {
     vote,
     action,
     linkScore,
+  },
+
+  filters: {
+    linkEncode(value) {
+      return '/link?url=' + encode(value)
+    },
   },
 
   mounted () {
