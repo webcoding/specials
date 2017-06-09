@@ -186,7 +186,7 @@ $iconSize = 48px
     margin 4px 0
     padding 0
     font-size 14px
-    line-height 1.3
+    line-height 1.4
 
   // .taglist,
   // .taglist-inline
