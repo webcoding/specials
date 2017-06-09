@@ -98,7 +98,7 @@ export default {
     },
     // 键盘下事件
     selectDown() {
-      this.focus = true
+      // this.focus = true
       this.now++
       if (this.now === this.keywords.length) {
         this.now = 0
@@ -108,7 +108,7 @@ export default {
     },
     // 键盘上事件
     selectUp() {
-      this.focus = true
+      // this.focus = true
       this.now--
       if (this.now < 0) {
         this.now = 0
@@ -137,7 +137,7 @@ export default {
     search() {
       // 去搜索
       this.$router.push({ path: '/search', query: { q: this.keyword }})
-      this.keywords = []
+      // this.keywords = []
       this.focus = false
       this.$refs.inputSearch.blur()
     },
