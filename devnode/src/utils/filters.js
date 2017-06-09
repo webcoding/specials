@@ -39,3 +39,7 @@ function pluralize (time, label) {
   }
   return time + label + '前'
 }
+
+export function formatTime (time, format) {
+  return new Date(time).toISOString().slice(0, 19)
+}

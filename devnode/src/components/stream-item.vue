@@ -20,9 +20,9 @@
         </div>
         <div class="update-info">
           <span>更新于</span>
-          <span class="date">{{ item.updateTime | timeAgo }}</span>
+          <time class="date" :datetime="item.updateTime | formatTime">{{ item.updateTime | timeAgo }}</time>
           <span>By</span>
-          <router-link :to="`/user/${item.userName}`" target="_blank" class="publisher-name">晓寒</router-link>
+          <router-link :to="`/user/${item.userId}`" target="_blank" class="publisher-name">晓寒</router-link>
           <span class="publisher-avatar"></span>
         </div>
         <!--<div class="links">
