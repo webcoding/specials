@@ -60,7 +60,7 @@ export default {
 
   filters: {
     linkEncode(value) {
-      return '/link?url=' + encode(value)
+      return `/link?url=${encode(value)}`
     },
   },
 
