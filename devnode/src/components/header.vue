@@ -14,7 +14,7 @@
           ref="inputSearch"
           id="search-query-nav"
           class="search-query"
-          v-model.trim="keyword"
+          v-model="keyword"
           @focus="focusInput($event)"
           @keyup="searchTips($event)"
           @keydown.down="selectDown()"
@@ -46,7 +46,7 @@
 <script>
 import xSvg from './svg'
 import mainMenu from './main-menu'
-import throttle from 'lodash/throttle'
+import debounce from 'lodash/debounce'
 
 export default {
   components: {
@@ -72,7 +72,7 @@ export default {
 
   created() {
     this.watchQuery()
-    // document.addEventListener('scroll', throttle(this.fetchSupport, 300, {
+    // document.addEventListener('scroll', debounce(this.fetchSupport, 300, {
     //   maxWait: 1000,
     // }), false)
   },
@@ -88,7 +88,8 @@ export default {
 
   methods: {
     watchQuery() {
-      this.keyword = this.$route.query.q || this.$route.params.tag
+      this.keyword = this.$route.query.q || this.$route.params.tag || ''
+      this.keyword = this.keyword.trim()
     },
     focusInput(e) {
       this.focus = true
@@ -123,20 +124,23 @@ export default {
       }
       this.fetchSupport()
     },
-    fetchSupport: throttle(function () {
+    fetchSupport: debounce(function () {
       // this.fetchSupport(e)
       // 请求推荐的字段
+      // this.keyword = this.keyword.trim()
       this.$ajax.getSupport({
         params: {
-          keyword: this.keyword,
+          keyword: this.keyword.trim(),
         },
       }).then((res) => {
         this.keywords = res.data.list
       })
-    }, 300),
+    }, 300, {
+      maxWait: 1000,
+    }),
     search() {
       // 去搜索
-      this.$router.push({ path: '/search', query: { q: this.keyword }})
+      this.$router.push({ path: '/search', query: { q: this.keyword.trim() }})
       // this.keywords = []
       this.focus = false
       this.$refs.inputSearch.blur()

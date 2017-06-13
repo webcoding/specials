@@ -116,17 +116,12 @@ export default {
       this.loading = false
       if (res.errno === 0) {
         const data = res.data
-        debugger
         if (this.pager.current === 1) {
           this.bookmarks = data.list
         } else {
           this.bookmarks = this.bookmarks.concat(data.list)
         }
         this.hasMore = (this.bookmarks.length < data.totalCount)
-
-        console.log(this.hasMore)
-        console.log(this.bookmarks.length)
-        console.log(data.totalCount)
       } else {
         this.pager.current--
         console.log(res.errmsg)
