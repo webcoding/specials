@@ -2,7 +2,10 @@
   <div class="bookmark-content">
     <h1>{{tag}} <small></small></h1>
     <div class="hint-tips" v-if="tags.length">
-      <span>相关推荐：</span><router-link class="key" v-for="tag in tags" :to="`/tag/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
+      <strong class="nowrap">相关推荐：</strong>
+      <div class="keywords">
+        <router-link class="keyword" v-for="tag in tags" :to="`/tag/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
+      </div>
     </div>
     <div class="stream-list" v-if="bookmarks.length > 0">
       <template v-for="item in bookmarks">

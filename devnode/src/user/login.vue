@@ -39,7 +39,7 @@
 // 登录界面仍然保留 header 头，在小窗口时，隐藏即可
 var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 import { mapActions } from 'vuex'
-import { USER_SIGNIN } from '../store/user'
+import { USER_SIGNIN } from '../store/types'
 import xSvg from '../components/svg'
 import xLine from '../components/line'
 

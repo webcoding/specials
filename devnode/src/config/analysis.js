@@ -11,18 +11,4 @@ var _hmt = _hmt || []
   }
 })()
 
-var _vds = _vds || []
-window._vds = _vds
-;(function () {
-  _vds.push(['setAccountId', '96090e98a7687698'])
-  ;(function () {
-    var vds = document.createElement('script')
-    vds.type = 'text/javascript'
-    vds.async = true
-    vds.src = 'https://dn-growing.qbox.me/vds.js'
-    var s = document.getElementsByTagName('script')[0]
-    s.parentNode.insertBefore(vds, s)
-  })()
-})()
-
 export default {}

@@ -1,7 +1,10 @@
 <template>
   <div class="search-content">
-    <div class="hint-tips keywords" v-if="tags.length">
-      <span>历史：</span><router-link class="keyword" v-for="tag in tags" :to="`/tag/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
+    <div class="hint-tips" v-if="tags.length">
+      <span class="nowrap">历史：</span>
+      <div class="keywords">
+        <router-link class="keyword" v-for="tag in tags" :to="`/tag/${tag.name}`" :key="tag.id">{{tag.name}}</router-link>
+      </div>
     </div>
     <div class="stream-list" v-if="bookmarks.length > 0">
       <template v-for="item in bookmarks">

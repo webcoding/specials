@@ -145,6 +145,7 @@ input:required:valid
 .flex
 .flex-center
 .flex-between
+
   display flex
   align-items center
 .flex-center
@@ -211,19 +212,24 @@ button.btn
   font-weight 600
   letter-spacing 0.1em
 
+.nowrap
+  white-space nowrap
 .keywords
   display flex
+  align-items center
+  flex-wrap wrap
   font-size 14px
   line-height 20px
   color #858585
 
-  a.keyword
-    display inline-block
-    margin-left 8px
-    color inherit
+a.keyword
+  display inline-block
+  white-space nowrap
+  margin-left 8px
+  color inherit
 
-    &::before
-      content '#'
+  &::before
+    content '#'
 
     &:hover
       text-decoration underline

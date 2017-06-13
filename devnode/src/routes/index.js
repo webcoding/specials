@@ -9,15 +9,16 @@ import userRoutes from './user'
 import layout from '../layout/layout'
 import link from '../pages/link'
 
-const login = () => import('../pages/login')
+const login = () => import('../user/login')
 const support = () => import('../pages/support')
 const page = () => import('../pages/page')
-const svg = () => import('../pages/svg')
+const learn = () => import('../pages/learn')
 const docs = () => import('../pages/docs')
 const unread = () => import('../pages/unread')
 const help = () => import('../pages/help')
 const changelog = () => import('../pages/changelog')
 const about = () => import('../pages/about')
+const svg = () => import('../pages/svg')
 // const page404 = () => import('../components/404')
 
 // import score from '../pages/score'
@@ -58,6 +59,11 @@ const systemRoutes = [
     alias: '/doc',
   },
   {
+    path: '/learn',
+    name: 'learn',
+    component: learn,
+  },
+  {
     path: '/changelog',
     name: 'changelog',
     component: changelog,
@@ -82,7 +88,6 @@ const systemRoutes = [
     name: 'svg',
     component: svg,
   },
-
   { path: '/guide', name: 'guide', component: page },
   { path: '/coming', name: 'coming', component: coming },
   // { path: '/score', name: 'score', component: score },
