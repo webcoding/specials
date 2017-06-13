@@ -11,6 +11,7 @@
       <stream-item :item="item" :key="item.id"></stream-item>
       </template>
       <p class="get-more flex-center" @click="getMore" v-show="!botLoading && hasMore">点击加载更多</p>
+      <p class="loading flex-center" v-show="!hasMore">没有更多数据了</p>
       <p class="loading flex-center" v-show="botLoading">加载中...</p>
     </div>
     <div v-else>
@@ -41,7 +42,7 @@ const tags = [
 ]
 import streamItem from '../components/stream-item'
 import pager from '../components/pager'
-
+import throttle from 'lodash/throttle'
 // https://lodash.com/docs/#debounce
 // import debounce from 'lodash/debounce'
 
@@ -68,8 +69,14 @@ export default {
     pager,
   },
 
+  computed: {
+  },
+
   created() {
     this.fetchData()
+    this.scrollCallback = throttle(this.getScrollData, 300, {
+      // maxWait: 1000,
+    })
   },
 
   watch: {
@@ -79,7 +86,7 @@ export default {
 
   mounted() {
     // 滚动加载
-    // $(window).on('scroll', debounce(this.getScrollData, 300, { maxWait: 1000 }))
+    document.addEventListener('scroll', this.scrollCallback, false)
   },
 
   methods: {
@@ -92,36 +99,49 @@ export default {
       if (pager.oldKey && (pager.oldKey !== keyword)) {
         this.hasMore = true
         pager.current = 1
-        this.bookmarks = []
+        // this.bookmarks = []
+        window.scrollTo(0, 0)
       }
+      pager.oldKey = this.keyword
       // const res = await this.$ajax.getBookmarksWithTag({
       const res = await this.$ajax.getBookmarks({
         params: {
-          page: this.pager.current,
+          page: pager.current,
           key: this.keyword,
           // tag: this.keyword,
         },
       })
       if (res.errno === 0) {
         const data = res.data
-        if (this.pager.current === 1) {
+        if (pager.current === 1) {
           this.bookmarks = data.list
         } else {
           this.bookmarks = this.bookmarks.concat(data.list)
         }
         this.hasMore = this.bookmarks.length < data.totalCount
       } else {
-        this.pager.current--
+        pager.current--
         console.log(res.errmsg)
       }
       this.botLoading = false
-      pager.oldKeyword = this.keyword
     },
     getMore() {
-      if (!this.botLoading && this.hasMore) {
-        this.botLoading = true
+      this.botLoading = true
+      if (this.hasMore) {
         this.pager.current++
         this.fetchData()
+      }
+    },
+    beforeRouteLeave(to, from, next) {
+      document.removeEventListener('scroll', this.scrollCallback)
+      next()
+    },
+    getScrollData() {
+      var body = document.body
+      var height = body.clientHeight + body.scrollTop
+      var scrollHeight = body.scrollHeight
+      if (height > scrollHeight - 50 && !this.botLoading) {
+        this.getMore()
       }
     },
   },
