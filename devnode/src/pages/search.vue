@@ -14,7 +14,7 @@
       <p class="loading flex-center" v-show="!hasMore">没有更多数据了</p>
       <p class="loading flex-center" v-show="botLoading">加载中...</p>
     </div>
-    <div v-else>
+    <div v-else-if="!loading">
       好伤心，没找到 <span class="keyword">{{keyword}}</span> 相关的结果。我来<router-link :to="`/bookmark/add`">提交一个</router-link>
     </div>
     <!--<pager></pager>-->
@@ -49,10 +49,11 @@ import throttle from 'lodash/throttle'
 export default {
   data() {
     return {
-      scroll: true,
+      // scroll: true,
       tags: tags,
       bookmarks: [],
       keyword: '',
+      loading: true,
       botLoading: false,
       hasMore: true,
       pager: {
@@ -91,36 +92,43 @@ export default {
 
   methods: {
     fetchData() {
-      this.fetchBookmarks()
-    },
-    async fetchBookmarks() {
       this.keyword = this.$route.query.q
-      var { keyword, pager } = this
-      if (pager.oldKey && (pager.oldKey !== keyword)) {
+      if (this.pager.oldKey && (this.pager.oldKey !== this.keyword)) {
+        console.log('change key')
         this.hasMore = true
-        pager.current = 1
+        this.loading = true
+        this.pager.current = 1
         // this.bookmarks = []
         window.scrollTo(0, 0)
       }
-      pager.oldKey = this.keyword
+      this.fetchBookmarks()
+    },
+    async fetchBookmarks() {
+      this.pager.oldKey = this.keyword
       // const res = await this.$ajax.getBookmarksWithTag({
       const res = await this.$ajax.getBookmarks({
         params: {
-          page: pager.current,
+          page: this.pager.current,
           key: this.keyword,
           // tag: this.keyword,
         },
       })
+      this.loading = false
       if (res.errno === 0) {
         const data = res.data
-        if (pager.current === 1) {
+        debugger
+        if (this.pager.current === 1) {
           this.bookmarks = data.list
         } else {
           this.bookmarks = this.bookmarks.concat(data.list)
         }
-        this.hasMore = this.bookmarks.length < data.totalCount
+        this.hasMore = (this.bookmarks.length < data.totalCount)
+
+        console.log(this.hasMore)
+        console.log(this.bookmarks.length)
+        console.log(data.totalCount)
       } else {
-        pager.current--
+        this.pager.current--
         console.log(res.errmsg)
       }
       this.botLoading = false
@@ -137,6 +145,10 @@ export default {
       next()
     },
     getScrollData() {
+      if (this.hasMore === false || this.loading) {
+        return
+      }
+      console.log('scroll')
       var body = document.body
       var height = body.clientHeight + body.scrollTop
       var scrollHeight = body.scrollHeight
