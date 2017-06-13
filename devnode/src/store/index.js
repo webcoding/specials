@@ -1,12 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 // import { state } from './state'
+import * as getters from './getters'
 import actions from './actions'
 import mutations from './mutations'
-import getters from './getters'
 import modules from './modules'
+// import createLogger from '../../../src/plugins/logger'
 // import user from './user'
 // import { mapState } from 'vuex'
+
+// 内置 Logger 插件
+// 如果正在使用 vue-devtools，你可能不需要此插件。
+// import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
 
@@ -19,8 +24,9 @@ export default new Vuex.Store({
   strict: debug,
   state: state,
   actions,
-  mutations,
   getters,
+  mutations,
   modules,
+  // plugins: debug ? [createLogger()] : [],
 })
 
