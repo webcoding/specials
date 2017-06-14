@@ -22,7 +22,7 @@
           <span>更新于</span>
           <time class="date" :datetime="item.updateTime | formatTime">{{ item.updateTime | timeAgo }}</time>
           <span>By</span>
-          <router-link :to="`/user/${item.userId}`" target="_blank" class="publisher-name">晓寒</router-link>
+          <router-link :to="`/user/${item.userId}`" target="_blank" class="publisher-name">{{users[item.userId-1] || '晓寒'}}</router-link>
           <span class="publisher-avatar"></span>
         </div>
         <!--<div class="links">
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+const users = ['晓寒', '雷管', 'MikeZhang']
 import { cEncode } from '../utils/filters'
 import xSvg from '../components/svg'
 import vote from './vote'
@@ -50,6 +51,12 @@ import linkScore from './link-score'
 // const coverPlaceholder = `<span class="cover cover-placeholder"></span>`
 export default {
   props: ['item'],
+
+  data() {
+    return {
+      users: users,
+    }
+  },
 
   components: {
     xSvg,
