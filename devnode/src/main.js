@@ -61,6 +61,12 @@ new Vue({
   // components: { App },
 })
 
+// service worker
+if (window.location.protocol === 'https:' && navigator.serviceWorker) {
+  navigator.serviceWorker.register('/service-worker.js')
+}
+
+
 // var topScrolled = false
 // window.addEventListener('scroll', function () {
 //   if (window.pageYOffset > 165 && !topScrolled) {

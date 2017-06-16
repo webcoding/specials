@@ -8,6 +8,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+var SWPrecachePlugin = require('sw-precache-webpack-plugin')
 var QiniuPlugin = require('qiniu-webpack-plugin')
 var qnConfig = config.qnConfig
 
@@ -156,6 +157,46 @@ if (config.build.productionGzip) {
 if (config.build.bundleAnalyzerReport) {
   var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+}
+
+if (process.env.NODE_ENV === 'production') {
+  webpackConfig.plugins.push(
+    // auto generate service worker
+    new SWPrecachePlugin({
+      // https://googlechrome.github.io/sw-toolbox/api.html
+      cacheId: 'vue-devnode',
+      filename: 'service-worker.js',
+      minify: true,
+      dontCacheBustUrlsMatching: /./,
+      staticFileGlobsIgnorePatterns: [/\.map$/, /\.json$/],
+      runtimeCaching: [
+        {
+          urlPattern: '/(.*)',
+          handler: 'networkFirst',
+        },
+        {
+          urlPattern: '/(.*)',
+          // urlPattern: '/bookmark/tag?page=1&tag=SVG',
+          handler: 'networkFirst',
+          options: {
+            origin: 'https://api.devnode.cn',
+          },
+        },
+        // {
+        //   urlPattern: /\/(top|new|show|ask|jobs)/,
+        //   handler: 'networkFirst',
+        // },
+        // {
+        //   urlPattern: '/item/:id',
+        //   handler: 'networkFirst',
+        // },
+        // {
+        //   urlPattern: '/user/:id',
+        //   handler: 'networkFirst',
+        // },
+      ],
+    })
+  )
 }
 
 module.exports = webpackConfig
