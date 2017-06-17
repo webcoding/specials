@@ -35,7 +35,6 @@ export default {
 </script>
 
 <style lang="stylus">
-// @import "../styles/page.styl";
 .result-count
   height 30px
   background-color #ededeb
