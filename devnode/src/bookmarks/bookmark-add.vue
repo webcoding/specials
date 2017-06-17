@@ -1,5 +1,5 @@
 <template>
-  <div class="content bookmark-update">
+  <div class="bookmark-update">
     <form class="bookmark-form" ref="form">
       <h2>添加到收藏夹</h2>
       <label class="block">
