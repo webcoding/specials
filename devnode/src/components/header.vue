@@ -8,7 +8,7 @@
         <x-svg class="logo-light" type="devnode_logo"></x-svg>
         <span class="text">DevNode</span>
       </a>
-      <form id="search-form" @submit.prevent="search()">
+      <form id="search-form" v-on:submit.prevent="search()">
         <input
           type="text"
           id="search-query-nav"
@@ -123,7 +123,6 @@ export default {
     fetchSupport: debounce(function () {
       // this.fetchSupport(e)
       // 请求推荐的字段
-      // this.keyword = this.keyword.trim()
       this.$ajax.getSupport({
         params: {
           keyword: this.keyword.trim(),
@@ -135,11 +134,11 @@ export default {
       maxWait: 1000,
     }),
     search() {
-      // // 去搜索
-      // this.$router.push({ path: '/search', query: { q: this.keyword.trim() }})
-      // // this.keywords = []
-      // this.focus = false
-      // this.$refs.inputSearch.blur()
+      // 去搜索
+      this.$router.push({ path: '/search', query: { q: this.keyword.trim() }})
+      // this.keywords = []
+      this.focus = false
+      this.$refs.inputSearch.blur()
     },
     selectClick(index) {
       this.keyword = this.keywords[index].name
