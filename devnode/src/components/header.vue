@@ -8,13 +8,12 @@
         <x-svg class="logo-light" type="devnode_logo"></x-svg>
         <span class="text">DevNode</span>
       </a>
-      <form id="search-form">
+      <form id="search-form" @submit.prevent="search()">
         <input
-          type="search"
-          ref="inputSearch"
+          type="text"
           id="search-query-nav"
           class="search-query"
-          v-model="keyword"
+          v-model.trim="keyword"
           @focus="focusInput($event)"
           @keyup="searchTips($event)"
           @keydown.down="selectDown()"
@@ -22,7 +21,7 @@
           @keydown.enter="search()"
           autocomplete="off"
         >
-        <button class="btn btn-search" @click.prevent="search()">搜索</button>
+        <button class="btn btn-search">搜索</button>
         <div class="search-auto-suggest" @click="blurInput" v-show="focus && keyword">
           <transition-group class="listbox"
             tag="ul"
@@ -58,6 +57,7 @@ export default {
     return {
       focus: false,
       keyword: '',
+      test: '',
       keywords: [],
       now: -1,
       searchIndex: 0,
@@ -80,10 +80,6 @@ export default {
   watch: {
     // 如果路由有变化，会再次执行该方法
     '$route': 'watchQuery',
-    // keyword: function () {
-    //   // this.searchQueryIsDirty = true
-    //   this.getSupport()
-    // },
   },
 
   methods: {
@@ -139,11 +135,11 @@ export default {
       maxWait: 1000,
     }),
     search() {
-      // 去搜索
-      this.$router.push({ path: '/search', query: { q: this.keyword.trim() }})
-      // this.keywords = []
-      this.focus = false
-      this.$refs.inputSearch.blur()
+      // // 去搜索
+      // this.$router.push({ path: '/search', query: { q: this.keyword.trim() }})
+      // // this.keywords = []
+      // this.focus = false
+      // this.$refs.inputSearch.blur()
     },
     selectClick(index) {
       this.keyword = this.keywords[index].name
@@ -162,6 +158,15 @@ export default {
 </script>
 
 <style lang="stylus">
+// input.search-query[type="text" i]::-webkit-search-cancel-button {
+//   -webkit-appearance: searchfield-cancel-button;
+//   display: block;
+//   -webkit-margin-start: 1px;
+//   opacity: 0;
+//   pointer-events: none;
+//   -webkit-user-modify: read-only;
+//   flex: 0 0 auto;
+// }
 /* transition-group有关的特效样式 */
 .search-auto-suggest
   transition all 0.5s

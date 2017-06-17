@@ -19,6 +19,7 @@ const help = () => import('../pages/help')
 const changelog = () => import('../pages/changelog')
 const about = () => import('../pages/about')
 const svg = () => import('../pages/svg')
+const test = () => import('../pages/test')
 // const page404 = () => import('../components/404')
 
 // import score from '../pages/score'
@@ -87,6 +88,11 @@ const systemRoutes = [
     path: '/svg',
     name: 'svg',
     component: svg,
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: test,
   },
   { path: '/guide', name: 'guide', component: page },
   { path: '/coming', name: 'coming', component: coming },

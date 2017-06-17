@@ -2,7 +2,7 @@
   <div class="page page-search">
     <x-header></x-header>
     <div id="main" class="">
-      <div class="result-count" v-if="totalCount">{{`${totalCount} results`}}<span v-if="keyword">{{` for ${keyword}`}}</span></div>
+      <div class="result-count" v-show="totalCount">{{`${totalCount} results`}}<span v-show="keyword">{{` for ${keyword}`}}</span></div>
       <transition>
         <router-view class="content"></router-view>
       </transition>

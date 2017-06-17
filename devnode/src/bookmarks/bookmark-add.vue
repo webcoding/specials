@@ -79,7 +79,7 @@ export default {
       this.bookmark.tags = formattedValue
       if (formattedValue !== value) {
         this.$refs.inputTags.value = formattedValue
-        this.$emit('input', formattedValue)
+        // this.$emit('input', formattedValue)
       }
       return formattedValue
     },
