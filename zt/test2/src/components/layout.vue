@@ -1,12 +1,13 @@
 <template>
   <div class="page layout2">
-    <x-header>Layout 2</x-header>
+    <x-header></x-header>
     <router-view class="content"></router-view>
   </div>
 </template>
 
 <script>
-import xHeader from '../components/Header'
+import xHeader from '../components/header'
+
 export default {
   components: {
     xHeader,
@@ -15,7 +16,7 @@ export default {
 </script>
 
 <style lang="stylus">
-.layout2{
+.layout{
   padding: 10px;
 }
 </style>
