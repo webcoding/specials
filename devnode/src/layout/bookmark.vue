@@ -35,12 +35,5 @@ export default {
 </script>
 
 <style lang="stylus">
-.result-count
-  height 30px
-  background-color #ededeb
-  color #939292
-  font-size 14px
-  font-weight 500
-  font-style italic
-  line-height 30px
+
 </style>

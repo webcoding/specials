@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import store from './store/'
-import router from './routes/'
+import router from './router/'
 import App from './App'
 import ajaxApi from './store/api'
 import './config/analysis' // 统计信息
@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === 'production' || debug) {
     .install()
 }
 
-// Vue.config.productionTip = false
+Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 // const app = new Vue(Vue.util.extend({
@@ -52,13 +52,13 @@ if (process.env.NODE_ENV === 'production' || debug) {
 // 因此不推荐挂载root实例到 <html> 或者 <body> 上。
 // FIXME: App.vue 放在 main.js同级，为什么没有替换的效果，这里使用 transition 时有 bug
 new Vue({
+  el: '#app',
   router, // 这里命名 的 key 必须是 router
   store,
-  el: '#app',
-  render: (h) => h(App),
+  // render: (h) => h(App),
   // el: '#app',
-  // template: '<App/>',
-  // components: { App },
+  template: '<App/>',
+  components: { App },
 })
 
 // service worker

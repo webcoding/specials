@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import xHeader from '../components/header'
-import xSidebar from '../components/sidebar'
-import xFooter from '../components/footer'
-// import playBall from '../components/playball'
+import xHeader from '@/components/header'
+import xSidebar from '@/components/sidebar'
+import xFooter from '@/components/footer'
+// import playBall from '@/components/playball'
 
 export default {
   components: {
@@ -28,6 +28,5 @@ export default {
 </script>
 
 <style lang="stylus">
-// @import "../styles/page.styl";
 
 </style>

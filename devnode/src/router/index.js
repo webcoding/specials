@@ -1,29 +1,29 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import env from '../config/env'
-// import store from '../store/'
-import ajaxApi from '../store/api'
+import env from '@/config/env'
+// import store from '@/store/'
+import ajaxApi from '@/store/api'
 
+import layout from '@/layout/layout'
 import bookmarkRoutes from './bookmarks'
 import userRoutes from './user'
-import layout from '../layout/layout'
-import link from '../pages/link'
+import link from '@/pages/link'
 
-const login = () => import('../user/login')
-const support = () => import('../pages/support')
-const page = () => import('../pages/page')
-const learn = () => import('../pages/learn')
-const docs = () => import('../pages/docs')
-const unread = () => import('../pages/unread')
-const help = () => import('../pages/help')
-const changelog = () => import('../pages/changelog')
-const about = () => import('../pages/about')
-const svg = () => import('../pages/svg')
-const test = () => import('../pages/test')
-// const page404 = () => import('../components/404')
+const login = () => import('@/user/login')
+const support = () => import('@/pages/support')
+const page = () => import('@/pages/page')
+const learn = () => import('@/pages/learn')
+const docs = () => import('@/pages/docs')
+const unread = () => import('@/pages/unread')
+const help = () => import('@/pages/help')
+const changelog = () => import('@/pages/changelog')
+const about = () => import('@/pages/about')
+const svg = () => import('@/pages/svg')
+const test = () => import('@/pages/test')
+// const page404 = () => import('@/components/404')
 
-// import score from '../pages/score'
-// import profile from '../pages/profile'
+// import score from '@/pages/score'
+// import profile from '@/pages/profile'
 
 const coming = {
   template: `

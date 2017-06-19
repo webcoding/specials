@@ -6,7 +6,8 @@ var qnConfig = require('./qn.config')
 // 全相对于项目根目录，即执行命令的目录，也是package.json对应的目录
 // 此文件所在目录的上级(../${__dirname})，使用
 
-
+var useQn = true
+// useQn = false
 // 要求必须输入路径，如 hsq 或 zt/webpack，目前暂时使用 hsq
 var appName = process.env.npm_config_path || 'hsq'
 var ztDir = 'zt/'
@@ -64,6 +65,7 @@ var project = {
 
 if (isSpecial) {
   project = {
+    port: port,
     name: appName,
     dir: ztDir + appName,
     dist: buildDist + ztDir + appName,
@@ -99,10 +101,14 @@ if (!project.qn.path && !project.isSingle) {
   project.qn.path = project.dir
 }
 
+if (!useQn) {
+  project.qn.domain = ''
+}
+
 console.log('')
 console.log('     build: ', project.dir)
 console.log('    output: ', project.dist)
-console.log('prod qndir: ', project.qn.domain + project.qn.path)
+console.log('prod qndir: ', project.qn.domain + project.qn.path || 'Not in use')
 console.log('')
 
 // 都是绝对路径

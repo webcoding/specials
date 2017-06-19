@@ -40,8 +40,8 @@ const tags = [
     name: '七牛SDK',
   },
 ]
-import streamItem from '../components/stream-item'
-import pager from '../components/pager'
+import streamItem from '@/components/stream-item'
+import pager from '@/components/pager'
 import throttle from 'lodash/throttle'
 // https://lodash.com/docs/#debounce
 // import debounce from 'lodash/debounce'

@@ -1,16 +1,16 @@
 
-import layout from '../layout/bookmark'
-import search from '../pages/search'
-import tag from '../bookmarks/tag'
-import bookmarkAdd from '../bookmarks/bookmark-add'
-// const layout = () => import('../pages/layout')
-// const search = () => import('../pages/search')
-// const tag = () => import('../bookmarks/tag')
-// const bookmarkAdd = () => import('../bookmarks/bookmark-add')
-const bookmark = () => import('../bookmarks/bookmark')
-const explore = () => import('../bookmarks/explore')
-const dev = () => import('../bookmarks/dev')
-const tags = () => import('../bookmarks/tags')
+import layout from '@/layout/search'
+import search from '@/pages/search'
+import tag from '@/bookmarks/tag'
+import bookmarkAdd from '@/bookmarks/bookmark-add'
+// const layout = () => import('@/pages/layout')
+// const search = () => import('@/pages/search')
+// const tag = () => import('@/bookmarks/tag')
+// const bookmarkAdd = () => import('@/bookmarks/bookmark-add')
+const bookmark = () => import('@/bookmarks/bookmark')
+const explore = () => import('@/bookmarks/explore')
+const dev = () => import('@/bookmarks/dev')
+const tags = () => import('@/bookmarks/tags')
 
 // 别名与跳转
 // 暂时用别名 后期如为归纳统一路径 则使用跳转比别名好

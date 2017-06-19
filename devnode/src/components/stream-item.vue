@@ -41,8 +41,8 @@
 
 <script>
 const users = ['晓寒', '雷管', 'MikeZhang']
-import { cEncode } from '../utils/filters'
-import xSvg from '../components/svg'
+import { cEncode } from '@/utils/filters'
+import xSvg from '@/components/svg'
 import vote from './vote'
 // import Base64 from 'Base64'
 import action from './action'
@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../styles/_settings'
+// @import '../styles/_settings'
 
 $iconSize = 48px
 
@@ -178,7 +178,7 @@ $iconSize = 48px
     // display inline
     margin 0 0 8px 0
     font-size 20px
-    color $medium
+    // color $medium
     font-weight 600
     // text-decoration underline
 

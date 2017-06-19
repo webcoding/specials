@@ -2,7 +2,7 @@
   <div class="page page-search">
     <x-header></x-header>
     <div id="main" class="">
-      <div class="result-count" v-show="totalCount">{{`${totalCount} results`}}<span v-show="keyword">{{` for ${keyword}`}}</span></div>
+      <div class="result-count" v-if="totalCount">{{`${totalCount} results`}}<span v-if="keyword">{{` for ${keyword}`}}</span></div>
       <transition>
         <router-view class="content"></router-view>
       </transition>
@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import xHeader from '../components/header'
-import xSidebar from '../components/sidebar'
-import xFooter from '../components/footer'
-// import playBall from '../components/playball'
+import xHeader from '@/components/header'
+import xSidebar from '@/components/sidebar'
+import xFooter from '@/components/footer'
+// import playBall from '@/components/playball'
 
 export default {
   components: {
@@ -35,13 +35,5 @@ export default {
 </script>
 
 <style lang="stylus">
-.result-count
-  height 30px
-  background-color #ededeb
-  color #939292
-  font-size 14px
-  font-weight 500
-  font-style italic
-  line-height 30px
+
 </style>
-s
