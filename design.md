@@ -4,8 +4,10 @@
 dist/
 mock/
 public/
+style/
 src/
   assets/
+  config/
   components/
   models/
   routes/
