@@ -11,6 +11,7 @@
       <form id="search-form" v-on:submit.prevent="search()">
         <input
           type="text"
+          ref="inputSearch"
           id="search-query-nav"
           class="search-query"
           v-model.trim="keyword"
@@ -93,6 +94,7 @@ export default {
     },
     blurInput() {
       this.focus = false
+      this.$refs.inputSearch.blur()
     },
     // 键盘下事件
     selectDown() {
@@ -137,8 +139,7 @@ export default {
       // 去搜索
       this.$router.push({ path: '/search', query: { q: this.keyword.trim() }})
       // this.keywords = []
-      this.focus = false
-      this.$refs.inputSearch.blur()
+      this.blurInput()
     },
     selectClick(index) {
       this.keyword = this.keywords[index].name
