@@ -6,11 +6,13 @@ mock/
 public/
 style/
 src/
-  assets/
   config/
+  assets/
   components/
-  models/
+  plugins/
+  model/
   routes/
+    page/
     Home/
       less/
       xxx.vue
