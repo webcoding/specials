@@ -45,7 +45,8 @@
 <script>
 import xSvg from './svg'
 import mainMenu from './main-menu'
-import debounce from 'lodash/debounce'
+// https://lodash.com/docs/#throttle
+import throttle from 'lodash/throttle'
 
 export default {
   components: {
@@ -72,7 +73,7 @@ export default {
 
   created() {
     this.watchQuery()
-    // document.addEventListener('scroll', debounce(this.fetchSupport, 300, {
+    // document.addEventListener('scroll', throttle(this.fetchSupport, 300, {
     //   maxWait: 1000,
     // }), false)
   },
@@ -120,9 +121,10 @@ export default {
       }
       this.fetchSupport()
     },
-    fetchSupport: debounce(function () {
+    fetchSupport: throttle(function () {
       // this.fetchSupport(e)
       // 请求推荐的字段
+      console.log(this.keyword)
       this.$ajax.getSupport({
         params: {
           keyword: this.keyword.trim(),
@@ -130,9 +132,7 @@ export default {
       }).then((res) => {
         this.keywords = res.data.list
       })
-    }, 300, {
-      maxWait: 1000,
-    }),
+    }, 300, {}),
     search() {
       // 去搜索
       this.$router.push({ path: '/search', query: { q: this.keyword.trim() }})
